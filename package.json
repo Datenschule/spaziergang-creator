@@ -1,5 +1,7 @@
 {
   "name": "spaziergang-creator",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "spectre.css": "^0.5.3"
+  }
 }

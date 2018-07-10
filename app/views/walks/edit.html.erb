@@ -1,6 +1,6 @@
-<h1>NEW WALK</h1>
+<h1>Edit WALK <%= @walk.name %></h1>
 
-<%= form_for :walk, method: :post, url: walks_path do |f| %>
+<%= form_for :walk, method: :patch, url: walk_path(@walk) do |f| %>
   <%= f.label :name, "Name" %>
   <%= f.text_field :name %>
 

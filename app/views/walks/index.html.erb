@@ -1,9 +1,15 @@
 <h1>Walks</h1>
 
+
 <% if @walks.first %>
+  <ul>
   <% for walk in @walks do %>
-    <p><%= walk.name %></p>
+    <li>
+      <%= link_to walk.name, walk_path(walk) %>
+      <%= can_edit_walk(walk) %>
+    </li>
   <% end %>
+  </ul>
 <% else %>
   No walks
 <% end %>

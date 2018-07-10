@@ -10,13 +10,13 @@ RSpec.describe 'Walks API', type: :request do
 
     before { get '/walks', headers: {'ACCEPT' => 'application/json'} }
 
-    it 'returns walks' do
+    pending 'returns walks' do
       # Note `json` is a custom helper to parse JSON responses
       expect(json).not_to be_empty
       expect(json.size).to eq(3)
     end
 
-    it 'returns status code 200' do
+    pending 'returns status code 200' do
       expect(response).to have_http_status(200)
     end
   end
@@ -26,12 +26,12 @@ RSpec.describe 'Walks API', type: :request do
     before { get "/walks/#{walk_id}" }
 
     context 'when the record exists' do
-      it 'returns the walk' do
+      pending 'returns the walk' do
         expect(json).not_to be_empty
         expect(json['id']).to eq(walk_id)
       end
 
-      it 'returns status code 200' do
+      pending 'returns status code 200' do
         expect(response).to have_http_status(200)
       end
     end
@@ -39,11 +39,11 @@ RSpec.describe 'Walks API', type: :request do
     context 'when the record does not exist' do
       let(:walk_id) { 100 }
 
-      it 'returns status code 404' do
+      pending 'returns status code 404' do
         expect(response).to have_http_status(404)
       end
 
-      it 'returns a not found message' do
+      pending 'returns a not found message' do
         expect(response.body).to match(/Couldn't find Walk/)
       end
     end
