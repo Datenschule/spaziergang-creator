@@ -1,0 +1,13 @@
+<h1>Walks</h1>
+
+<% if @walks.first %>
+  <% for walk in @walks do %>
+    <p><%= walk.name %></p>
+  <% end %>
+<% else %>
+  No walks
+<% end %>
+
+<div>
+<%= link_to "New", new_walk_path %>
+</div>

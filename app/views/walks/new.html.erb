@@ -1,0 +1,16 @@
+<h1>NEW WALK</h1>
+
+<%= link_to "All walks", walks_path%>
+
+<%= form_for :walk, method: :post, url: walks_path do |f| %>
+  <%= f.label :name, "Name" %>
+  <%= f.text_field :name %>
+
+  <%= f.label :location, "Location" %>
+  <%= f.text_field :location %>
+
+  <%= f.label :description, "Description" %>
+  <%= f.text_area :description %>
+
+  <%= f.submit %>
+<% end %>
