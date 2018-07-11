@@ -1,0 +1,20 @@
+<%= form_for :station, method: :post, url: stations_path do |f| %>
+  <%= f.label :name, "Name" %>
+  <%= f.text_field :name %>
+
+  <%= f.label :description, "Description" %>
+  <%= f.text_area :description %>
+
+  <%= f.label :lon, "Longitude" %>
+  <%= f.text_field :lon %>
+
+  <%= f.label :lat, "Latitude" %>
+  <%= f.text_field :lat %>
+
+  <%= f.label :walk_id, "Walk" %>
+  <%= f.collection_select :walk_id, current_user.walks, :id, :name, {prompt: "Optional walk"} %>
+
+  <%= f.submit %>
+
+  <a href="https://geocode.localfocus.nl/">Geocoding Help</a>
+<% end %>

@@ -1,0 +1,18 @@
+<h1>Stationen</h1>
+
+<% if @stations.first %>
+  <ul>
+    <% for st in @stations do %>
+      <li>
+        <%= link_to st.name, station_path(st) %>
+        <%= can_edit_station(st) %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  No Stations
+<% end %>
+
+<div>
+  <%= link_to "New Station", new_station_path %>
+</div>

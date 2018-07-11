@@ -3,6 +3,7 @@
     <div class="navbar p-2">
       <div class="navbar-section">
         <%= link_to "Deine Walks", private_walks_path(), class: "btn btn-link" %>
+        <%= link_to "Neue Station", new_station_path(), class: "btn btn-link" %>
       </div>
       <div class="navbar-section">
         <span>Hello,  <%= current_user.email %></span>

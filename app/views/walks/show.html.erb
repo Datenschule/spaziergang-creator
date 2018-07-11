@@ -6,3 +6,15 @@
 <p><%= @walk.description %></p>
 
 <%= can_edit_walk(@walk) %>
+
+<h2>Stationen</h2>
+
+<% if @walk.stations.first %>
+  <ul>
+    <% @walk.stations.each do |st| %>
+      <li><%= link_to  st.name, station_path(st) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  No stations
+<% end %>

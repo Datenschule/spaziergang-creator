@@ -1,6 +1,5 @@
 <h1>Walks</h1>
 
-
 <% if @walks.first %>
   <ul>
   <% for walk in @walks do %>
@@ -9,6 +8,7 @@
         <span class="tooltip" data-tooltip="öffentlich"><i data-feather="globe"></i></span>
       <% end %>
       <%= link_to walk.name, walk_path(walk) %>
+      (<%= walk.stations.size %> Stationen)
       <% if action_name == 'index' %>
         erstellt von <%= walk.user.email %>
       <% end %>

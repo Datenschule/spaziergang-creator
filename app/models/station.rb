@@ -3,4 +3,8 @@ class Station < ApplicationRecord
   belongs_to :walk
 
   validates_presence_of :name, :description, :lat, :lon
+
+  def coord
+    [lat, lon]
+  end
 end

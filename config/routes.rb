@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     collection do
       %i[private].each { |action| get action }
     end
-
-    resources :stations
   end
+
+  resources :stations
 end

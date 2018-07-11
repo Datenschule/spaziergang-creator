@@ -1,0 +1,14 @@
+<h1>Station <%= @station.name %></h1>
+
+<h2>Description</h2>
+<p><%= @station.description %></p>
+
+<h2>Location</h2>
+<p><%= @station.coord %></p>
+
+<h2>Part of</h2>
+<p>
+  <%= link_to @station.walk.name, walk_path(@station.walk) %></p>
+
+
+<%= can_edit_station(@station) %>
