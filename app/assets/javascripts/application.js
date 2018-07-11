@@ -13,4 +13,5 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+//= require feather-icons/dist/feather.min.js
 //= require_tree .

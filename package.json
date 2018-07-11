@@ -2,6 +2,7 @@
   "name": "spaziergang-creator",
   "private": true,
   "dependencies": {
+    "feather-icons": "^4.7.3",
     "spectre.css": "^0.5.3"
   }
 }

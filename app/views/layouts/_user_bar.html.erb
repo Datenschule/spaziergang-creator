@@ -1,0 +1,13 @@
+<% if current_user %>
+  <div class="container bg-secondary">
+    <div class="navbar p-2">
+      <div class="navbar-section">
+        <%= link_to "Deine Walks", private_walks_path(), class: "btn btn-link" %>
+      </div>
+      <div class="navbar-section">
+        <span>Hello,  <%= current_user.email %></span>
+        <%= link_to "logout", destroy_user_session_path, method: :delete, class: "btn btn-link" %>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -5,7 +5,13 @@
   <ul>
   <% for walk in @walks do %>
     <li>
+      <% if walk.public && action_name == 'private' %>
+        <span class="tooltip" data-tooltip="öffentlich"><i data-feather="globe"></i></span>
+      <% end %>
       <%= link_to walk.name, walk_path(walk) %>
+      <% if action_name == 'index' %>
+        erstellt von <%= walk.user.email %>
+      <% end %>
       <%= can_edit_walk(walk) %>
     </li>
   <% end %>

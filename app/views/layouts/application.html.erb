@@ -14,45 +14,20 @@
 
   <body>
     <div class="wrapper">
-      <div class="container">
-        <header class="navbar p-2">
-          <section class="navbar-section">
-            <%= link_to "All walks", walks_path, class: "btn btn-link" %>
-          </section>
-          <section class="navbar-center">
-            <a href="/" class="navbar-brand mr-2">Spaziergang Creator</a>
-          </section>
-          <section class="navbar-section">
-            <a href="https://spaziergang.datenschule.de/" class="btn btn-link">Datenspaziergang App</a>
-            <a href="https://github.com/Datenschule/spaziergang-creator" class="btn btn-link">GitHub</a>
-          </section>
-        </header>
-      </div>
 
-      <div class="container">
-        <% for f in flash do %>
-          <div class="toast toast-<%= f[0] %> p-2">
-            <button class="btn btn-clear float-right"></button>
-            <%= f[1] %>
-          </div>
-        <% end %>
-      </div>
+      <%= render "layouts/navbar" %>
 
-      <% if current_user %>
-        <div class="container bg-secondary pt-2">
-          <div class="columns pt-2">
-            <div class="col-3 col-ml-auto">
-              <p class="mt-2">Hello,  <%= current_user.email %> |
-                <%= link_to "logout", destroy_user_session_path, method: :delete %>
-              </p>
-            </div>
-          </div>
-        </div>
-      <% end %>
+      <%= render "layouts/flashes" %>
+
+      <%= render "layouts/user_bar" %>
 
       <div class="container">
         <%= yield %>
       </div>
     </div>
+
+    <script>
+     feather.replace()
+    </script>
   </body>
 </html>

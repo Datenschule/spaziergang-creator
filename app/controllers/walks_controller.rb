@@ -1,15 +1,20 @@
 # coding: utf-8
 class WalksController < ApplicationController
   before_action :set_walk, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index]
 
   def index
-    @walks = Walk.all
+    @walks = Walk.is_public
 
     respond_to do |format|
       format.json { json_response(@walks) }
       format.html { render 'index'}
     end
+  end
+
+  def private
+    @walks = Walk.where(user_id: current_user.id)
+    render 'index'
   end
 
   def new
@@ -56,7 +61,8 @@ class WalksController < ApplicationController
                   :preview_image,
                   :description,
                   :entry,
-                  :courseline)
+                  :courseline,
+                  :public)
   end
 
   def set_walk

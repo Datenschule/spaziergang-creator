@@ -1,0 +1,8 @@
+<div class="container">
+  <% for f in flash do %>
+    <div class="toast toast-<%= f[0] %> p-2">
+      <button class="btn btn-clear float-right"></button>
+      <%= f[1] %>
+    </div>
+  <% end %>
+</div>
