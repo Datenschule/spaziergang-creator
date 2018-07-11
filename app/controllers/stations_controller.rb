@@ -17,11 +17,23 @@ class StationsController < ApplicationController
 
   def create
     @station = Station.new(station_params)
+    @station.user_id = current_user.id
     if @station.save!
       redirect_to station_path(@station), success: 'Station saved!'
     else
       render action: :new
     end
+  end
+
+  def edit
+  end
+
+  def update
+    if @station.update(station_params)
+    redirect_to station_path(@station), success: 'Station changed!'
+  else
+    render action: :edit
+  end
   end
 
   private

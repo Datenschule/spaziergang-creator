@@ -6,9 +6,20 @@
 <h2>Location</h2>
 <p><%= @station.coord %></p>
 
-<h2>Part of</h2>
+<h2>Part of walk</h2>
 <p>
   <%= link_to @station.walk.name, walk_path(@station.walk) %></p>
+
+<h2>Subjects</h2>
+<% if @station.subjects.first %>
+  <ul>
+    <% @station.subjects.each do |st| %>
+      <li><%= link_to  st.name, subject_path(st) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  No subjects
+<% end %>
 
 
 <%= can_edit_station(@station) %>

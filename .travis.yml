@@ -1,6 +1,8 @@
 lanugage: ruby
 
-cache: bundler
+cache:
+  - bundler
+  - node_modules
 
 notifications:
   email: never

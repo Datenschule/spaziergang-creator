@@ -12,7 +12,10 @@
 <% if @walk.stations.first %>
   <ul>
     <% @walk.stations.each do |st| %>
-      <li><%= link_to  st.name, station_path(st) %></li>
+      <li>
+        <%= link_to  st.name, station_path(st) %>
+        (<%= pluralize(st.subjects.size, 'subject') %>)
+      </li>
     <% end %>
   </ul>
 <% else %>

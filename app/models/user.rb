@@ -5,4 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :walks
+  has_many :stations
+  has_many :subjects
+  has_many :pages
 end

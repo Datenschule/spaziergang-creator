@@ -33,6 +33,5 @@ RSpec.describe StationsController, type: :controller do
     describe 'DELETE station#destroy' do
       it 'should delete a station'
     end
-
   end
 end

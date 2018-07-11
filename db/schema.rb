@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_11_084522) do
+ActiveRecord::Schema.define(version: 2018_07_11_150422) do
 
   create_table "pages", force: :cascade do |t|
     t.string "name", default: "", null: false
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2018_07_11_084522) do
     t.integer "subject_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id", default: 0, null: false
   end
 
   create_table "stations", force: :cascade do |t|
@@ -32,6 +33,7 @@ ActiveRecord::Schema.define(version: 2018_07_11_084522) do
     t.integer "walk_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id", default: 0, null: false
   end
 
   create_table "subjects", force: :cascade do |t|
@@ -41,6 +43,7 @@ ActiveRecord::Schema.define(version: 2018_07_11_084522) do
     t.integer "station_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id", default: 0, null: false
   end
 
   create_table "users", force: :cascade do |t|
