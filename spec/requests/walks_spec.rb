@@ -2,7 +2,8 @@
 require 'rails_helper'
 
 RSpec.describe 'Walks API', type: :request do
-  let!(:walks) { create_list(:walk, 3) }
+  let!(:user) { create(:user) }
+  let!(:walks) { create_list(:walk, 3, user) }
   let(:walk_id) { walks.first.id }
 
   # Test suite for GET /walks
