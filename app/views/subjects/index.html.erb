@@ -5,7 +5,7 @@
     <% for sub in @subjects do %>
       <li>
         <%= link_to sub.name, subject_path(sub) %>
-        <%= can_edit_subject(sub) %>
+        <%= render("edit_link", sub: sub) if can_edit_subject?(sub) %>
       </li>
     <% end %>
   </ul>

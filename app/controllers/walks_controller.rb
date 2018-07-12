@@ -25,7 +25,7 @@ class WalksController < ApplicationController
     @walk = Walk.new(walk_params)
     @walk.user = current_user
     if @walk.save!
-      redirect_to walks_path, success: 'Walk saved!'
+      redirect_to walks_path, notice: 'Walk saved!'
     else
       render action: :new
     end
@@ -43,7 +43,7 @@ class WalksController < ApplicationController
 
   def update
     if @walk.update(walk_params)
-      redirect_to walk_path(@walk), success: 'Walk changed!'
+      redirect_to walk_path(@walk), notice: 'Walk changed!'
     else
       render action: :edit
     end
@@ -51,6 +51,7 @@ class WalksController < ApplicationController
 
   def destroy
     @walk.destroy
+    redirect_to walks_path, notice: 'Walk deleted!'
   end
 
   private

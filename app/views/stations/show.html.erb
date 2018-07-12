@@ -22,4 +22,5 @@
 <% end %>
 
 
-<%= can_edit_station(@station) %>
+<%= render("edit_link", st: @station) if can_edit_station?(@station) %>
+<%= render "delete_form" if can_delete_station?(@station) %>

@@ -11,7 +11,7 @@ RSpec.describe StationsController, type: :controller do
     end
 
     describe 'GET stations#edit' do
-      it 'should render stations#index'
+      it 'should render stations#edit'
     end
 
     describe 'POST stations#create' do

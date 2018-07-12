@@ -5,7 +5,7 @@
     <% for st in @stations do %>
       <li>
         <%= link_to st.name, station_path(st) %>
-        <%= can_edit_station(st) %>
+        <%= render("edit_link", st: st) if can_edit_station?(st) %>
       </li>
     <% end %>
   </ul>

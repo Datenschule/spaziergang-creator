@@ -2,7 +2,9 @@
 
 <h2>Description</h2>
 <p><%= @subject.description %></p>
-<%= can_edit_subject(@subject) %>
+
+<%= render("edit_link", sub: @subject) if can_edit_subject?(@subject) %>
+<%= render "delete_form" if can_delete_subject?(@subject) %>
 
 <h3>Belongs to station <%= link_to  @subject.station.name, station_path( @subject.station) %></h3>
 <h3>Belongs to walk <%= link_to @subject.station.walk.name, walk_path(@subject.station.walk) %></h3>

@@ -17,7 +17,7 @@ class SubjectsController < ApplicationController
     @subject = Subject.new(subject_params)
     @subject.user_id = current_user.id
     if @subject.save!
-      redirect_to subject_path(@subject), success: 'Subject saved!'
+      redirect_to subject_path(@subject), notice: 'Subject saved!'
     else
       render action: :new
     end
@@ -28,13 +28,15 @@ class SubjectsController < ApplicationController
 
   def update
     if @subject.update(subject_params)
-      redirect_to subject_path(@subject), success: 'Subject changed!'
+      redirect_to subject_path(@subject), notice: 'Subject changed!'
     else
       render action: :edit
     end
   end
 
   def destroy
+    @subject.destroy
+    redirect_to subjects_path, notice: 'Subject deleted!'
   end
 
   private
