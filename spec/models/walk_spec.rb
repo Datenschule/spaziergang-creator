@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Walk, type: :model do
-  it { should have_many(:stations).dependent(:destroy) }
+  it { should have_many(:stations) }
   it { should belong_to(:user)}
 
   it { should validate_presence_of(:name) }
