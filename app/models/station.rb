@@ -1,5 +1,5 @@
 class Station < ApplicationRecord
-  has_many :subjects, dependent: :destroy
+  has_many :subjects
   belongs_to :walk
   belongs_to :user
 

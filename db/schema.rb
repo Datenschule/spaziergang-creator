@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2018_07_11_150422) do
     t.integer "next"
     t.integer "prev"
     t.string "type", default: "", null: false
-    t.integer "subject_id", null: false
+    t.integer "subject_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id", default: 0, null: false
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2018_07_11_150422) do
     t.float "lon", default: 0.0, null: false
     t.integer "next"
     t.string "line", default: "[]", null: false
-    t.integer "walk_id", null: false
+    t.integer "walk_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id", default: 0, null: false
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2018_07_11_150422) do
     t.string "name", default: "", null: false
     t.string "description", default: "", null: false
     t.integer "entry", default: 0, null: false
-    t.integer "station_id", null: false
+    t.integer "station_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id", default: 0, null: false

@@ -7,7 +7,7 @@ class CreateStations < ActiveRecord::Migration[5.2]
       t.float :lon, null: false, default: 0.0
       t.integer :next, null: true
       t.string :line, null: false, default: '[]'
-      t.integer :walk_id, null: false
+      t.integer :walk_id
       t.timestamps
     end
   end

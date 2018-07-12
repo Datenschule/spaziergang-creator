@@ -37,6 +37,10 @@ class StationsController < ApplicationController
   end
 
   def destroy
+    @station.subjects.each do |s|
+      s.station_id = 0
+      s.save
+    end
     @station.destroy
     redirect_to stations_path, notice: 'Station deleted!'
   end
