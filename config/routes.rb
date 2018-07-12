@@ -11,4 +11,5 @@ Rails.application.routes.draw do
 
   resources :stations
   resources :subjects
+  resources :pages
 end

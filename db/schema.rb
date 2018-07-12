@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_11_150422) do
+ActiveRecord::Schema.define(version: 2018_07_12_141251) do
 
   create_table "pages", force: :cascade do |t|
     t.string "name", default: "", null: false
@@ -21,6 +21,12 @@ ActiveRecord::Schema.define(version: 2018_07_11_150422) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id", default: 0, null: false
+    t.string "content"
+    t.string "challenges"
+    t.string "link"
+    t.string "question"
+    t.string "answers"
+    t.integer "correct"
   end
 
   create_table "stations", force: :cascade do |t|

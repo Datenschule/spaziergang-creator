@@ -1,0 +1,33 @@
+<%= f.label :name, "Name" %>
+<%= f.text_field :name %>
+
+<p>Type</p>
+<% @type_options.each do |t| %>
+  <%= f.label :type, t.to_s.capitalize, value: t %>
+  <%= f.radio_button :type, t %>
+<% end %>
+
+<div>
+  <%= f.label :content, "Inhalt" %>
+  <%= f.text_area :content %>
+
+  <%= f.label :challenges, "Challenges" %>
+  <%= f.text_area :challenges %>
+  <p>Mehrere Challenges bitte als Liste (mit <code>-</code> und neuer Zeile) angeben.</p>
+</div>
+
+<div>
+  <%= f.label :link, "Link für den iFrame" %>
+  <%= f.text_field :link %>
+</div>
+
+<div>
+  <%= f.label :question, "Frage" %>
+  <%= f.text_field :question %>
+
+  <%= f.label :answers, "Antworten" %>
+  <%= f.text_area :answers %>
+  <p>Antwortmöglichkeiten bitte als Liste (mit <code>-</code> und neuer Zeile) angeben. Richte Antwort mit einem Stern nach dem Minus kennzeichnen (<code>-* richtige Antwort</code>)</p>
+</div>
+
+<%= f.submit %>
