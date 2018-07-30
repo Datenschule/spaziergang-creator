@@ -14,4 +14,4 @@
 //= require activestorage
 //= require turbolinks
 //= require feather-icons/dist/feather.min.js
-//= require_tree .
+//= require notice-close.js
