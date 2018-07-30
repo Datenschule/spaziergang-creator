@@ -1,0 +1,7 @@
+<%= form_tag subject_page_path(@subject, page),
+  method: :delete,
+  data: {confirm: "This will delete the page irrevocably. Continue?" } do %>
+  <button class="btn tooltip" data-tooltip="löschen">
+    <i data-feather="trash-2">löschen</i>
+  </button>
+<% end %>

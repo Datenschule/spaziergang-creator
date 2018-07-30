@@ -2,9 +2,9 @@
 <%= f.text_field :name %>
 
 <p>Type</p>
-<% @type_options.each do |t| %>
-  <%= f.label :type, t.to_s.capitalize, value: t %>
-  <%= f.radio_button :type, t %>
+<% Page::VARIANTS.each do |t| %>
+  <%= f.label :variant, t.to_s.capitalize, value: t %>
+  <%= f.radio_button :variant, t %>
 <% end %>
 
 <div>

@@ -1,0 +1,5 @@
+<h1>Edit Page <%= @page.name %></h1>
+
+<%= form_for :page, method: :patch, url: subject_page_path(@subject, @page) do |f|%>
+  <%= render "form", f: f %>
+<% end %>

@@ -1,1 +1,36 @@
-show
+<h1><%= @page.name %></h1>
+
+<p><%= link_to "Back to #{@subject.name}", subject_path(@subject) %></p>
+
+
+<p><%= @page.variant %></p>
+
+<%= @page.content if @page.content.present? %>
+
+<% if @challenges %>
+  <h4>Challenges</h4>
+  <ol>
+  <% @challenges.each do |challenge| %>
+    <li><%= challenge %></li>
+  <% end %>
+  </ol>
+<% end %>
+
+<iframe width="600" height="400" src="<%= @page.link if @page.link.present? %>"></iframe>
+<code><%= @page.link if @page.link.present? %></code>
+
+<% if @page.question && @answers %>
+  <h4><%= @page.question if @page.question.present? %></h4>
+  <ul>
+    <% @answers.each do |answer| %>
+      <li>
+        <%= answer[0] unless answer[0].empty? %>
+        <%= "(correct answer) #{answer[1]}" if answer[1].present? %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+<p>
+  <%= render("pages/edit_link", page: @page, ) if can_edit_subject?(@subject) %>
+  <%= render("pages/delete_form", page: @page) if can_delete_subject?(@subject) %>
+</p>

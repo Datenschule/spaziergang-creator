@@ -4,7 +4,7 @@ class CreatePages < ActiveRecord::Migration[5.2]
       t.string :name, null: false, default: ''
       t.integer :next, null: true
       t.integer :prev, null: true
-      t.string :type, null: false, default: ''
+      t.string :variant, null: false, default: ''
       t.integer :subject_id
       t.timestamps
     end

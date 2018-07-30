@@ -6,5 +6,24 @@
 <%= render("edit_link", sub: @subject) if can_edit_subject?(@subject) %>
 <%= render "delete_form" if can_delete_subject?(@subject) %>
 
+<h3>Contains <%= pluralize(@pages.size, 'page') %></h3>
+
+<p><%= link_to "Add a page to this subject", new_subject_page_path(@subject) %></p>
+
+<p>Change order of pages</p>
+
+<% if @pages.first %>
+  <ol>
+    <% for page in @pages do %>
+      <%= render("pages/list_item", page: page) %>
+    <% end %>
+  </ol>
+<% else %>
+  No Pages
+<% end %>
+
+
+
+
 <h3>Belongs to station <%= link_to  @subject.station.name, station_path( @subject.station) %></h3>
 <h3>Belongs to walk <%= link_to @subject.station.walk.name, walk_path(@subject.station.walk) %></h3>

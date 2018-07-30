@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2018_07_12_141251) do
     t.string "name", default: "", null: false
     t.integer "next"
     t.integer "prev"
-    t.string "type", default: "", null: false
+    t.string "variant", default: "", null: false
     t.integer "subject_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

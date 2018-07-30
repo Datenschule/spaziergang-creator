@@ -7,6 +7,7 @@ class SubjectsController < ApplicationController
   end
 
   def show
+    @pages = Page.where(subject_id: @subject.id)
   end
 
   def new

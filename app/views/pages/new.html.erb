@@ -1,5 +1,5 @@
 <h1>NEw Page</h1>
 
-<%= form_for :page, method: :post, url: pages_path do |f|%>
+<%= form_for :page, method: :post, url: subject_pages_path() do |f|%>
   <%= render "form", f: f %>
 <% end %>

@@ -4,9 +4,9 @@ class Page < ApplicationRecord
   belongs_to :subject
   belongs_to :user
 
-  TYPES = [:story, :iframe, :quiz]
+  VARIANTS = [:story, :iframe, :quiz]
 
-  validates_presence_of :name, :type
-  validates :type, inclusion: TYPES.map { |k| k.to_s }
+  validates_presence_of :name, :variant
+  validates :variant, inclusion: VARIANTS.map { |k| k.to_s }
   validates :link, website: true, allow_blank: true
 end

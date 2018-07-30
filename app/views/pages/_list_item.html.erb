@@ -1,0 +1,5 @@
+<li>
+  <%= link_to page.name, subject_page_path(@subject, page) %>
+  <%= render("pages/edit_link", page: page, ) if can_edit_subject?(@subject) %>
+  <%= render("pages/delete_form", page: page) if can_delete_subject?(@subject) %>
+</li>

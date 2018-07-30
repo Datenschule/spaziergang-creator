@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
 
   resources :stations
-  resources :subjects
-  resources :pages
+  resources :subjects do
+    resources :pages
+  end
 end
