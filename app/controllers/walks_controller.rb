@@ -5,11 +5,6 @@ class WalksController < ApplicationController
 
   def index
     @walks = Walk.is_public
-
-    respond_to do |format|
-      format.json { json_response(@walks) }
-      format.html { render 'index'}
-    end
   end
 
   def private
@@ -32,10 +27,6 @@ class WalksController < ApplicationController
   end
 
   def show
-    respond_to do |format|
-      format.json { json_response(@walk) }
-      format.html { render 'show'}
-    end
   end
 
   def edit

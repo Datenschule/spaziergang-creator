@@ -2,5 +2,7 @@
 
 <p>Make your own Datenspaziergang!</p>
 
-<p><%= link_to "Einloggen", new_user_session_path %></p>
-<p><%= link_to "Anmelden", new_user_registration_path %></p>
+<% unless current_user %>
+  <p><%= link_to "Einloggen", new_user_session_path %></p>
+  <p><%= link_to "Anmelden", new_user_registration_path %></p>
+<% end %>
