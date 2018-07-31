@@ -8,19 +8,8 @@ class API::V1::WalksController < ApplicationController
 
   def show
     @walk = Walk.find(params[:id])
-
-    if @walk.public
-      @stations = Station.where(walk_id: @walk.id)
-
-      @stations.map do |station|
-        subjects = Subject.where(station_id: station.id)
-        station.subjects = subjects
-      end
-
-      render "api/walks/show.json", locals: {status: "success"}
-    else
-      raise ActiveRecord::RecordNotFound
-    end
+    raise ActiveRecord::RecordNotFound unless @walk.public
+    render "api/walks/show.json", locals: {status: "success"}
   end
 
   private

@@ -5,7 +5,7 @@
 
 <p><%= @page.variant %></p>
 
-<%= @page.content if @page.content.present? %>
+<%= @page.content.gsub("\n", "<br>").html_safe if @page.content.present? %>
 
 <% if @challenges %>
   <h4>Challenges</h4>
@@ -16,16 +16,19 @@
   </ol>
 <% end %>
 
-<iframe width="600" height="400" src="<%= @page.link if @page.link.present? %>"></iframe>
-<code><%= @page.link if @page.link.present? %></code>
+<% if @page.link.present? %>
+  <iframe width="600" height="400" src="<%= @page.link %>"></iframe>
+  <code><%= @page.link %></code>
+<% end %>
 
 <% if @page.question && @answers %>
   <h4><%= @page.question if @page.question.present? %></h4>
   <ul>
-    <% @answers.each do |answer| %>
+    <%=  %>
+    <% @answers.each_with_index do |answer, index| %>
       <li>
-        <%= answer[0] unless answer[0].empty? %>
-        <%= "(correct answer) #{answer[1]}" if answer[1].present? %>
+        <%= answer %>
+        <%= "(correct)" if @correct_answer == index %>
       </li>
     <% end %>
   </ul>

@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  include PagesHelper
   before_action :authenticate_user!
   before_action :set_page, only: [:show, :edit, :update, :destroy]
   before_action :set_subject
@@ -8,8 +9,10 @@ class PagesController < ApplicationController
   end
 
   def show
-    @challenges = @page.challenges.split('-').select { |f| !f.empty? } if @page.challenges.present?
-    @answers = @page.answers.split('-').select { |a| !a.empty? }.map { |d| d.split('*')} if @page.answers.present?
+    @challenges = pages_parse_challenges @page.challenges if @page.challenges.present?
+    answers = pages_parse_answers(@page.answers)
+    @answers = pages_clean_answers(answers) if @page.answers.present?
+    @correct_answer = pages_correct_answer_index(answers)
   end
 
   def new
@@ -18,8 +21,6 @@ class PagesController < ApplicationController
 
   def create
     @page = Page.new(page_params)
-    @page.challenges = parse_challenges.to_s if page_params[:challenges].present?
-    @page.answers = parse_answers.to_s if page_params[:answers].present?
     @page.user_id = current_user.id
     @page.subject_id = @subject.id
     if @page.save!
@@ -46,20 +47,6 @@ class PagesController < ApplicationController
   end
 
   private
-
-  def parse_challenges
-    page_params[:challenges]
-      .split('-')
-      .select { |f| !f.empty? }
-      .map { |f| f.strip }
-  end
-
-  def parse_answers
-    page_params[:answers]
-      .split('-')
-      .select { |f| !f.empty? }
-      .map { |f| f.strip }
-  end
 
   def set_page
     @page = Page.find(params[:id])

@@ -15,6 +15,14 @@
       <li>
         <%= link_to  st.name, station_path(st) %>
         (<%= pluralize(st.subjects.size, 'subject') %>)
+
+        <ul>
+          <% st.subjects.each do |sub| %>
+            <li><%= link_to sub.name, subject_path(sub) %>
+              (<%= pluralize(sub.pages.size, 'pages') %>)
+            </li>
+          <% end %>
+        </ul>
       </li>
     <% end %>
   </ul>
