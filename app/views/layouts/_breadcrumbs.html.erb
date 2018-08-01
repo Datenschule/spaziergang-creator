@@ -1,9 +1,7 @@
 <% if current_user %>
-  <div class="container">
-    <div class="navbar p-2">
-      <div class="navbar-section">
-        <%= render_breadcrumbs %>
-      </div>
-    </div>
-  </div>
+  <nav class="container">
+    <ul class="breadcrumb">
+      <%= render_breadcrumbs tag: :li, separator: "/" %>
+    </ul>
+  </nav>
 <% end %>

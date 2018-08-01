@@ -11,3 +11,18 @@ $dark-color: #3e396b;
   max-width: 1200px;
   margin: auto;
 }
+
+.breadcrumb {
+  color: grey;
+  a {
+    color: grey;
+  }
+  li {
+    display: inline-block;
+    margin-right: .5em;
+
+    &:not(:first-of-type) {
+      margin-left: .5em;
+    }
+  }
+}
