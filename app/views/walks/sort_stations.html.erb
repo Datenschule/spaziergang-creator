@@ -1,0 +1,14 @@
+<h1>Set order of stations for "<%= link_to  @walk.name, walk_path(@walk) %>"</h1>
+
+<noscript>You need to enable JavaScript to set the order of list elements</noscript>
+
+<p>Drag and drop the list items to set an order</p>
+
+<ol id="sortable-list" class="sortable">
+  <% @walk.stations.sort_by(&:priority).each do |station| %>
+    <li data-id="<%= station.id %>">
+      <%= station.name %>
+      <i data-feather="move"></i>
+    </li>
+  <% end %>
+</ol>

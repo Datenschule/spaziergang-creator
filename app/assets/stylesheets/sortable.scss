@@ -1,0 +1,25 @@
+.sortable {
+  li {
+    margin-bottom: 2em;
+    background-color: lightgrey;
+    //border: solid pink 1px;
+    cursor: grab;
+  }
+}
+
+
+.sortable-ghost {
+  border: 1px dashed hotpink;
+  //background-color: hotpink;
+  //height: 80px;
+  //margin-bottom: 10px;
+}
+
+.sortable-chosen {
+  //border: 1px dashed blue;
+}
+
+.sortable-drag {
+  border: 1px dashed green;
+  cursor: grabbing;
+}

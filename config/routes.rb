@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     collection do
       %i[private].each { |action| get action }
     end
+    get '/sort_stations', to: 'walks#sort_stations', as: :walk
+    put '/sort_stations', to: 'walks#update_sort_stations'
   end
 
   resources :stations

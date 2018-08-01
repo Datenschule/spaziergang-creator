@@ -12,6 +12,26 @@ class WalksController < ApplicationController
     render 'index'
   end
 
+  def sort_stations
+    @walk = Walk.find(params[:walk_id])
+  end
+
+  def update_sort_stations
+    @walk = Walk.find(params[:walk_id])
+    @updates = params[:data]
+
+    @updates.each_with_index do |v, i|
+      station = Station.find(v['id'])
+      station.priority = v['pos'].to_i
+      if @updates[i + 1].present?
+        station.next = @updates[i + 1]['pos'].to_i
+      else
+        station.next = nil
+      end
+      station.save
+    end
+  end
+
   def new
     @walk = Walk.new
   end

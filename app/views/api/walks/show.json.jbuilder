@@ -12,14 +12,14 @@ json.data do
     json.entry @walk.entry
     json.stations do
       json.array! @walk.stations do |station|
-        json.id station.id
+        json.id station.priority
         json.name station.name
         json.description station.description
         json.position do
           json.lat station.lat
           json.lon station.lon
         end
-        json.next station.next
+        json.next station.next if station.next.present?
         json.line station.line
         json.subjects do
           json.array! station.subjects do |subject|

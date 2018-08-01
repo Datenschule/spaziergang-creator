@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_12_141251) do
+ActiveRecord::Schema.define(version: 2018_08_01_093920) do
 
   create_table "pages", force: :cascade do |t|
     t.string "name", default: "", null: false
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 2018_07_12_141251) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id", default: 0, null: false
+    t.integer "priority"
   end
 
   create_table "subjects", force: :cascade do |t|
