@@ -4,7 +4,4 @@
   <%= f.label :description, "Description" %>
   <%= f.text_area :description %>
 
-  <%= f.label :station_id, "Station" %>
-  <%= f.collection_select :station_id, current_user.stations, :id, :name, {prompt: "Optional station"} %>
-
   <%= f.submit %>

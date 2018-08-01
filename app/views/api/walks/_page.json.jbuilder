@@ -1,5 +1,5 @@
 json.type page.variant
-json.id page.id
+json.id page.priority
 json.name page.name
 json.next page.next if page.next
 json.prev page.prev if page.prev

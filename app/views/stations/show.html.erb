@@ -11,6 +11,14 @@
   <%= link_to @station.walk.name, walk_path(@station.walk) %></p>
 
 <h2>Subjects</h2>
+<p>
+  <%= link_to new_station_subject_path(@station),
+  class: "btn tooltip",
+    data: { tooltip: "Neues Subject hinzufügen"} do %>
+    <i data-feather="plus-circle"></i>
+  <% end %>
+</p>
+
 <% if @station.subjects.first %>
   <ul>
     <% @station.subjects.each do |st| %>

@@ -1,0 +1,15 @@
+<h1>Rearrange pages for <%= link_to @subject.name, subject_path(@subject) %></h1>
+
+<noscript>You need to enable JavaScript to set the order of list elements</noscript>
+
+<p>Drag and drop the list items to set an order</p>
+
+<ol id="sortable-list" class="sortable">
+  <% @subject.pages.sort_by(&:priority).each do |page| %>
+    <li data-id="<%= page.id %>">
+      <%= page.name %>
+      <i data-feather="move"></i>
+    </li>
+  <% end %>
+</ol>
+i

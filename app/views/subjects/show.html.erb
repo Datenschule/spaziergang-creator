@@ -10,7 +10,22 @@
 
 <p><%= link_to "Add a page to this subject", new_subject_page_path(@subject) %></p>
 
-<p>Change order of pages</p>
+<p>
+  <% if @subject.pages.size > 1 %>
+    <%= link_to sort_subject_pages_path(@subject),
+    class: "btn tooltip",
+      data: { tooltip: "Reihenfolge ändern"} do %>
+      <i data-feather="list"></i>
+    <% end %>
+  <% end %>
+
+  <%= link_to new_subject_page_path(@subject),
+  class: "btn tooltip",
+    data: { tooltip: "Neue Page hinzufügen"} do %>
+    <i data-feather="plus-circle"></i>
+  <% end %>
+
+</p>
 
 <% if @pages.first %>
   <ol>

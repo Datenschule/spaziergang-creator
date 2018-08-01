@@ -9,16 +9,18 @@ Rails.application.routes.draw do
   end
 
   resources :walks do
-    collection do
-      %i[private].each { |action| get action }
+    get '/private', to: 'walks#private', on: :collection
+
+    resources :stations, shallow: true do
+      get '/sort', to: 'stations#sort', on: :collection
+      put '/sort', to: 'stations#update_after_sort', on: :collection
+
+      resources :subjects, shallow: true, except: [:index] do
+        resources :pages, shallow: true do
+          get '/sort', to: 'pages#sort', on: :collection
+          put '/sort', to: 'pages#update_after_sort',  on: :collection
+        end
+      end
     end
-    get '/sort_stations', to: 'walks#sort_stations', as: :walk
-    put '/sort_stations', to: 'walks#update_sort_stations'
-  end
-
-  resources :stations
-
-  resources :subjects do
-    resources :pages
   end
 end

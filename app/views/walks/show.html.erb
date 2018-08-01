@@ -11,11 +11,20 @@
 
 <h2>Stationen</h2>
 <p>
-  <%= link_to walk_sort_stations_path(@walk),
-   class: "btn tooltip",
-     data: { tooltip: "Reihenfolge ändern"} do %>
-  <i data-feather="list"></i>
+  <% if @walk.stations.size > 1 %>
+    <%= link_to sort_walk_stations_path(@walk),
+    class: "btn tooltip",
+      data: { tooltip: "Reihenfolge ändern"} do %>
+      <i data-feather="list"></i>
+    <% end %>
   <% end %>
+
+  <%= link_to new_walk_station_path(@walk),
+  class: "btn tooltip",
+    data: { tooltip: "Neue Station hinzufügen"} do %>
+    <i data-feather="plus-circle"></i>
+  <% end %>
+
 </p>
 
 <% if @walk.stations.first %>
