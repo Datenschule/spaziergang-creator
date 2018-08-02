@@ -9,7 +9,7 @@ class WalksController < ApplicationController
 
   def private
     @walks = Walk.where(user_id: current_user.id)
-    render 'index'
+    render 'private_index'
   end
 
   def new

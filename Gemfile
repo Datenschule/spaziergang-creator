@@ -27,6 +27,8 @@ gem 'jbuilder', '~> 2.5'
 
 gem "breadcrumbs_on_rails"
 
+gem 'rails-i18n', '~> 5.1'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
@@ -37,6 +39,7 @@ gem "breadcrumbs_on_rails"
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'devise', '~> 4.4'
+gem 'devise-i18n'
 gem 'addressable', '~> 2.5'
 
 group :development, :test do

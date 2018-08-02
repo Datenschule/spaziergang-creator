@@ -1,0 +1,37 @@
+<div class="container">
+  <% if @walks.first %>
+    <ul>
+      <% for walk in @walks do %>
+        <li>
+          <% if walk.public && action_name == 'private' %>
+            <span class="tooltip" data-tooltip="öffentlich"><i data-feather="globe"></i></span>
+          <% end %>
+          <%= link_to walk.name, walk_path(walk) %>
+          (<%= walk.stations.size %> Stationen)
+          <% if action_name == 'index' %>
+            erstellt von <%= walk.user.email %>
+          <% end %>
+          <%= can_edit_walk(walk) %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <div class="empty">
+      <div class="empty-icon">
+        <i data-feather="alert-octagon"></i>
+      </div>
+      <p class="empty-title h5"><%= t("walk.none") %></p>
+
+      <% if current_user %>
+        <div class="empty-action">
+          <%= link_to t('walk.new_verb'), new_walk_path, class: 'btn btn-primary' %>
+        </div>
+      <% else %>
+        <div class="empty-subtitle"><%= t('signup.text') %></div>
+        <div class="empty-action">
+          <%= link_to t('signup.label'), new_user_session_path, class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

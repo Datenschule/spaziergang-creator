@@ -3,7 +3,7 @@
 $primary-color: #5500c3;
 $secondary-color: #00ff9d;
 
-$bg-color: #00eef8;
+$bg-color-custom: #00eef8;
 
 
 // Import full Spectre source code
@@ -43,7 +43,12 @@ a[href^="https://"]:not([href*="localhost:3000"]):after{
   background-color: $gray-color;
 }
 
-.navigation {
+.user-nav {
+  background-color: $bg-color;
+  border-bottom: 1px solid $border-color;
+}
+
+.navigation{
   border-bottom: 3px solid $primary-color;
   background-color: $gray-color;
 }

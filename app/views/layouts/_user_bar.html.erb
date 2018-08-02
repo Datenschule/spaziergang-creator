@@ -1,13 +1,13 @@
 <% if current_user %>
-  <div class="container bg-secondary">
-    <div class="navbar p-2">
+  <div class="container bg-darlk-gray user-nav">
+    <div class="navbar pt-2 pb-2">
       <div class="navbar-section">
-        <%= link_to "Deine Walks", private_walks_path(), class: "btn btn-link" %>
-        <%= link_to "Neuer Walk", new_walk_path(), class: "btn btn-link" %>
+        <%= link_to t('walk.own'), private_walks_path(), class: "btn btn-link" %>
+        <%= link_to t('walk.new'), new_walk_path(), class: "btn btn-link" %>
       </div>
       <div class="navbar-section">
-        <span>Hello,  <%= current_user.email %></span>
-        <%= link_to "logout", destroy_user_session_path, method: :delete, class: "btn btn-link" %>
+        <span><%= current_user.email %></span>
+        <%= link_to t('signout.label'), destroy_user_session_path, method: :delete, class: "btn btn-link" %>
       </div>
     </div>
   </div>

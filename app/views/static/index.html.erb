@@ -1,11 +1,11 @@
 <div class="container">
   <div class="columns">
     <div class="column col-8">
-      <h1>Spaziergang Creator</h1>
+      <h1><%= t :app_name %></h1>
 
-      <p>Make your own Datenspaziergang!</p>
+      <p><%= t 'index.blurb' %></p>
 
-      <p>Mehr text und Bilder vielleicht?</p>
+      <p><%= t 'index.text1' %></p>
     </div>
     <div class="column col-4">
       <div class="panel">
@@ -16,22 +16,22 @@
             <h4 class="panel-title">Ahoi, <%= current_user.email %>!</h4>
           </div>
           <div class="panel-body">
-            <p>Some text here</p>
+            <p><%= t(:some_text) %></p>
           </div>
           <div class="panel-footer">
-            <p><%= link_to "logout", destroy_user_session_path, method: :delete %></p>
+            <p><%= link_to t('signout.label'), destroy_user_session_path, method: :delete %></p>
           </div>
         <% else %>
           <div class="panel-header">
-            <h4 class="panel-title">Anmelden</h4>
+            <h4 class="panel-title"><%= t 'signup.label' %></h4>
           </div>
           <div class="panel-body">
-            <p>Melde dich an um deinen eigenen Datenspaziergang zu erstellen.</p>
+            <p><%= t 'signup.text' %></p>
           </div>
           <div class="panel-footer">
             <p>
-              <%= link_to "Einloggen", new_user_session_path, class: "btn" %>
-              <%= link_to "Anmelden", new_user_registration_path, class: "btn" %>
+              <%= link_to t('signin.label'), new_user_session_path, class: "btn" %>
+              <%= link_to t('signup.label'), new_user_registration_path, class: "btn" %>
             </p>
           </div>
         <% end %>

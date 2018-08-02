@@ -29,8 +29,26 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-en:
-  hello: "Hello world"
-  index_blurb: "Create your own Data Walk!"
+de:
+  app_name: "Spaziergang Creator"
+  mobile_app: "Datenspaziergang App"
+  index:
+    blurb: "Erstelle deinen eigenen Datenspaziergang!"
+  signup:
+    label: "Anmelden"
+    text: "Melde dich an um deinen eigenen Datenspaziergang zu erstellen."
+  signin:
+    label: "Einloggen"
+  signout:
+    label: "ausloggen"
 
-  walk: "walk"
+  walk:
+    singular: "Spaziergang"
+    plural: "Alle Spaziergänge"
+    new: "Neuer Spaziergang"
+    own: "Deine Spaziergänge"
+    new_verb: "Neuen Spaziergang erstellen"
+    none: "Keine Spaziergänge verfügbar"
+
+  app_license: "Veröffentlicht unter der MIT Lizenz"
+  link_github: "Code verfügbar auf"
