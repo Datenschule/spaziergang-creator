@@ -49,6 +49,20 @@ de:
     own: "Deine Spaziergänge"
     new_verb: "Neuen Spaziergang erstellen"
     none: "Keine Spaziergänge verfügbar"
+    save: "Spaziergang speichern"
+    save_success: "Spaziergang erfolgreich gespeichert"
+    edit: "Spaziergang bearbeiten"
+
+  station:
+    singular: "Station"
+    plural: "Stationen"
+    new_verb: "Neue Station hinzufügen"
+    change_order: "Reihenfolge ändern"
+
+  form:
+    name: "Name"
+    location: "Ort"
+    description: "Beschreibung"
 
   app_license: "Veröffentlicht unter der MIT Lizenz"
   link_github: "Code verfügbar auf"

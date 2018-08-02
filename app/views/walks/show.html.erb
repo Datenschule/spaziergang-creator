@@ -1,49 +1,66 @@
-<h1><%= @walk.name %></h1>
+<div class="container">
+  <div class="columns">
+    <div class="column col-10">
+      <h1><%= @walk.name %></h1>
+      <p><%= @walk.location %></p>
+      <p><%= @walk.description %></p>
+    </div>
+    <div class="column col-2 text-right">
 
-<h2>Location</h2>
-<p><%= @walk.location %></p>
-<h2>Description</h2>
-<p><%= @walk.description %></p>
+      <% if can_edit_walk?(@walk) %>
+        <%= link_to edit_walk_path(@walk), class: "btn tooltip", data: { tooltip: t('walk.edit')} do %>
+          <i data-feather="edit-3"></i>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 
-<%= can_edit_walk(@walk) %>
+  <div class="columns">
+    <div class="column col-11 col-ml-auto">
+      <div class="columns">
+        <div class="column col-10">
+          <h2><%= t('station.plural') %></h2>
+        </div>
+        <div class="column col-2 text-right">
+          <p>
+            <% if @walk.stations.size > 1 %>
+              <%= link_to sort_walk_stations_path(@walk),
+              class: "btn tooltip",
+                data: { tooltip: t('station.change_order')} do %>
+                <i data-feather="list"></i>
+              <% end %>
+            <% end %>
 
-
-
-<h2>Stationen</h2>
-<p>
-  <% if @walk.stations.size > 1 %>
-    <%= link_to sort_walk_stations_path(@walk),
-    class: "btn tooltip",
-      data: { tooltip: "Reihenfolge ändern"} do %>
-      <i data-feather="list"></i>
-    <% end %>
-  <% end %>
-
-  <%= link_to new_walk_station_path(@walk),
-  class: "btn tooltip",
-    data: { tooltip: "Neue Station hinzufügen"} do %>
-    <i data-feather="plus-circle"></i>
-  <% end %>
-
-</p>
-
-<% if @walk.stations.first %>
-  <ul>
-    <% @walk.stations.sort_by(&:priority).each do |st| %>
-      <li>
-        <%= link_to  st.name, station_path(st) %>
-        (<%= pluralize(st.subjects.size, 'subject') %>)
-
+            <%= link_to new_walk_station_path(@walk),
+            class: "btn tooltip",
+              data: { tooltip: t('station.new_verb')} do %>
+              <i data-feather="plus-circle"></i>
+            <% end %>
+        </div>
+          </p>
+      </div>
+      <% if @walk.stations.first %>
         <ul>
-          <% st.subjects.each do |sub| %>
-            <li><%= link_to sub.name, subject_path(sub) %>
-              (<%= pluralize(sub.pages.size, 'pages') %>)
+          <% @walk.stations.sort_by(&:priority).each do |st| %>
+            <li>
+              <%= link_to  st.name, station_path(st) %>
+              (<%= pluralize(st.subjects.size, 'subject') %>)
+
+              <ul>
+                <% st.subjects.each do |sub| %>
+                  <li><%= link_to sub.name, subject_path(sub) %>
+                    (<%= pluralize(sub.pages.size, 'pages') %>)
+                  </li>
+                <% end %>
+              </ul>
             </li>
           <% end %>
         </ul>
-      </li>
-    <% end %>
-  </ul>
-<% else %>
-  No stations
-<% end %>
+      <% else %>
+        No stations
+      <% end %>
+    </div>
+
+  </div>
+
+</div>

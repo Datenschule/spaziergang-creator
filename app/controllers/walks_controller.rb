@@ -20,7 +20,7 @@ class WalksController < ApplicationController
     @walk = Walk.new(walk_params)
     @walk.user = current_user
     if @walk.save!
-      redirect_to private_walks_path, notice: 'Walk saved!'
+      redirect_to walk_path(@walk), notice: t('walk.save_success')
     else
       render action: :new
     end
