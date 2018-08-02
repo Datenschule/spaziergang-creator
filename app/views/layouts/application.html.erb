@@ -17,17 +17,18 @@
 
       <%= render "layouts/navbar" %>
 
-      <%= render "layouts/flashes" %>
-
       <%= render "layouts/user_bar" %>
+
+      <%= render "layouts/flashes" %>
 
       <%= render "layouts/breadcrumbs" %>
 
-      <div class="container">
+      <main class="container main">
         <%= yield %>
-      </div>
-    </div>
+      </main>
 
+      <%= render "layouts/footer" %>
+    </div>
     <script>
      feather.replace()
     </script>

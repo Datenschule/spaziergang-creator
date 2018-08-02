@@ -1,15 +1,51 @@
 // Example of project-name.scss
 // Define variables to override default ones
-$primary-color: #2e5bec;
-$dark-color: #3e396b;
+$primary-color: #5500c3;
+$secondary-color: #00ff9d;
+
+$bg-color: #00eef8;
+
 
 // Import full Spectre source code
 @import "spectre.css/src/spectre";
 @import "sortable";
 
+a[href^="http://"]:not([href*="localhost:3000"]):after,
+a[href^="https://"]:not([href*="localhost:3000"]):after{
+  content: "";
+  width: 0.8em;
+  height: 0.8em;
+  display: inline-block;
+  margin-left: 0.3em;
+  background-size: contain;
+  background-image: url('external-link.svg');
+}
+
 .wrapper .container > *{
   max-width: 1200px;
   margin: auto;
+}
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+  margin: 2em 0;
+}
+
+.footer {
+  padding: 1em 0;
+  border-top: 3px solid $primary-color;
+  background-color: $gray-color;
+}
+
+.navigation {
+  border-bottom: 3px solid $primary-color;
+  background-color: $gray-color;
 }
 
 .breadcrumb {

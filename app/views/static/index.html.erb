@@ -1,8 +1,41 @@
-<h1>Spaziergang Creator</h1>
+<div class="container">
+  <div class="columns">
+    <div class="column col-8">
+      <h1>Spaziergang Creator</h1>
 
-<p>Make your own Datenspaziergang!</p>
+      <p>Make your own Datenspaziergang!</p>
 
-<% unless current_user %>
-  <p><%= link_to "Einloggen", new_user_session_path %></p>
-  <p><%= link_to "Anmelden", new_user_registration_path %></p>
-<% end %>
+      <p>Mehr text und Bilder vielleicht?</p>
+    </div>
+    <div class="column col-4">
+      <div class="panel">
+
+
+        <% if current_user %>
+          <div class="panel-header">
+            <h4 class="panel-title">Ahoi, <%= current_user.email %>!</h4>
+          </div>
+          <div class="panel-body">
+            <p>Some text here</p>
+          </div>
+          <div class="panel-footer">
+            <p><%= link_to "logout", destroy_user_session_path, method: :delete %></p>
+          </div>
+        <% else %>
+          <div class="panel-header">
+            <h4 class="panel-title">Anmelden</h4>
+          </div>
+          <div class="panel-body">
+            <p>Melde dich an um deinen eigenen Datenspaziergang zu erstellen.</p>
+          </div>
+          <div class="panel-footer">
+            <p>
+              <%= link_to "Einloggen", new_user_session_path, class: "btn" %>
+              <%= link_to "Anmelden", new_user_registration_path, class: "btn" %>
+            </p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

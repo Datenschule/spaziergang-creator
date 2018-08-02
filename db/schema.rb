@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2018_08_01_123327) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "pages", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.integer "next"
