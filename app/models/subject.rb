@@ -1,5 +1,5 @@
 class Subject < ApplicationRecord
-  has_many :pages
+  has_many :pages, dependent: :destroy
   belongs_to :station
   belongs_to :user
 

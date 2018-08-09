@@ -41,28 +41,8 @@
         </div>
           </p>
       </div>
-      <% if @walk.stations.first %>
-        <ul>
-          <% @walk.stations.sort_by(&:priority).each do |st| %>
-            <li>
-              <%= link_to  st.name, station_path(st) %>
-              (<%= pluralize(st.subjects.size, 'subject') %>)
 
-              <ul>
-                <% st.subjects.each do |sub| %>
-                  <li><%= link_to sub.name, subject_path(sub) %>
-                    (<%= pluralize(sub.pages.size, 'pages') %>)
-                  </li>
-                <% end %>
-              </ul>
-            </li>
-          <% end %>
-        </ul>
-      <% else %>
-        No stations
-      <% end %>
+      <%= render 'stations/list' %>
     </div>
-
   </div>
-
 </div>

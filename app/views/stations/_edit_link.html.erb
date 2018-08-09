@@ -1,5 +1,5 @@
 <%= link_to(edit_station_path(st),
             class: "btn tooltip",
-            data: { tooltip: "bearbeiten"}) do %>
-  <i data-feather="edit-3">edit</i>
+            data: { tooltip: t('station.edit') }) do %>
+  <i data-feather="edit-3"><%= t('station.edit') %></i>
 <% end %>

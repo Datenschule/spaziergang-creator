@@ -1,5 +1,12 @@
-<h1>New station</h1>
-
-<%= form_for :station, method: :post, url: walk_stations_path(@walk) do |f| %>
-  <%= render "form", f: f %>
-<% end %>
+<div class="container">
+  <div class="columns">
+    <h1 class="column col-12 mb-2"><%= t('station.new') %></h1>
+  </div>
+  <div class="columns">
+    <div class="column col-8">
+      <%= form_for :station, method: :post, url: walk_stations_path(@walk) do |f| %>
+        <%= render "form", f: f %>
+      <% end %>
+    </div>
+  </div>
+</div>

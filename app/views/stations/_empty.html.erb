@@ -1,0 +1,10 @@
+<div class="empty">
+  <div class="empty-icon">
+    <i data-feather="alert-octagon"></i>
+  </div>
+  <p class="empty-title h5"><%= t("station.none") %></p>
+
+  <div class="empty-action">
+    <%= link_to t('station.new_verb'), new_walk_station_path(@walk), class: 'btn btn-primary' %>
+  </div>
+</div>

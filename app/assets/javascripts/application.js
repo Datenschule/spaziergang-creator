@@ -13,6 +13,8 @@
 //= require rails-ujs
 //= require activestorage
 //= require feather-icons/dist/feather.min.js
+//= require leaflet/dist/leaflet.js
 //= require sortablejs/Sortable.min.js
 //= require notice-close.js
 //= require sortable-lists.js
+//= require map.js

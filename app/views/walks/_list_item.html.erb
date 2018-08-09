@@ -1,7 +1,7 @@
 <li>
   <div class="tile tile-centered">
     <div class="tile-icon">
-      <div class="example-tile-icon">
+      <div class="tile-icon">
         <% if walk.public && action_name == 'private' %>
           <span class="tooltip" data-tooltip="<%= t 'walk.public' %>">
             <i data-feather="globe"></i>
@@ -17,7 +17,8 @@
         <% if action_name == 'index' %>
           <%= t 'walk.made_by' %> <%= walk.user.email %>
         <% else %>
-          <%= walk.updated_at.strftime '%d.%m.%Y %H:%M' %>
+          <%= pluralize(walk.stations.size, t('station.singular'), t('station.plural')) %> |
+          <%= t 'last_edited' %> <%= walk.updated_at.strftime '%d.%m.%Y %H:%M' %>
         <% end %>
       </div>
     </div>

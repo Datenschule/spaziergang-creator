@@ -10,6 +10,7 @@ de:
     label: "Einloggen"
   signout:
     label: "ausloggen"
+  last_edited: "zuletzt bearbeitet"
 
   walk:
     singular: "Spaziergang"
@@ -33,19 +34,40 @@ de:
         location: "Wo soll der Spaziergang statt finden? Das dient vor allem zur groben Information der Nutzenden"
         description: "Beschreibe den Spaziergang kurz. Worum geht es inhaltlich, was ist besonders interessant?"
         step: "Nachdem der Spaziergang gespeichert ist, kannst du ihm Stationen hinzufügen."
-        delete: "Willst du den Spaziergang (sowie Stationen, Themen und Seiten) wirklich löschen?"
+        delete: "Willst du den Spaziergang (sowie dazugehörige Stationen, Themen und Seiten) wirklich löschen?"
 
   station:
     singular: "Station"
     plural: "Stationen"
+    new: "Neue Station"
     new_verb: "Neue Station hinzufügen"
     change_order: "Reihenfolge ändern"
+    none: "Keine Stationen"
+    save: "Station speichern"
+    saved: "Station erfolgreich gespeichert!"
+    edit: "Station bearbeiten"
+    edited: "Station erfolgreich bearbeitet!"
+    delete: "Station löschen"
+    deleted: "Station gelöscht!"
+    sort: "Stationen sortieren"
+    form:
+      help:
+        delete: "Willst du die Station (sowie dazugehörige Themen und Seiten) wirklich löschen?"
+        coords: "Bitte Punk anstelle von Komma für Dezimalzahlen verwenden"
+
+  subject:
+    singular: "Thema"
+    plural: "Themen"
+    new_verb: "Neues Thema"
+    none: "Keine Themen"
 
   form:
     name: "Name"
     location: "Ort"
     description: "Beschreibung"
     public: "Öffentlich machen?"
+    longitude: "Längengrad"
+    latitude: "Breitengrad"
 
   app_license: "Veröffentlicht unter der MIT Lizenz"
   link_github: "Code verfügbar auf"

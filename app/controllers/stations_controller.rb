@@ -1,6 +1,6 @@
 class StationsController < ApplicationController
   before_action :set_station, only: [:show, :edit, :update, :destroy]
-  before_action :set_walk, only: [:new, :create]
+  before_action :set_walk, only: [:new, :create, :sort]
   before_action :authenticate_user!
 
   def index
@@ -10,13 +10,14 @@ class StationsController < ApplicationController
   end
 
   def show
-    add_breadcrumb "All walks", walks_path
     add_breadcrumb @station.walk.name, walk_path(@station.walk)
     add_breadcrumb @station.name, station_path(@station)
   end
 
   def new
     @station = Station.new
+    add_breadcrumb @walk.name, walk_path(@walk)
+    add_breadcrumb t('station.new_verb'), new_walk_station_path(@walk)
   end
 
   def create
@@ -26,29 +27,25 @@ class StationsController < ApplicationController
 
     @station.priority = @walk.stations.size - 1
     if @station.save!
-      redirect_to station_path(@station), notice: 'Station saved!'
+      redirect_to station_path(@station), notice: t('station.saved')
     else
       render action: :new
     end
   end
 
-  def edit
-  end
+  def edit() end
 
   def update
     if @station.update(station_params)
-      redirect_to station_path(@station), notice: 'Station changed!'
+      redirect_to station_path(@station), notice: t('station.edited')
     else
       render action: :edit
     end
   end
 
   def sort
-    @walk = Walk.find(params[:walk_id])
-
-    add_breadcrumb "All walks", walks_path
     add_breadcrumb @walk.name, walk_path(@walk)
-    add_breadcrumb "Sort Stations", sort_walk_stations_path(@walk)
+    add_breadcrumb t('station.sort'), sort_walk_stations_path(@walk)
   end
 
   def update_after_sort
@@ -57,25 +54,22 @@ class StationsController < ApplicationController
     @updates.each_with_index do |v, i|
       station = Station.find(v['id'])
       station.priority = v['pos'].to_i
-      if @updates[i + 1].present?
-        station.next = @updates[i + 1]['pos'].to_i
-      else
-        station.next = nil
-      end
+      station.next = set_station_next
       station.save
     end
   end
 
   def destroy
-    @station.subjects.each do |s|
-      s.station_id = 0
-      s.save
-    end
+    @walk = @station.walk
     @station.destroy
-    redirect_to stations_path, notice: 'Station deleted!'
+    redirect_to walk_path(@walk), notice: t('station.deleted')
   end
 
   private
+
+  def set_station_next
+    @updates[i + 1]['pos'].to_i if @updates[i + 1].present?
+  end
 
   def set_walk
     @walk = Walk.find(params[:walk_id])

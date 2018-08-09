@@ -1,15 +1,29 @@
-<%= f.label :name, "Name" %>
-<%= f.text_field :name %>
+<div class="form-group">
+  <%= f.label :name, "#{t 'form.name'} *", class: 'form-label' %>
+  <%= f.text_field :name, class: 'form-input' %>
+</div>
 
-<%= f.label :description, "Description" %>
-<%= f.text_area :description %>
+<div class="form-group">
+  <%= f.label :description, "#{t 'form.description'} *", class: 'form-label' %>
+  <%= f.text_area :description, class: 'form-input' %>
+</div>
 
-<%= f.label :lon, "Longitude" %>
-<%= f.text_field :lon %>
+<div class="form-group">
+  <%= f.label :lon, "#{t 'form.longitude'} *", class: 'form-label' %>
+  <%= f.text_field :lon, class: 'form-input' %>
+  <p><%= t('station.form.help.coords') %></p>
+</div>
 
-<%= f.label :lat, "Latitude" %>
-<%= f.text_field :lat %>
+<div class="form-group">
+  <%= f.label :lat, "#{t 'form.latitude'} *", class: 'form-label' %>
+  <%= f.text_field :lat, class: 'form-input' %>
+  <p><%= t('station.form.help.coords') %></p>
+</div>
 
-<%= f.submit %>
+<p>
+  <a href="https://geocode.localfocus.nl/">Geocoding Help</a>
+</p>
 
-<a href="https://geocode.localfocus.nl/">Geocoding Help</a>
+<div class="form-group">
+  <%= f.submit value: t('station.save'), class: 'btn btn-primary' %>
+</div>

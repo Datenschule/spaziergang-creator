@@ -1,5 +1,12 @@
-<h1>Edit station <%= @station.name %></h1>
-
-<%= form_for :station, method: :put, url: station_path(@station) do |f| %>
-  <%= render "form", f: f %>
-<% end %>
+<div class="container">
+  <div class="columns">
+    <h1 class="column col-12 mb-2"><%= t('station.edit') %></h1>
+  </div>
+  <div class="columns">
+    <div class="column col-8">
+      <%= form_for :station, method: :put, url: station_path(@station) do |f| %>
+        <%= render "form", f: f %>
+      <% end %>
+    </div>
+  </div>
+</div>

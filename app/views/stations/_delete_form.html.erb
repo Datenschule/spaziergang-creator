@@ -1,7 +1,8 @@
 <%= form_tag station_path(@station),
   method: :delete,
-  data: {confirm: "This will delete the station and associated subjects and pages. Continue?" } do %>
-  <button class="btn tooltip" data-tooltip="löschen">
-    <i data-feather="trash-2">löschen</i>
+  data: { confirm: t('station.form.help.delete') },
+  class: 'd-inline' do %>
+  <button class="btn tooltip" data-tooltip="<%= t 'station.delete' %>">
+    <i data-feather="trash-2"><%= t 'station.delete' %></i>
   </button>
 <% end %>
