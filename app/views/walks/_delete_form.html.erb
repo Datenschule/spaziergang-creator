@@ -1,0 +1,8 @@
+<%= form_tag walk_path(@walk),
+  method: :delete,
+  data: {confirm: t('walk.form.help.delete') },
+  class: "d-inline" do %>
+  <button class="btn tooltip" data-tooltip="<%= t 'walk.delete' %>">
+    <i data-feather="trash-2"><%= t 'walk.delete' %></i>
+  </button>
+<% end %>

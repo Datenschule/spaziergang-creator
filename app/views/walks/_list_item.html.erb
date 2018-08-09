@@ -1,0 +1,25 @@
+<li>
+  <div class="tile tile-centered">
+    <div class="tile-icon">
+      <div class="example-tile-icon">
+        <% if walk.public && action_name == 'private' %>
+          <span class="tooltip" data-tooltip="<%= t 'walk.public' %>">
+            <i data-feather="globe"></i>
+          </span>
+        <% else %>
+          <i data-feather="map"></i>
+        <% end %>
+      </div>
+    </div>
+    <div class="tile-content">
+      <div class="tile-title"><%= link_to walk.name, walk_path(walk) %></div>
+      <div class="tile-subtitle text-gray">
+        <% if action_name == 'index' %>
+          <%= t 'walk.made_by' %> <%= walk.user.email %>
+        <% else %>
+          <%= walk.updated_at.strftime '%d.%m.%Y %H:%M' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</li>

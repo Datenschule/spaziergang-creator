@@ -67,3 +67,7 @@ a[href^="https://"]:not([href*="localhost:3000"]):after{
     }
   }
 }
+
+.walk-list {
+  list-style: none;
+}

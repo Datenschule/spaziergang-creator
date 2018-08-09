@@ -1,29 +1,12 @@
 <div class="container">
-  <h1 class="mb-2"><%= t('walk.new_verb') %></h1>
-
+  <div class="columns">
+    <h1 class="column col-12 mb-2"><%= t('walk.new_verb') %></h1>
+  </div>
   <div class="columns">
     <div class="column col-8">
-  <%= form_for :walk, method: :post, url: walks_path do |f| %>
-
-    <div class="form-group">
-      <%= f.label :name, "#{t 'form.name'} *", class: 'form-label' %>
-      <%= f.text_field :name, class: 'form-input' %>
-      <p>Gib dem Spaziergang einen Namen, vielleicht etwas das geografisch oder inhaltlich passt.</p>
+      <%= form_for :walk, method: :post, url: walks_path do |f| %>
+        <%=  render 'walks/form',  f: f %>
+      <% end %>
     </div>
-    <div class="form-group">
-    <%= f.label :location, "#{t 'form.location'} *", class: 'form-label' %>
-      <%= f.text_field :location, class: 'form-input' %>
-      <p>Wo soll der Spaziergang statt finden? Das dient vor allem zur groben Information der Nutzenden</p>
-    </div>
-    <div class="form-group">
-    <%= f.label :description, "#{t 'form.description'} *", class: 'form-label' %>
-      <%= f.text_area :description, class: 'form-input' %>
-      <p>Beschreibe den Spaziergang kurz. Worum geht es inhaltlich, was ist besonders interessant?</p>
-    </div>
-
-    <p class="bg-gray p-2"> Nachdem der Spaziergang gespeichert ist, kannst du ihm einzelne Stationen hinzufügen.</p>
-
-    <%= f.submit value: t('walk.save'), class: "btn btn-primary" %>
-  <% end %>
   </div>
 </div>

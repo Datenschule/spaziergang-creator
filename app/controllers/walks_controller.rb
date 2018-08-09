@@ -27,16 +27,15 @@ class WalksController < ApplicationController
   end
 
   def show
-    add_breadcrumb "All walks", walks_path
-    add_breadcrumb @walk.name, walk_path(@walk)
   end
 
   def edit
+    add_breadcrumb @walk.name, walk_path(@walk)
   end
 
   def update
     if @walk.update(walk_params)
-      redirect_to walk_path(@walk), notice: 'Walk changed!'
+      redirect_to walk_path(@walk), notice: t('walk.edited')
     else
       render action: :edit
     end
@@ -48,7 +47,7 @@ class WalksController < ApplicationController
       s.save
     end
     @walk.destroy
-    redirect_to walks_path, notice: 'Walk deleted!'
+    redirect_to private_walks_path, notice: t('walk.deleted')
   end
 
   private

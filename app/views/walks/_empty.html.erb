@@ -1,0 +1,17 @@
+<div class="empty">
+  <div class="empty-icon">
+    <i data-feather="alert-octagon"></i>
+  </div>
+  <p class="empty-title h5"><%= t("walk.none") %></p>
+
+  <% if current_user %>
+    <div class="empty-action">
+      <%= link_to t('walk.new_verb'), new_walk_path, class: 'btn btn-primary' %>
+    </div>
+  <% else %>
+    <div class="empty-subtitle"><%= t('signup.text') %></div>
+    <div class="empty-action">
+      <%= link_to t('signup.label'), new_user_session_path, class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>
