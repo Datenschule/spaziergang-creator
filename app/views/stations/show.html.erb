@@ -34,11 +34,9 @@
           </p>
       </div>
       <% if @station.subjects.first %>
-        <ul>
-          <% @station.subjects.each do |st| %>
-            <li>
-              <%= link_to  st.name, subject_path(st) %>
-            </li>
+        <ul class="walk-list">
+          <% @station.subjects.each do |subject| %>
+            <%= render 'subjects/list_item', subject: subject %>
           <% end %>
         </ul>
       <% else %>

@@ -1,0 +1,14 @@
+<li>
+  <div class="tile tile-centered">
+    <div class="tile-icon">
+      <i data-feather="message-circle"></i>
+    </div>
+    <div class="tile-content">
+      <div class="tile-title"><%= link_to subject.name, subject_path(subject) %></div>
+      <div class="tile-subtitle text-gray">
+        <%= pluralize(subject.pages.size, t('page.singular'), t('page.plural')) %> |
+        <%= t 'last_edited' %> <%= subject.updated_at.strftime '%d.%m.%Y %H:%M' %>
+      </div>
+    </div>
+  </div>
+</li>

@@ -75,6 +75,9 @@ a, a:visited {
 
 .walk-list {
   list-style: none;
+  .walk-list {
+    margin-left: 2em;
+  }
 }
 
 #small-map {

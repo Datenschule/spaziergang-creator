@@ -3,11 +3,9 @@
     <% @walk.stations.sort_by(&:priority).each do |station| %>
       <li>
         <%= render 'stations/list_item', station: station %>
-        <ul>
+        <ul class="walk-list">
           <% station.subjects.each do |sub| %>
-            <li><%= link_to sub.name, subject_path(sub) %>
-              (<%= pluralize(sub.pages.size, 'pages') %>)
-            </li>
+            <%= render 'subjects/list_item', subject: sub %>
           <% end %>
         </ul>
       </li>
