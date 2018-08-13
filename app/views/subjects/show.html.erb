@@ -1,44 +1,44 @@
-<h1><%= @subject.name %></h1>
+<div class="container">
+  <div class="columns">
+    <div class="column col-8">
+      <h1><%= @subject.name %></h1>
+      <p><%= @subject.description %></p>
+    </div>
 
-<h2>Description</h2>
-<p><%= @subject.description %></p>
+    <div class="column col-2 col-ml-auto text-right">
+      <% if @subject.editable_by? current_user %>
+        <%= render("edit_link", sub: @subject) %>
+        <%= render "delete_form" %>
+      <% end %>
+    </div>
+  </div>
 
-<%= render("edit_link", sub: @subject) if can_edit_subject?(@subject) %>
-<%= render "delete_form" if can_delete_subject?(@subject) %>
-
-<h3>Contains <%= pluralize(@pages.size, 'page') %></h3>
-
-<p><%= link_to "Add a page to this subject", new_subject_page_path(@subject) %></p>
-
-<p>
-  <% if @subject.pages.size > 1 %>
-    <%= link_to sort_subject_pages_path(@subject),
-    class: "btn tooltip",
-      data: { tooltip: "Reihenfolge ändern"} do %>
-      <i data-feather="list"></i>
-    <% end %>
-  <% end %>
-
-  <%= link_to new_subject_page_path(@subject),
-  class: "btn tooltip",
-    data: { tooltip: "Neue Page hinzufügen"} do %>
-    <i data-feather="plus-circle"></i>
-  <% end %>
-
-</p>
-
-<% if @pages.first %>
-  <ol>
-    <% for page in @pages do %>
-      <%= render("pages/list_item", page: page) %>
-    <% end %>
-  </ol>
-<% else %>
-  No Pages
-<% end %>
-
-
-
-
-<h3>Belongs to station <%= link_to  @subject.station.name, station_path( @subject.station) %></h3>
-<h3>Belongs to walk <%= link_to @subject.station.walk.name, walk_path(@subject.station.walk) %></h3>
+  <div class="columns">
+    <div class="column col-11 col-ml-auto">
+      <div class="columns space-t">
+        <div class="column col-10">
+          <h2><%= t('page.plural') %></h2>
+          <p><%= pluralize(@pages.size, t('page.singular'), t('page.plural')) %></p>
+        </div>
+        <div class="column col-2 text-right">
+          <p>
+            <%= link_to new_subject_page_path(@subject),
+            class: "btn tooltip",
+              data: { tooltip: t('page.new_verb')} do %>
+              <i data-feather="plus-circle"><%= t('page.new_verb') %></i>
+            <% end %>
+          </p>
+        </div>
+      </div>
+      <% if @pages.first %>
+        <ol class="column col-12">
+          <% for page in @pages do %>
+            <%= render("pages/list_item", page: page) %>
+          <% end %>
+        </ol>
+      <% else %>
+        <%=  render 'pages/empty' %>
+      <% end %>
+    </div>
+  </div>
+</div>

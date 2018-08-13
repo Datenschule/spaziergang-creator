@@ -61,12 +61,27 @@ de:
       help: "Ziehe die Listenelemente mit gedrückter Maustaste in die gewünschte Reihenfolge."
       noscript: "Du musst JavaScript aktivieren um die Reihenfolge ändern zu können."
 
-
   subject:
     singular: "Thema"
     plural: "Themen"
-    new_verb: "Neues Thema"
+    new_verb: "Neues Thema erstellen"
+    new: "Neues Thema"
     none: "Keine Themen"
+    save: "Thema speichern"
+    saved: "Thema erfolgreich gespeichert!"
+    edit: "Thema bearbeiten"
+    edited: "Thema erfolgreich bearbeitet!"
+    delete: "Thema löschen"
+    deleted: "Thema erfolgreich gelöscht!"
+    form:
+      help:
+        delete: "Willst du dieses Thema (sowie dazugehörige Seiten) wirklich löschen?"
+
+  page:
+    singular: "Seite"
+    plural: "Seiten"
+    none: "Keine Seiten"
+    new_verb: "Neue Seite hinzufügen"
 
   form:
     name: "Name"

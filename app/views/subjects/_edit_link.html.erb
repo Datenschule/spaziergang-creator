@@ -1,5 +1,5 @@
 <%= link_to(edit_subject_path(sub),
             class: "btn tooltip",
-            data: { tooltip: "bearbeiten"}) do %>
-  <i data-feather="edit-3">edit</i>
+            data: { tooltip: t('subject.edit')}) do %>
+  <i data-feather="edit-3"><%= t('subject.edit')%></i>
 <% end %>

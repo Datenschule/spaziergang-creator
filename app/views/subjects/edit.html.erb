@@ -1,5 +1,12 @@
-<h1>Edit subject <%= @subject.name %></h1>
-
-<%= form_for :subject, method: :put, url: subject_path(@subject) do |f| %>
-  <%= render "form", f: f %>
-<% end %>
+<div class="container">
+  <div class="columns">
+    <h1 class="column col-12 mb-2"><%= t('subject.edit') %></h1>
+  </div>
+  <div class="columns">
+    <div class="column col-7">
+      <%= form_for :subject, method: :put, url: subject_path(@subject) do |f| %>
+        <%= render "form", f: f %>
+      <% end %>
+    </div>
+  </div>
+</div>

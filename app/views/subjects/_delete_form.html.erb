@@ -1,7 +1,8 @@
 <%= form_tag subject_path(@subject),
   method: :delete,
-  data: {confirm: "This will delete the subject irrevocably. Continue?" } do %>
-  <button class="btn tooltip" data-tooltip="löschen">
-    <i data-feather="trash-2">löschen</i>
+  data: {confirm: t('subject.form.help.delete') },
+  class: 'd-inline' do %>
+  <button class="btn tooltip" data-tooltip="<%= t('subject.delete') %>">
+    <i data-feather="trash-2"><%= t('subject.delete') %></i>
   </button>
 <% end %>
