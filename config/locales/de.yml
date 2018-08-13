@@ -82,6 +82,13 @@ de:
     plural: "Seiten"
     none: "Keine Seiten"
     new_verb: "Neue Seite hinzufügen"
+    new: "Neue Seite"
+    form:
+      help:
+        new_line: "Zeilenumbrürche werden beachtet."
+        challenge_list: "Mehrere Herausforderungen bitte als Liste (mit <code>-</code> und neuer Zeile) angeben."
+        answers_list: "Antwortmöglichkeiten bitte als Liste (mit <code>-</code> und neuer Zeile) angeben."
+        answers_correct: "Richte Antwort mit einem Stern nach dem Minus kennzeichnen (<code>-* richtige Antwort</code>)."
 
   form:
     name: "Name"
@@ -90,6 +97,12 @@ de:
     public: "Öffentlich machen?"
     longitude: "Längengrad"
     latitude: "Breitengrad"
+    type: "Typ"
+    content: "Inhalt"
+    challenges: "Herausforderungen"
+    link: "Link zum Prokejekt (wird als iFrame eingebettet)"
+    question: "Frage"
+    answers: "Antworten"
 
   app_license: "Veröffentlicht unter der MIT Lizenz"
   link_github: "Code verfügbar auf"

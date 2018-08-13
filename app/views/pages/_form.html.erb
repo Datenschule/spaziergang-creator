@@ -1,33 +1,53 @@
-<%= f.label :name, "Name" %>
-<%= f.text_field :name %>
-
-<p>Type</p>
-<% Page::VARIANTS.each do |t| %>
-  <%= f.label :variant, t.to_s.capitalize, value: t %>
-  <%= f.radio_button :variant, t %>
-<% end %>
-
-<div>
-  <%= f.label :content, "Inhalt" %>
-  <%= f.text_area :content %>
-  <p>Zeilenumbrüche werden beachtet</p>
-  <%= f.label :challenges, "Challenges" %>
-  <%= f.text_area :challenges %>
-  <p>Mehrere Challenges bitte als Liste (mit <code>-</code> und neuer Zeile) angeben.</p>
+<div class="form-group">
+  <%= f.label :name, "#{t('form.name')} *", class: "form-label" %>
+  <%= f.text_field :name, class: "form-input" %>
 </div>
 
-<div>
-  <%= f.label :link, "Link für den iFrame" %>
-  <%= f.text_field :link %>
+<div class="form-group">
+  <label class="form-label"><%= t('form.type')%> *</label>
+  <% Page::VARIANTS.each do |t| %>
+    <%= f.label :variant, value: t, class: "form-radio form-inline" do %>
+      <%= f.radio_button :variant, t %>
+      <i class="form-icon"></i>
+      <%= t.to_s.capitalize %>
+    <% end %>
+  <% end %>
 </div>
 
-<div>
-  <%= f.label :question, "Frage" %>
-  <%= f.text_field :question %>
-
-  <%= f.label :answers, "Antworten" %>
-  <%= f.text_area :answers %>
-  <p>Antwortmöglichkeiten bitte als Liste (mit <code>-</code> und neuer Zeile) angeben. Richte Antwort mit einem Stern nach dem Minus kennzeichnen (<code>-* richtige Antwort</code>)</p>
+<div class="radio-additional">
+  <div class="form-group">
+    <%= f.label :content, t('form.content'), class: "form-label" %>
+    <%= f.text_area :content, class: "form-input" %>
+    <p><%= t('page.form.help.new_line')%></p>
+  </div>
+  <div class="form-group">
+    <%= f.label :challenges, t('form.challenges'), class: "form-label" %>
+    <%= f.text_area :challenges, class: "form-input" %>
+    <p><%= t('page.form.help.challenge_list').html_safe %></p>
+  </div>
 </div>
 
-<%= f.submit %>
+<div class="radio-additional">
+  <div class="form-group">
+    <%= f.label :link, t('form.link'), class: "form-label" %>
+    <%= f.text_field :link, class: "form-input" %>
+  </div>
+</div>
+
+<div class="radio-additional">
+  <div class="form-group">
+    <%= f.label :question, t('form.question'), class: "form-label" %>
+    <%= f.text_field :question, class: "form-input" %>
+  </div>
+
+  <div class="radio-additional">
+    <%= f.label :answers, t('form.answers'), class: 'form-label' %>
+    <%= f.text_area :answers, class: "form-input" %>
+    <p><%= t('page.form.help.answers_list').html_safe %><br>
+    <%= t('page.form.help.answers_correct').html_safe %></p>
+  </div>
+</div>
+
+<div class="form-group mt-2">
+  <%= f.submit value: t('station.save'), class: 'btn btn-primary' %>
+</div>
