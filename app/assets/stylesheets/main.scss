@@ -76,3 +76,8 @@ a[href^="https://"]:not([href*="localhost:3000"]):after{
 #small-map {
   height: 200px;
 }
+
+
+.va-middle {
+  vertical-align: middle;
+}

@@ -1,14 +1,24 @@
-<h1>Set order of stations for "<%= link_to  @walk.name, walk_path(@walk) %>"</h1>
-
-<noscript>You need to enable JavaScript to set the order of list elements</noscript>
-
-<p>Drag and drop the list items to set an order</p>
-
-<ol id="sortable-list" class="sortable">
-  <% @walk.stations.sort_by(&:priority).each do |station| %>
-    <li data-id="<%= station.id %>">
-      <%= station.name %>
-      <i data-feather="move"></i>
-    </li>
-  <% end %>
-</ol>
+<div class="container">
+  <div class="columns">
+    <div class="column col-12">
+      <h1><%= t('station.sort.title') %> <%= link_to  @walk.name, walk_path(@walk) %></h1>
+      <noscript><%= t 'station.sort.noscript' %></noscript>
+      <p class="bg-gray p-2"><i data-feather="help-circle" class="mr-2 va-middle"></i><%= t 'station.sort.help' %></p>
+    </div>
+    <div class="column col-6">
+      <ol id="sortable-list" class="sortable">
+        <% @walk.stations.sort_by(&:priority).each do |station| %>
+          <li data-id="<%= station.id %>">
+            <%= render 'stations/list_item', station: station %>
+          </li>
+        <% end %>
+      </ol>
+    </div>
+    <div class="column col-2 col-mx-auto">
+      <p id="sortable-saving" class="d-none">
+        <span class="loading pr-2"></span>
+        <span class="pl-2"><%= t 'saving' %>...</span>
+      </p>
+    </div>
+  </div>
+</div>

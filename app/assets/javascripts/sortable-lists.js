@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function sendUpdatedOrder() {
+            document.querySelector('#sortable-saving').classList.remove('d-none');
             fetch(window.location.pathname, {
                 method: 'PUT',
                 headers: {
@@ -32,7 +33,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 credentials: "same-origin",
                 body: JSON.stringify({data: setUpdatedOrder()})
             })
-                .then(resp => console.log(`List order updated`))
+                .then(resp => {
+                    document.querySelector('#sortable-saving').classList.add('d-none');
+                })
                 .catch(error => console.log(`Fetch Error ${error}`));
         }
 

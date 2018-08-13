@@ -1,25 +1,34 @@
 .sortable {
+  list-style: none;
+  counter-reset: list-item-counter;
+
   li {
+    display: flex;
     margin-bottom: 2em;
-    background-color: lightgrey;
-    //border: solid pink 1px;
     cursor: grab;
+    box-shadow: 0 0 2px 0 #333;
+    border-radius: 3px;
+    padding: .2em 1em;
+    &:before {
+      content: counter(list-item-counter) ".";
+      counter-increment: list-item-counter;
+      font-size: 2em;
+      margin-right: .6em;
+    }
   }
 }
 
 
 .sortable-ghost {
-  border: 1px dashed hotpink;
-  //background-color: hotpink;
-  //height: 80px;
-  //margin-bottom: 10px;
+  border: 2px solid #5500c3;
+  box-shadow: none;
+  opacity: .9;
 }
 
-.sortable-chosen {
-  //border: 1px dashed blue;
-}
+.sortable-chosen {}
 
 .sortable-drag {
-  border: 1px dashed green;
+  border: 2px solid #00ff9d;
   cursor: grabbing;
+  box-shadow: none;
 }

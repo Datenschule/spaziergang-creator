@@ -11,6 +11,7 @@ de:
   signout:
     label: "ausloggen"
   last_edited: "zuletzt bearbeitet"
+  saving: "speichern"
 
   walk:
     singular: "Spaziergang"
@@ -49,11 +50,16 @@ de:
     edited: "Station erfolgreich bearbeitet!"
     delete: "Station löschen"
     deleted: "Station gelöscht!"
-    sort: "Stationen sortieren"
     form:
       help:
         delete: "Willst du die Station (sowie dazugehörige Themen und Seiten) wirklich löschen?"
-        coords: "Bitte Punk anstelle von Komma für Dezimalzahlen verwenden"
+        coords: "Bitte Punkt anstelle von Komma für Dezimalzahlen verwenden"
+    sort:
+      title: "Reihenfolge der Stationen ändern für"
+      breadcrumb: "Reihenfolge der Stationen ändern"
+      help: "Ziehe die Listenelemente mit gedrückter Maustaste in die gewünschte Reihenfolge."
+      noscript: "Du musst JavaScript aktivieren um die Reihenfolge ändern zu können."
+
 
   subject:
     singular: "Thema"

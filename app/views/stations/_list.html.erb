@@ -2,19 +2,7 @@
   <ul class="walk-list">
     <% @walk.stations.sort_by(&:priority).each do |station| %>
       <li>
-        <div class="tile tile-centered">
-          <div class="tile-icon">
-            <i data-feather="map-pin"></i>
-          </div>
-          <div class="tile-content">
-            <div class="tile-title"><%= link_to station.name, station_path(station) %></div>
-            <div class="tile-subtitle text-gray">
-              <%= pluralize(station.subjects.size, t('subject.singular'), t('subject.plural')) %> |
-              <%= t 'last_edited' %> <%= station.updated_at.strftime '%d.%m.%Y %H:%M' %>
-            </div>
-          </div>
-        </div>
-
+        <%= render 'stations/list_item', station: station %>
         <ul>
           <% station.subjects.each do |sub| %>
             <li><%= link_to sub.name, subject_path(sub) %>

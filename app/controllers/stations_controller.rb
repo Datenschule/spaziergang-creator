@@ -45,7 +45,7 @@ class StationsController < ApplicationController
 
   def sort
     add_breadcrumb @walk.name, walk_path(@walk)
-    add_breadcrumb t('station.sort'), sort_walk_stations_path(@walk)
+    add_breadcrumb t('station.sort.breadcrumb'), sort_walk_stations_path(@walk)
   end
 
   def update_after_sort
@@ -54,7 +54,7 @@ class StationsController < ApplicationController
     @updates.each_with_index do |v, i|
       station = Station.find(v['id'])
       station.priority = v['pos'].to_i
-      station.next = set_station_next
+      station.next = set_station_next(i)
       station.save
     end
   end
@@ -67,7 +67,7 @@ class StationsController < ApplicationController
 
   private
 
-  def set_station_next
+  def set_station_next(i)
     @updates[i + 1]['pos'].to_i if @updates[i + 1].present?
   end
 
