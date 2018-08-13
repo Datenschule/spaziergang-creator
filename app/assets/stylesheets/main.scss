@@ -8,7 +8,7 @@ $bg-color-custom: #00eef8;
 
 // Import full Spectre source code
 @import "spectre.css/src/spectre";
-@import "leaflet/dist/leaflet.css";
+@import "mapbox-gl/dist/mapbox-gl.css";
 @import "sortable";
 
 a[href^="http://"]:not([href*="localhost:3000"]):after,
@@ -20,6 +20,10 @@ a[href^="https://"]:not([href*="localhost:3000"]):after{
   margin-left: 0.3em;
   background-size: contain;
   background-image: url('external-link.svg');
+}
+
+a, a:visited {
+  color: $primary-color;
 }
 
 .wrapper .container > *{
@@ -76,8 +80,25 @@ a[href^="https://"]:not([href*="localhost:3000"]):after{
 #small-map {
   height: 200px;
 }
+#pick-map {
+  height: 600px;
+}
+.marker {
+  display: block;
+  width: 36px;
+  height: 40px;
+  //margin-top: -10px;
+  background-image: url(/assets/hex.svg);
+}
 
+input[readonly] {
+  cursor: not-allowed;
+}
 
 .va-middle {
   vertical-align: middle;
+}
+
+.space-t {
+  margin-top: 3rem;
 }

@@ -33,7 +33,11 @@ class StationsController < ApplicationController
     end
   end
 
-  def edit() end
+  def edit
+    add_breadcrumb @station.walk.name, walk_path(@station.walk)
+    add_breadcrumb @station.name, station_path(@station)
+    add_breadcrumb t('station.edit'), edit_station_path(@station)
+  end
 
   def update
     if @station.update(station_params)

@@ -3,10 +3,14 @@
     <h1 class="column col-12 mb-2"><%= t('station.new') %></h1>
   </div>
   <div class="columns">
-    <div class="column col-8">
+    <div class="column col-7">
       <%= form_for :station, method: :post, url: walk_stations_path(@walk) do |f| %>
         <%= render "form", f: f %>
       <% end %>
+    </div>
+    <div class="column col-5">
+      <noscript><%= t 'staion.form.noscript' %></noscript>
+      <div id="pick-map"></div>
     </div>
   </div>
 </div>

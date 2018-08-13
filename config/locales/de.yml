@@ -53,7 +53,8 @@ de:
     form:
       help:
         delete: "Willst du die Station (sowie dazugehörige Themen und Seiten) wirklich löschen?"
-        coords: "Bitte Punkt anstelle von Komma für Dezimalzahlen verwenden"
+        coords: "Verwende die Karte um nach einem Ort zu suchen oder ziehe den Marker an den gewünschten Ort."
+        noscript: "Du musst JavaScript aktivieren um die Karte benutzen zu können."
     sort:
       title: "Reihenfolge der Stationen ändern für"
       breadcrumb: "Reihenfolge der Stationen ändern"
