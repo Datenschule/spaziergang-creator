@@ -89,7 +89,12 @@ de:
     delete: "Seite löschen"
     deleted: "Seite erfolgreich gelöscht!"
     change_order: "Reihenfolge der Seiten ändern"
+    sort:
+      title: "Reihenfolge der Seiten ändern für"
+      help: "Ziehe die Listenelemente mit gedrückter Maustaste in die gewünschte Reihenfolge."
+      noscript: "Du musst JavaScript aktivieren um die Reihenfolge ändern zu können."
     correct: "richtig"
+    iframe_cors: "Falss die Webseite hier nicht angezeigt wird, kann es sein, dass der Webseitenbetreibende das Einbetten via iFrame verbietet."
     form:
       noscript:
         story: "Bei Stories sind nur Inhalt und Herausforderungen relevant."

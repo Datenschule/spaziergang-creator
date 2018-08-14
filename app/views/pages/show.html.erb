@@ -35,9 +35,10 @@
 
     <% if @page.variant == 'iframe' %>
       <% if @page.link.present? %>
-        <div class="column col-12">
+        <div class="column col-8">
           <div class="d-block"><code><%= @page.link %></code></div>
-          <iframe width="600" height="400" src="<%= @page.link %>"></iframe>
+          <iframe width="790" height="400" src="<%= @page.link %>"></iframe>
+          <p class="bg-gray p-2"><%=  t('page.iframe_cors') %></p>
         </div>
       <% end %>
     <% end %>

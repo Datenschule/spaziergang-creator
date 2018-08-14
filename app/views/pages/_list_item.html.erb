@@ -1,4 +1,4 @@
-<li>
+<li data-id="<%= page.id %>">
   <div class="tile tile-centered">
     <div class="tile-icon">
       <i data-feather="file-text"></i>
@@ -16,10 +16,6 @@
             <i data-feather="move"></i>
           </button>
         </div>
-      <% else %>
-        <% if page.editable_by?(current_user) %>
-          <%= render("pages/edit_link", page: page) %>
-        <% end %>
       <% end %>
     </div>
   </div>

@@ -37,15 +37,7 @@
           </p>
         </div>
       </div>
-      <% if @pages.first %>
-        <ol class="column col-12 walk-list">
-          <% for page in @pages do %>
-            <%= render("pages/list_item", page: page) %>
-          <% end %>
-        </ol>
-      <% else %>
-        <%=  render 'pages/empty' %>
-      <% end %>
+      <%= render 'pages/list' %>
     </div>
   </div>
 </div>
