@@ -1,6 +1,6 @@
 <div class="container">
   <div class="columns">
-    <div class="column col-10">
+    <div class="column col-5">
       <h1><%= @walk.name %></h1>
       <p><%= @walk.location %></p>
       <p><%= @walk.description %></p>
@@ -15,6 +15,10 @@
         <%= render 'walks/delete_form' %>
       <% end %>
     </div>
+    <div class="column col-5">
+      <div id="big-map"></div>
+    </div>
+
   </div>
 
   <div class="columns">

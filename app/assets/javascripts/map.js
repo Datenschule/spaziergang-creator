@@ -53,4 +53,23 @@ document.addEventListener('DOMContentLoaded', () => {
             input_lat.value = lnglat.lat;
         });
     }
+
+    let bigMap = document.querySelector("#big-map");
+    if (bigMap) {
+        let map = new mapboxgl.Map({
+            container: 'big-map',
+            style: 'mapbox://styles/okfde/cjhhp085v001u2rqh82cj1x6p',
+            center: [13, 52],
+            zoom: 12
+        });
+
+        document.querySelectorAll('.station-list-item').forEach((v, i) => {
+            new mapboxgl.Marker()
+                .setLngLat([v.dataset.lon, v.dataset.lat])
+                .addTo(map);
+            if (i === 0) {
+                map.setCenter([v.dataset.lon, v.dataset.lat]);
+            }
+        });
+    }
 });

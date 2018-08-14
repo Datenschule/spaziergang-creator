@@ -1,7 +1,7 @@
 <% if @walk.stations.first %>
   <ul class="walk-list">
     <% @walk.stations.sort_by(&:priority).each do |station| %>
-      <li>
+      <li class="station-list-item" data-lon="<%= station.lon %>" data-lat="<%= station.lat %>">
         <%= render 'stations/list_item', station: station %>
         <ul class="walk-list">
           <% station.subjects.each do |sub| %>
