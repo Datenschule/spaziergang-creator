@@ -10,6 +10,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         variantRadios.forEach((v) => {
             v.addEventListener('change', toggleVariantForms);
+
+            if (v.getAttribute('checked') === 'checked') {
+                if ("createEvent" in document) {
+                    var evt = document.createEvent("HTMLEvents");
+                    evt.initEvent("change", false, true);
+                    v.dispatchEvent(evt);
+                }
+                else {
+                    v.fireEvent("onchange");
+                }
+            }
         });
     }
 });

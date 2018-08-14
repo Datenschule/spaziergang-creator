@@ -89,7 +89,12 @@ de:
     delete: "Seite löschen"
     deleted: "Seite erfolgreich gelöscht!"
     change_order: "Reihenfolge der Seiten ändern"
+    correct: "richtig"
     form:
+      noscript:
+        story: "Bei Stories sind nur Inhalt und Herausforderungen relevant."
+        iframe: "Bei iframes ist nur Link relevant."
+        quiz: "Bei einem Quiz sind nur Frage und Antworten relevant."
       help:
         delete: "Willst du diese Seite wirklich löschen?"
         new_line: "Zeilenumbrüche werden beachtet."

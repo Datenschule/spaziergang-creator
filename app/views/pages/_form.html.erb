@@ -15,7 +15,7 @@
 </div>
 
 <div class="radio-additional d-none" data-story>
-  <noscript></noscript>
+  <noscript><%=  t('page.form.noscript.story') %></noscript>
   <div class="form-group">
     <%= f.label :content, t('form.content'), class: "form-label" %>
     <%= f.text_area :content, class: "form-input" %>
@@ -29,7 +29,7 @@
 </div>
 
 <div class="radio-additional d-none" data-iframe>
-  <noscript></noscript>
+  <noscript><%=  t('page.form.noscript.iframe') %></noscript>
   <div class="form-group">
     <%= f.label :link, t('form.link'), class: "form-label" %>
     <%= f.text_field :link, class: "form-input" %>
@@ -37,7 +37,7 @@
 </div>
 
 <div class="radio-additional d-none" data-quiz>
-  <noscript></noscript>
+  <noscript><%=  t('page.form.noscript.quiz') %></noscript>
   <div class="form-group">
     <%= f.label :question, t('form.question'), class: "form-label" %>
     <%= f.text_field :question, class: "form-input" %>

@@ -2,9 +2,8 @@
   <div class="columns">
     <div class="column col-8">
       <h1><%= @page.name %></h1>
-      <p><%= @page.variant %></p>
+      <p class="label label-secondary label-rounded"><%= @page.variant %></p>
     </div>
-
     <div class="column col-2 col-ml-auto text-right">
       <% if @page.editable_by? current_user %>
         <%= render("edit_link", page: @page) %>
@@ -14,36 +13,50 @@
   </div>
 
   <div class="columns">
-    <%= @page.content.gsub("\n", "<br>").html_safe if @page.content.present? %>
+    <% if @page.variant == 'story'%>
+      <% if @page.content.present? %>
+        <div class="column col-6">
+          <h2 class="h4"><%= t('form.content')%></h2>
+          <%= simple_format @page.content %>
+        </div>
+      <% end %>
 
-    <% if @challenges %>
-      <h4>Challenges</h4>
-      <ol>
-        <% @challenges.each do |challenge| %>
-          <li><%= challenge %></li>
-        <% end %>
-      </ol>
+      <% if @challenges %>
+        <div class="column col-6">
+          <h2 class="h4">Challenges</h2>
+          <ol>
+            <% @challenges.each do |challenge| %>
+              <li><%= challenge %></li>
+            <% end %>
+          </ol>
+        </div>
+      <% end %>
+    <% end  %>
+
+    <% if @page.variant == 'iframe' %>
+      <% if @page.link.present? %>
+        <div class="column col-12">
+          <div class="d-block"><code><%= @page.link %></code></div>
+          <iframe width="600" height="400" src="<%= @page.link %>"></iframe>
+        </div>
+      <% end %>
     <% end %>
 
-    <% if @page.link.present? %>
-      <div class="column col-12">
-        <div class="d-block"><code><%= @page.link %></code></div>
-        <iframe width="600" height="400" src="<%= @page.link %>"></iframe>
-      </div>
-    <% end %>
-
-    <% if @page.question && @answers %>
-      <h4><%= @page.question if @page.question.present? %></h4>
-      <ul>
-        <%=  %>
-        <% @answers.each_with_index do |answer, index| %>
-          <li>
-            <%= answer %>
-            <%= "(correct)" if @correct_answer == index %>
-          </li>
-        <% end %>
-      </ul>
-    <% end %>
-
+    <% if @page.variant == 'quiz' %>
+      <% if @page.question && @answers %>
+        <div class="column col-12">
+        <h2 class="h4"><%= @page.question if @page.question.present? %></h2>
+        <ul>
+          <%=  %>
+          <% @answers.each_with_index do |answer, index| %>
+            <li>
+              <%= answer %>
+              <%= "(#{t 'page.correct'})" if @correct_answer == index %>
+            </li>
+          <% end %>
+        </ul>
+        </div>
+      <% end %>
+    <% end  %>
   </div>
 </div>

@@ -1,5 +1,12 @@
-<h1>Edit Page <%= @page.name %></h1>
-
-<%= form_for :page, method: :patch, url: page_path(@page) do |f|%>
-  <%= render "form", f: f %>
-<% end %>
+<div class="container">
+  <div class="columns">
+    <h1 class="column col-12 mb-2"><%= t('page.edit') %></h1>
+  </div>
+  <div class="columns">
+    <div class="column col-7">
+      <%= form_for :page, method: :patch, url: page_path(@page) do |f|%>
+        <%= render "form", f: f %>
+      <% end %>
+    </div>
+  </div>
+</div>

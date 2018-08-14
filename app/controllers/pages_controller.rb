@@ -46,6 +46,11 @@ class PagesController < ApplicationController
   end
 
   def edit
+    add_breadcrumb @page.subject.station.walk.name, walk_path(@page.subject.station.walk)
+    add_breadcrumb @page.subject.station.name, station_path(@page.subject.station)
+    add_breadcrumb @page.subject.name, subject_path(@page.subject)
+    add_breadcrumb @page.name, page_path(@page)
+    add_breadcrumb t('page.edit'), edit_page_path(@page)
   end
 
   def update
@@ -59,11 +64,10 @@ class PagesController < ApplicationController
   def sort
     @subject = Subject.find(params[:subject_id])
 
-    add_breadcrumb "All walks", walks_path
     add_breadcrumb @subject.station.walk.name, walk_path(@subject.station.walk)
     add_breadcrumb @subject.station.name, station_path(@subject.station)
     add_breadcrumb @subject.name, subject_path(@subject)
-    add_breadcrumb "Sort Pages", sort_subject_pages_path(@subject)
+    add_breadcrumb t('page.change_order'), sort_subject_pages_path(@subject)
   end
 
 
