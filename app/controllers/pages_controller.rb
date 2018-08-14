@@ -4,12 +4,14 @@ class PagesController < ApplicationController
   before_action :set_page, only: [:show, :edit, :update, :destroy]
   before_action :set_subject, only: [:index, :new, :create]
 
+  include BreadcrumbsHelper
+
   def index
     @pages = Page.where(subject_id: @subject.id)
 
-    add_breadcrumb @subject.station.walk.name, walk_path(@subject.station.walk)
-    add_breadcrumb @subject.station.name, station_path(@subject.station)
-    add_breadcrumb @subject.name, subject_path(@subject)
+    breadcrumb_walk_helper(@page.subject.station.walk)
+    breadcrumb_station_helper(@page.subject.station)
+    breadcrumb_subject_helper(@page.subject)
     add_breadcrumb t('page.plural'), subject_pages_path(@subject)
   end
 
@@ -19,18 +21,18 @@ class PagesController < ApplicationController
     @answers = pages_clean_answers(answers) if @page.answers.present?
     @correct_answer = pages_correct_answer_index(answers)
 
-    add_breadcrumb @page.subject.station.walk.name, walk_path(@page.subject.station.walk)
-    add_breadcrumb @page.subject.station.name, station_path(@page.subject.station)
-    add_breadcrumb @page.subject.name, subject_path(@page.subject)
-    add_breadcrumb @page.name, page_path(@page)
+    breadcrumb_walk_helper(@page.subject.station.walk)
+    breadcrumb_station_helper(@page.subject.station)
+    breadcrumb_subject_helper(@page.subject)
+    breadcrumb_page_helper(@page)
   end
 
   def new
     @page = Page.new
 
-    add_breadcrumb @subject.station.walk.name, walk_path(@subject.station.walk)
-    add_breadcrumb @subject.station.name, station_path(@subject.station)
-    add_breadcrumb @subject.name, subject_path(@subject)
+    breadcrumb_walk_helper(@subject.station.walk)
+    breadcrumb_station_helper(@subject.station)
+    breadcrumb_subject_helper(@subject)
     add_breadcrumb t('page.new'), new_subject_page_path(@subject)
   end
 
@@ -46,10 +48,10 @@ class PagesController < ApplicationController
   end
 
   def edit
-    add_breadcrumb @page.subject.station.walk.name, walk_path(@page.subject.station.walk)
-    add_breadcrumb @page.subject.station.name, station_path(@page.subject.station)
-    add_breadcrumb @page.subject.name, subject_path(@page.subject)
-    add_breadcrumb @page.name, page_path(@page)
+    breadcrumb_walk_helper(@page.subject.station.walk)
+    breadcrumb_station_helper(@page.subject.station)
+    breadcrumb_subject_helper(@page.subject)
+    breadcrumb_page_helper(@page)
     add_breadcrumb t('page.edit'), edit_page_path(@page)
   end
 
@@ -64,9 +66,9 @@ class PagesController < ApplicationController
   def sort
     @subject = Subject.find(params[:subject_id])
 
-    add_breadcrumb @subject.station.walk.name, walk_path(@subject.station.walk)
-    add_breadcrumb @subject.station.name, station_path(@subject.station)
-    add_breadcrumb @subject.name, subject_path(@subject)
+    breadcrumb_walk_helper(@subject.station.walk)
+    breadcrumb_station_helper(@subject.station)
+    breadcrumb_subject_helper(@subject)
     add_breadcrumb t('page.change_order'), sort_subject_pages_path(@subject)
   end
 

@@ -3,6 +3,8 @@ class SubjectsController < ApplicationController
   before_action :set_station, only: [:new, :create]
   before_action :authenticate_user!
 
+  include BreadcrumbsHelper
+
   def index
     @subjects = Subject.all
   end
@@ -10,16 +12,16 @@ class SubjectsController < ApplicationController
   def show
     @pages = Page.where(subject_id: @subject.id)
 
-    add_breadcrumb @subject.station.walk.name, walk_path(@subject.station.walk)
-    add_breadcrumb @subject.station.name, station_path(@subject.station)
-    add_breadcrumb @subject.name, subject_path(@subject)
+    breadcrumb_walk_helper(@subject.station.walk)
+    breadcrumb_station_helper(@subject.station)
+    breadcrumb_subject_helper(@subject)
   end
 
   def new
     @subject = Subject.new
 
-    add_breadcrumb @station.walk.name, walk_path(@station.walk)
-    add_breadcrumb @station.name, station_path(@station)
+    breadcrumb_walk_helper(@station.walk)
+    breadcrumb_station_helper(@station)
     add_breadcrumb t('subject.new_verb'), new_station_subject_path(@station)
   end
 
@@ -35,9 +37,9 @@ class SubjectsController < ApplicationController
   end
 
   def edit
-    add_breadcrumb @subject.station.walk.name, walk_path(@subject.station.walk)
-    add_breadcrumb @subject.station.name, station_path(@subject.station)
-    add_breadcrumb @subject.name, subject_path(@subject)
+    breadcrumb_walk_helper(@subject.station.walk)
+    breadcrumb_station_helper(@subject.station)
+    breadcrumb_subject_helper(@subject)
     add_breadcrumb t('subject.edit'), edit_subject_path(@subject)
   end
 

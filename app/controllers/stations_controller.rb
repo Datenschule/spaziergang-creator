@@ -3,6 +3,8 @@ class StationsController < ApplicationController
   before_action :set_walk, only: [:new, :create, :sort]
   before_action :authenticate_user!
 
+  include BreadcrumbsHelper
+
   def index
     @stations = Station.all.select do |s|
       s.walk.user == current_user
@@ -10,13 +12,13 @@ class StationsController < ApplicationController
   end
 
   def show
-    add_breadcrumb @station.walk.name, walk_path(@station.walk)
-    add_breadcrumb @station.name, station_path(@station)
+    breadcrumb_walk_helper(@station.walk)
+    breadcrumb_station_helper(@station)
   end
 
   def new
     @station = Station.new
-    add_breadcrumb @walk.name, walk_path(@walk)
+    breadcrumb_walk_helper(@walk)
     add_breadcrumb t('station.new_verb'), new_walk_station_path(@walk)
   end
 
@@ -34,8 +36,8 @@ class StationsController < ApplicationController
   end
 
   def edit
-    add_breadcrumb @station.walk.name, walk_path(@station.walk)
-    add_breadcrumb @station.name, station_path(@station)
+    breadcrumb_walk_helper(@station.walk)
+    breadcrumb_station_helper(@station)
     add_breadcrumb t('station.edit'), edit_station_path(@station)
   end
 
@@ -48,7 +50,7 @@ class StationsController < ApplicationController
   end
 
   def sort
-    add_breadcrumb @walk.name, walk_path(@walk)
+    breadcrumb_walk_helper(@walk)
     add_breadcrumb t('station.sort.breadcrumb'), sort_walk_stations_path(@walk)
   end
 

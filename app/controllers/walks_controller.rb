@@ -3,6 +3,8 @@ class WalksController < ApplicationController
   before_action :set_walk, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index]
 
+  include BreadcrumbsHelper
+
   def index
     @walks = Walk.is_public
   end
@@ -14,6 +16,7 @@ class WalksController < ApplicationController
 
   def new
     @walk = Walk.new
+    add_breadcrumb t('walk.new'), new_walk_path
   end
 
   def create
@@ -27,10 +30,12 @@ class WalksController < ApplicationController
   end
 
   def show
+    breadcrumb_walk_helper(@walk)
   end
 
   def edit
-    add_breadcrumb @walk.name, walk_path(@walk)
+    breadcrumb_walk_helper(@walk)
+    add_breadcrumb t('walk.edit'), edit_walk_path(@walk)
   end
 
   def update
