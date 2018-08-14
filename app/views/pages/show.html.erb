@@ -1,39 +1,49 @@
-<h1><%= @page.name %></h1>
+<div class="container">
+  <div class="columns">
+    <div class="column col-8">
+      <h1><%= @page.name %></h1>
+      <p><%= @page.variant %></p>
+    </div>
 
-<p><%= link_to "Back to #{@page.subject.name}", subject_path(@page.subject) %></p>
+    <div class="column col-2 col-ml-auto text-right">
+      <% if @page.editable_by? current_user %>
+        <%= render("edit_link", page: @page) %>
+        <%= render "delete_form", page: @page %>
+      <% end %>
+    </div>
+  </div>
 
+  <div class="columns">
+    <%= @page.content.gsub("\n", "<br>").html_safe if @page.content.present? %>
 
-<p><%= @page.variant %></p>
-
-<%= @page.content.gsub("\n", "<br>").html_safe if @page.content.present? %>
-
-<% if @challenges %>
-  <h4>Challenges</h4>
-  <ol>
-  <% @challenges.each do |challenge| %>
-    <li><%= challenge %></li>
-  <% end %>
-  </ol>
-<% end %>
-
-<% if @page.link.present? %>
-  <iframe width="600" height="400" src="<%= @page.link %>"></iframe>
-  <code><%= @page.link %></code>
-<% end %>
-
-<% if @page.question && @answers %>
-  <h4><%= @page.question if @page.question.present? %></h4>
-  <ul>
-    <%=  %>
-    <% @answers.each_with_index do |answer, index| %>
-      <li>
-        <%= answer %>
-        <%= "(correct)" if @correct_answer == index %>
-      </li>
+    <% if @challenges %>
+      <h4>Challenges</h4>
+      <ol>
+        <% @challenges.each do |challenge| %>
+          <li><%= challenge %></li>
+        <% end %>
+      </ol>
     <% end %>
-  </ul>
-<% end %>
-<p>
-  <%= render("pages/edit_link", page: @page, ) if can_edit_subject?(@subject) %>
-  <%= render("pages/delete_form", page: @page) if can_delete_subject?(@subject) %>
-</p>
+
+    <% if @page.link.present? %>
+      <div class="column col-12">
+        <div class="d-block"><code><%= @page.link %></code></div>
+        <iframe width="600" height="400" src="<%= @page.link %>"></iframe>
+      </div>
+    <% end %>
+
+    <% if @page.question && @answers %>
+      <h4><%= @page.question if @page.question.present? %></h4>
+      <ul>
+        <%=  %>
+        <% @answers.each_with_index do |answer, index| %>
+          <li>
+            <%= answer %>
+            <%= "(correct)" if @correct_answer == index %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+
+  </div>
+</div>

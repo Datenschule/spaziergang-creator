@@ -83,9 +83,16 @@ de:
     none: "Keine Seiten"
     new_verb: "Neue Seite hinzufügen"
     new: "Neue Seite"
+    saved: "Seite erfolgreich gespeichert!"
+    edit: "Seite bearbeiten"
+    edited: "Seite erfolgreich bearbeitet!"
+    delete: "Seite löschen"
+    deleted: "Seite erfolgreich gelöscht!"
+    change_order: "Reihenfolge der Seiten ändern"
     form:
       help:
-        new_line: "Zeilenumbrürche werden beachtet."
+        delete: "Willst du diese Seite wirklich löschen?"
+        new_line: "Zeilenumbrüche werden beachtet."
         challenge_list: "Mehrere Herausforderungen bitte als Liste (mit <code>-</code> und neuer Zeile) angeben."
         answers_list: "Antwortmöglichkeiten bitte als Liste (mit <code>-</code> und neuer Zeile) angeben."
         answers_correct: "Richte Antwort mit einem Stern nach dem Minus kennzeichnen (<code>-* richtige Antwort</code>)."
@@ -100,7 +107,7 @@ de:
     type: "Typ"
     content: "Inhalt"
     challenges: "Herausforderungen"
-    link: "Link zum Prokejekt (wird als iFrame eingebettet)"
+    link: "Link zum Projekt (wird als iFrame eingebettet)"
     question: "Frage"
     answers: "Antworten"
 

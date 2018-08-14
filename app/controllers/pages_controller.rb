@@ -7,11 +7,10 @@ class PagesController < ApplicationController
   def index
     @pages = Page.where(subject_id: @subject.id)
 
-    add_breadcrumb "All walks", walks_path
     add_breadcrumb @subject.station.walk.name, walk_path(@subject.station.walk)
     add_breadcrumb @subject.station.name, station_path(@subject.station)
     add_breadcrumb @subject.name, subject_path(@subject)
-    add_breadcrumb "All Pages", subject_pages_path(@subject)
+    add_breadcrumb t('page.plural'), subject_pages_path(@subject)
   end
 
   def show
@@ -20,18 +19,19 @@ class PagesController < ApplicationController
     @answers = pages_clean_answers(answers) if @page.answers.present?
     @correct_answer = pages_correct_answer_index(answers)
 
-    prep_breadcrumb
+    add_breadcrumb @page.subject.station.walk.name, walk_path(@page.subject.station.walk)
+    add_breadcrumb @page.subject.station.name, station_path(@page.subject.station)
+    add_breadcrumb @page.subject.name, subject_path(@page.subject)
     add_breadcrumb @page.name, page_path(@page)
   end
 
   def new
     @page = Page.new
 
-    add_breadcrumb "All walks", walks_path
     add_breadcrumb @subject.station.walk.name, walk_path(@subject.station.walk)
     add_breadcrumb @subject.station.name, station_path(@subject.station)
     add_breadcrumb @subject.name, subject_path(@subject)
-    add_breadcrumb "New Page", new_subject_page_path(@subject)
+    add_breadcrumb t('page.new'), new_subject_page_path(@subject)
   end
 
   def create
@@ -39,7 +39,7 @@ class PagesController < ApplicationController
     @page.user_id = current_user.id
     @page.subject_id = @subject.id
     if @page.save!
-      redirect_to subject_pages_path(@subject), notice: 'Page saved!'
+      redirect_to subject_path(@subject), notice: t('page.saved')
     else
       render action: :new
     end
@@ -50,7 +50,7 @@ class PagesController < ApplicationController
 
   def update
     if @page.update(page_params)
-      redirect_to subject_page_path(@subject, @page), notice: 'Page changed!'
+      redirect_to page_path(@page), notice: t('page.edited')
     else
       render action: :edit
     end
@@ -92,17 +92,11 @@ class PagesController < ApplicationController
 
   def destroy
     @page.destroy
-    redirect_to subject_path(@subject), notice: 'Page deleted!'
+    redirect_to subject_path(@subject), notice: t('page.deleted')
   end
 
   private
 
-  def prep_breadcrumb
-    add_breadcrumb "All walks", walks_path
-    add_breadcrumb @page.subject.station.walk.name, walk_path(@page.subject.station.walk)
-    add_breadcrumb @page.subject.station.name, station_path(@page.subject.station)
-    add_breadcrumb @page.subject.name, subject_path(@page.subject)
-  end
   def set_page
     @page = Page.find(params[:id])
   end

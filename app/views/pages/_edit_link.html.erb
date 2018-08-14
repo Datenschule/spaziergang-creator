@@ -1,5 +1,5 @@
-<%= link_to(edit_page_path(@subject, page),
+<%= link_to(edit_page_path(page),
             class: "btn tooltip",
-            data: { tooltip: "bearbeiten"}) do %>
-  <i data-feather="edit-3">edit</i>
+            data: { tooltip: t('page.edit')}) do %>
+  <i data-feather="edit-3"><%= t 'page.edit' %></i>
 <% end %>

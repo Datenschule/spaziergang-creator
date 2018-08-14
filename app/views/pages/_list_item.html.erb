@@ -1,5 +1,26 @@
 <li>
-  <%= link_to page.name, page_path( page) %>
-  <%= render("pages/edit_link", page: page, ) if can_edit_subject?(@subject) %>
-  <%= render("pages/delete_form", page: page) if can_delete_subject?(@subject) %>
+  <div class="tile tile-centered">
+    <div class="tile-icon">
+      <i data-feather="file-text"></i>
+    </div>
+    <div class="tile-content">
+      <div class="tile-title"><%= link_to page.name, page_path(page) %></div>
+      <div class="tile-subtitle text-gray">
+        <%= t 'last_edited' %> <%= page.updated_at.strftime '%d.%m.%Y %H:%M' %>
+      </div>
+    </div>
+    <div class="tile-action">
+      <% if action_name == 'sort' %>
+        <div class="tile-action">
+          <button class="btn btn-link ml-2">
+            <i data-feather="move"></i>
+          </button>
+        </div>
+      <% else %>
+        <% if page.editable_by?(current_user) %>
+          <%= render("pages/edit_link", page: page) %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 </li>

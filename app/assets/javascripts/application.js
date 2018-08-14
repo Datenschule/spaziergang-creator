@@ -18,3 +18,4 @@
 //= require notice-close.js
 //= require sortable-lists.js
 //= require map.js
+//= require form-helpers.js
