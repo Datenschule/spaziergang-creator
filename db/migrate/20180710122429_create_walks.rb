@@ -6,7 +6,7 @@ class CreateWalks < ActiveRecord::Migration[5.2]
       t.string :preview_image, null: false, default: ''
       t.string :description, null: false, default: ''
       t.integer :entry, null: false, default: 0
-      t.string :courseline, null: false, default: '[]'
+      t.json :courseline
       t.timestamps
     end
   end

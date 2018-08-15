@@ -1,20 +1,15 @@
 Rails.application.routes.draw do
-  namespace :api, defaults: {format: 'json'} do
-    namespace :v1 do
-      resources :walks, only: [:index, :show]
-    end
-  end
-
   root 'static#index'
 
-  scope "/:locale", locale: /de|en/ do
+  scope '/:locale', locale: /de|en/ do
     devise_for :users
 
     root 'static#index'
 
-
     resources :walks do
       get '/private', to: 'walks#private', on: :collection
+      get '/route', to: 'walks#courseline', on: :member
+      put '/route', to: 'walks#save_courseline', on: :member
 
       resources :stations, shallow: true do
         get '/sort', to: 'stations#sort', on: :collection
@@ -23,10 +18,16 @@ Rails.application.routes.draw do
         resources :subjects, shallow: true, except: [:index] do
           resources :pages, shallow: true do
             get '/sort', to: 'pages#sort', on: :collection
-            put '/sort', to: 'pages#update_after_sort',  on: :collection
+            put '/sort', to: 'pages#update_after_sort', on: :collection
           end
         end
       end
+    end
+  end
+
+  namespace :api, defaults: {format: 'json'} do
+    namespace :v1 do
+      resources :walks, only: [:index, :show]
     end
   end
 end

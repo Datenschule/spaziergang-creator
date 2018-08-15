@@ -29,6 +29,9 @@ de:
     deleted: "Spaziergang gelöscht!"
     public: "öffentlich"
     made_by: "erstellt von"
+    course: "Route festlegen"
+    course_title: "Route festlegen für"
+
     form:
       help:
         name: "Gib dem Spaziergang einen Namen, vielleicht etwas das geografisch oder inhaltlich passt."
@@ -36,6 +39,7 @@ de:
         description: "Beschreibe den Spaziergang kurz. Worum geht es inhaltlich, was ist besonders interessant?"
         step: "Nachdem der Spaziergang gespeichert ist, kannst du ihm Stationen hinzufügen."
         delete: "Willst du den Spaziergang (sowie dazugehörige Stationen, Themen und Seiten) wirklich löschen?"
+        courseline: "Du kannst eine Laufroute zwischen Stationen festlegen sobald der Spaziergang mindestens zwei Stationen hat."
 
   station:
     singular: "Station"

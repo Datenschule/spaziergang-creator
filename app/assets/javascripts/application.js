@@ -19,3 +19,4 @@
 //= require sortable-lists.js
 //= require map.js
 //= require form-helpers.js
+//= require save-coursline.js

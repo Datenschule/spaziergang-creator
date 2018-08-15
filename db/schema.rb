@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 2018_08_01_123327) do
     t.string "preview_image", default: "", null: false
     t.string "description", default: "", null: false
     t.integer "entry", default: 0, null: false
-    t.string "courseline", default: "[]", null: false
+    t.json "courseline"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"

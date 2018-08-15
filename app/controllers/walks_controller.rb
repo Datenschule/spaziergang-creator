@@ -1,6 +1,11 @@
 # coding: utf-8
 class WalksController < ApplicationController
-  before_action :set_walk, only: [:show, :edit, :update, :destroy]
+  before_action :set_walk, only: [:show,
+                                  :edit,
+                                  :update,
+                                  :destroy,
+                                  :courseline,
+                                  :save_courseline]
   before_action :authenticate_user!, except: [:index]
 
   include BreadcrumbsHelper
@@ -12,6 +17,26 @@ class WalksController < ApplicationController
   def private
     @walks = Walk.where(user_id: current_user.id)
     render 'private_index'
+  end
+
+  def courseline
+    breadcrumb_walk_helper(@walk)
+    add_breadcrumb t('walk.course'), route_walk_path(@walk)
+  end
+
+  def save_courseline
+    data = params.to_unsafe_h['data']
+    courseline = data.map { |d| d['coords'] }
+    @walk.courseline = courseline
+    @walk.save
+
+    data.each_with_index do |station, index|
+      next if station['priority'] == '0'
+      id = data[index - 1]['id']
+      station = Station.find(id)
+      station.line = index - 1
+      station.save
+    end
   end
 
   def new
@@ -64,7 +89,8 @@ class WalksController < ApplicationController
                   :description,
                   :entry,
                   :courseline,
-                  :public)
+                  :public,
+                  :data)
   end
 
   def set_walk

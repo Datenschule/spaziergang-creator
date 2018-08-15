@@ -6,20 +6,12 @@
       <p><%= @walk.description %></p>
     </div>
     <div class="column col-2 text-right">
-      <% if @walk.editable_by? current_user %>
-        <%= link_to edit_walk_path(@walk), class: "btn tooltip", data: { tooltip: t('walk.edit')} do %>
-          <i data-feather="edit-3"></i>
-        <% end %>
-        <%= render 'walks/delete_form' %>
-
-        <%= @walk.courseline %>
-        <p></p>
-      <% end %>
+      <%= render "walks/actions"%>
     </div>
     <div class="column col-5">
-      <div id="big-map"></div>
+      <div id="big-map" data-courseline="<%= @walk.courseline if @walk.courseline.present? %>"></div>
+      <%= render 'walks/courseline_notice' %>
     </div>
-
   </div>
 
   <div class="columns">

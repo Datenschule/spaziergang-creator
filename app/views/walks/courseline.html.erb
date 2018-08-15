@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="columns">
+    <div class="column col-12">
+      <h1><%= t('walk.course_title')%> <%= @walk.name %></h1>
+    </div>
+  </div>
+
+  <div class="columns">
+    <div class="column col-6">
+      <ul class="walk-list">
+        <% @walk.stations.sort_by(&:priority).each do |station| %>
+          <li class="station-list-item"
+              data-station="<%= station.id %>"
+              data-priority="<%= station.priority %>"
+              data-lon="<%= station.lon %>"
+              data-lat="<%= station.lat %>">
+            <i data-feather="map-pin"></i>
+            <%= station.name %>
+            <ol>
+              <% if @walk.courseline.present? && station.line != '[]' %>
+                <% @walk.courseline[station.line.to_i].each do |l| %>
+                  <li><%= "#{l[0].to_s},#{l[1].to_s}" %></li>
+                <% end %>
+              <% end %>
+            </ol>
+          </li>
+        <% end %>
+      </ul>
+      <p id="courseline-saving" class="d-none">
+        <span class="loading pr-2"></span>
+        <span class="pl-2"><%= t 'saving' %>...</span>
+      </p>
+      <button type="button" class="courseline-save" id="courseline-save">Route speichern</button>
+    </div>
+
+    <div class="column col-6">
+      <div class="map-coord-info">
+      </div>
+      <div id="route-map" data-courseline="<%= @walk.courseline if @walk.courseline.present? %>"></div>
+    </div>
+  </div>
+</div>
