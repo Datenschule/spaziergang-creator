@@ -54,16 +54,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // walk show
     let bigMap = document.querySelector("#big-map");
     if (bigMap) {
         let map = new mapboxgl.Map({
             container: 'big-map',
             style: 'mapbox://styles/okfde/cjhhp085v001u2rqh82cj1x6p',
-            center: [13, 52],
+            center: [13.412926552785137, 52.521722799795555],
             zoom: 12
         });
 
-        document.querySelectorAll('.station-list-item').forEach((v, i) => {
+        let coords = document.querySelectorAll('.station-list-item');
+        coords.forEach((v, i) => {
             new mapboxgl.Marker()
                 .setLngLat([v.dataset.lon, v.dataset.lat])
                 .addTo(map);

@@ -20,7 +20,7 @@
           <h2><%= t('page.plural') %></h2>
         </div>
         <div class="column col-2 text-right">
-          <p>
+          <div>
             <% if @subject.pages.size > 1 %>
               <%= link_to sort_subject_pages_path(@subject),
               class: "btn tooltip",
@@ -34,7 +34,7 @@
               data: { tooltip: t('page.new_verb')} do %>
               <i data-feather="plus-circle"><%= t('page.new_verb') %></i>
             <% end %>
-          </p>
+          </div>
         </div>
       </div>
       <%= render 'pages/list' %>
