@@ -2,6 +2,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     let saveButton = document.querySelector('#courseline-save');
     let saveStatus = document.querySelector('#courseline-saving');
+
     if (saveButton) {
         saveButton.addEventListener('click', sendUpdatedOrder);
 
@@ -15,18 +16,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 let station = {};
                 station.id = v.dataset.station;
                 station.priority = v.dataset.priority;
-                station.coords = [];
+                station.coords = new Array();
 
                 if (i === 0) {
-                    data[i-1].coords.push([v.dataset.lon, v.dataset.lat]);
+                    station.coords.push([v.dataset.lon, v.dataset.lat]);
                 }
 
                 v.children[1].childNodes.forEach(v => {
-                    let lngLat = v.textContent.split(',')
-                    station.coords.push([lngLat[0], lngLat[1]]);
+                    let lngLat = v.textContent.split(',');
+                    if (lngLat && lngLat.length == 2) {
+                        station.coords.push([lngLat[0], lngLat[1]]);
+                    }
                 });
 
-                if (i > 0) {
+                if (i > 1) {
+                    //debugger
                     data[i-1].coords.push([v.dataset.lon, v.dataset.lat]);
                 }
 
@@ -52,9 +56,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 .then(resp => {
                     saveButton.classList.remove('d-none');
                     saveStatus.classList.add('d-none');
+                    window.location.reload();
                 })
                 .catch(error => console.log(`Fetch Error ${error}`));
         }
-
     }
 });

@@ -53,8 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
         let map = createMap(bigMap, [13.412926552785137, 52.521722799795555], 14);
         createListOfMarkers(map);
         map.on('load', function () {
-            let geoCoords = [].concat.apply([], JSON.parse(bigMap.dataset.courseline));
-            addLineLayer(map, geoCoords, "LineString");
+            let geoCoords = flatten(JSON.parse(bigMap.dataset.courseline));
+            addLineLayer(map, geoCoords, 'route');
         });
     }
 
@@ -62,6 +62,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // marker for every station
     let routeMap = document.querySelector("#route-map");
     if (routeMap) {
+
+        let clearButton = document.querySelector('#courseline-clear');
+        if (clearButton) {
+            clearButton.addEventListener('click', clearLines);
+        }
+
+        function clearLines(ev) {
+            document.querySelectorAll('.station-list-item ol').forEach(x => {
+                map.removeLayer('route-'+ x.parentElement.dataset.priority);
+                while(x.firstChild) {
+                    x.removeChild(x.firstChild);
+                }
+            });
+        }
+
         let map = createMap(routeMap, [13.412926552785137, 52.521722799795555], 14);
         createListOfMarkers(map);
 
@@ -84,29 +99,49 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         map.on('load', function () {
-            let geoCoords = [].concat.apply([], JSON.parse(routeMap.dataset.courseline));
-            addLineLayer(map, geoCoords, "Point");
-        });
-
-        // activate station
-        let markers = document.querySelectorAll('.marker');
-        let listItems = document.querySelectorAll('.station-list-item');
-        listItems.forEach((v, i) => {
-            if (i !== listItems.length -1) { // not for last item in list
-                v.addEventListener('click', (e) => {
-                    listItems.forEach(x => {x.classList.remove('bg-success')});
-                    markers.forEach(x => {x.classList.remove('active')});
-                    v.classList.add('bg-success');
-                    document.querySelector(`.marker[data-station="${v.dataset.station}"]`).classList.add('active');
-                });
+            let layerArray = false;
+            if (routeMap.dataset.courseline !== '') {
+                layerArray = JSON.parse(routeMap.dataset.courseline);
+                layerArray.forEach((x, i) => { addLineLayer(map, x, `route-${i}`) }); // match station id
             }
+
+            // activate station
+            let markers = document.querySelectorAll('.marker');
+            let listItems = document.querySelectorAll('.station-list-item');
+            let mapLayers = [];
+            if (layerArray) {
+                for(let i = 0; i < markers.length; i++) {
+                    mapLayers.push(`route-${i}`);
+                }
+            }
+            listItems.forEach((v, i) => {
+                if (i !== listItems.length -1) { // not for last item in list
+                    v.addEventListener('click', (e) => {
+                        if (layerArray) {
+                            mapLayers.forEach(x => { map.setPaintProperty(x, 'line-color', "#00ff00");});
+                        }
+                        listItems.forEach(x => {x.classList.remove('bg-success')});
+                        markers.forEach(x => {x.classList.remove('active')});
+                        v.classList.add('bg-success');
+                        document.querySelector(`.marker[data-station="${v.dataset.station}"]`).classList.add('active');
+                        //debugger
+                        if (layerArray) {
+                            map.setPaintProperty(`route-${v.dataset.priority}`,'line-color', "#ff0000");
+                        }
+                    });
+                }
+            });
         });
     }
 });
 
-function addLineLayer(map, coords, style) {
+function flatten(arr) {
+    return [].concat.apply([], arr);
+}
+
+function addLineLayer(map, coords, layerId) {
     map.addLayer({
-        "id": "route",
+        "id": layerId,
         "type": "line",
         "source": {
             "type": "geojson",
@@ -114,7 +149,7 @@ function addLineLayer(map, coords, style) {
                 "type": "Feature",
                 "properties": {},
                 "geometry": {
-                    "type": style,
+                    "type": "LineString",
                     "coordinates": coords
                 }
             }
@@ -129,7 +164,6 @@ function addLineLayer(map, coords, style) {
         }
     });
 }
-
 
 function createListOfMarkers(map) {
     let coords = document.querySelectorAll('.station-list-item');

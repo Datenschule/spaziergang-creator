@@ -7,6 +7,14 @@
 
   <div class="columns">
     <div class="column col-6">
+      <%= link_to sort_walk_stations_path(@walk),
+      class: "btn tooltip",
+        data: { tooltip: t('station.change_order')} do %>
+        <i data-feather="list"></i>
+      <% end %>
+      <% if @walk.courseline.present? %>
+        <button typ="button" id="courseline-clear">Clear spaziergang</button>
+      <% end %>
       <ul class="walk-list">
         <% @walk.stations.sort_by(&:priority).each do |station| %>
           <li class="station-list-item"
@@ -26,6 +34,7 @@
           </li>
         <% end %>
       </ul>
+
       <p id="courseline-saving" class="d-none">
         <span class="loading pr-2"></span>
         <span class="pl-2"><%= t 'saving' %>...</span>
