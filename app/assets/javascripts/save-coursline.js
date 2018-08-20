@@ -17,24 +17,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 station.id = v.dataset.station;
                 station.priority = v.dataset.priority;
                 station.coords = new Array();
-
-                if (i === 0) {
+                if (v.children[1].childNodes.length > 0) {
                     station.coords.push([v.dataset.lon, v.dataset.lat]);
-                }
-
-                v.children[1].childNodes.forEach(v => {
-                    let lngLat = v.textContent.split(',');
-                    if (lngLat && lngLat.length == 2) {
-                        station.coords.push([lngLat[0], lngLat[1]]);
-                    }
-                });
-
-                if (i > 1) {
-                    //debugger
-                    data[i-1].coords.push([v.dataset.lon, v.dataset.lat]);
+                    v.children[1].childNodes.forEach(v => {
+                        let lngLat = v.textContent.split(',');
+                        if (lngLat && lngLat.length == 2) {
+                            station.coords.push([lngLat[0], lngLat[1]]);
+                        }
+                    });
                 }
 
                 data.push(station);
+            });
+            data.forEach((x, i) => {
+                if (i < data.length -1 && x.coords.length > 0) {
+                    x.coords.push(data[i + 1].coords[0]);
+                }
             });
             return data;
         }

@@ -93,13 +93,22 @@ a, a:visited {
 .marker {
   display: block;
   width: 36px;
-  height: 40px;
-  //margin-top: -10px;
-  background-image: url(/assets/hex.svg);
-
+  height: 36px;
+  background-image: url(/assets/map-pin.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
   &.active {
-    background-color: black;
+    background-image: url(/assets/map-pin-invert.svg);
   }
+}
+
+.mini-marker {
+  display: block;
+  width: 36px;
+  height: 36px;
+  background-image: url(/assets/map-pin-mini.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 input[readonly] {

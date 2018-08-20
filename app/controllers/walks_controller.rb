@@ -30,13 +30,12 @@ class WalksController < ApplicationController
     @walk.courseline = courseline
     @walk.save
 
-    binding.pry
-
     data.each_with_index do |station, index|
       next if station['priority'] == '0'
       id = data[index - 1]['id']
       station = Station.find(id)
       station.line = index - 1
+      station.line = '[]' if index == data.count - 1
       station.save
     end
   end

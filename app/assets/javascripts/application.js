@@ -20,3 +20,4 @@
 //= require map.js
 //= require form-helpers.js
 //= require save-coursline.js
+//= require courseline.js
