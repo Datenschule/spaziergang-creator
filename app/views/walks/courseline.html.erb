@@ -47,7 +47,9 @@
                 <i data-feather="map-pin" class="va-middle"></i>
                 <%= station.name %>
                 <% unless station.priority == 0 %>
-                  <button class="clear-station-btn btn tooltip text-right" type="button" data-tooltip="Clear this">
+                  <button class="clear-station-btn btn tooltip text-right"
+                          type="button"
+                          data-tooltip="Clear <%= station.name %>">
                     <i data-feather="delete"></i>
                   </button>
                 <% end %>
@@ -67,6 +69,9 @@
           <span class="loading pr-2"></span>
           <span class="pl-2"><%= t 'saving' %>...</span>
         </p>
+        <p id="courseline-changed" class="d-none bg-gray p-2">
+          <i data-feather="alert-circle" class="va-middle"></i>
+          You changed the courseline, don't forget to save!</p>
         <button type="button" class="btn btn-primary courseline-save" id="courseline-save">Route speichern</button>
       </div>
     </div>

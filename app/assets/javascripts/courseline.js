@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let initLoader = document.querySelector("#course-initial-load");
   let courseApp = document.querySelector("#course-app-section");
   let courseActivateInfo = document.querySelector("#course-activate-info");
+  let courseChangeStatus = document.querySelector("#courseline-changed");
 
   if (routeMap && courseApp) {
     courseApp.classList.add('d-none');
@@ -25,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     map.on('click', ev => {
       let activeStation = document.querySelector('.station-list-item.active');
       if (activeStation) {
+        courseChangeStatus.classList.remove('d-none');
         new mapboxgl.Marker(createMiniMarker(activeStation))
           .setLngLat(ev.lngLat).addTo(ev.target);
         writeCoordsToDOM(activeStation, ev.lngLat);
@@ -137,6 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
       let layer_id = `route-${station.dataset.priority}`;
       let list = station.children[1];
       let markers = document.querySelectorAll(`.mini-marker[data-station="${station.dataset.station}"]`);
+      courseChangeStatus.classList.remove('d-none');
       while(list.firstChild) {
         list.removeChild(list.firstChild);
       }
@@ -148,6 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function clearLines(ev) {
+      courseChangeStatus.classList.remove('d-none');
       document.querySelectorAll('.station-list-item ol').forEach(x => {
         map.removeLayer('route-'+ x.parentElement.dataset.priority);
         while(x.firstChild) {
