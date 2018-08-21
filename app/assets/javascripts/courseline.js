@@ -25,12 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
     map.on('click', ev => {
       let activeStation = document.querySelector('.station-list-item.active');
       if (activeStation) {
-        let el = document.createElement('div');
-        el.classList.add('mini-marker');
-        new mapboxgl.Marker(el).setLngLat(ev.lngLat).addTo(ev.target);
-        let field = document.createElement('li');
-        field.innerHTML = [ev.lngLat.lng, ev.lngLat.lat];
-        activeStation.children[1].appendChild(field);
+        new mapboxgl.Marker(createMiniMarker(activeStation))
+          .setLngLat(ev.lngLat).addTo(ev.target);
+        writeCoordsToDOM(activeStation, ev.lngLat);
+        showStationClearButton(activeStation);
       }
     });
 
@@ -43,10 +41,16 @@ document.addEventListener('DOMContentLoaded', () => {
       let layerArray = collectAndRenderGeoLayers();
       let mapLayers = collectLayerNames(layerArray, markers);
 
+      let stationClearButtons = document.querySelectorAll('.clear-station-btn');
+      if (stationClearButtons) {
+        stationClearButtons.forEach(x => { x.addEventListener('click', clearLine); });
+      }
+
       listItems.forEach((stationItem, i) => {
         stationItem.classList.add('ready');
+        hideStationClearButton(stationItem);
 
-        if (i !== 0) { // not for first station
+        if (i !== 0) { // first station never has a course line
           stationItem.addEventListener('click', (e) => {
             courseActivateInfo.classList.add('d-none');
 
@@ -60,6 +64,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     });
+
+    function showStationClearButton(station) {
+      if (station.children[1].children.length > 0
+          && station.children[0].children.length > 1) {
+        station.children[0].children[1].classList.remove('d-none');
+      }
+    }
+
+    function hideStationClearButton(station) {
+      if (station.children[1].children.length == 0
+          && station.children[0].children.length > 1) {
+        station.children[0].children[1].classList.add('d-none');
+      }
+    }
 
     function setStartSignalMarker(stationItem) {
       let station_id = stationItem.dataset.station;
@@ -114,6 +132,21 @@ document.addEventListener('DOMContentLoaded', () => {
       return mapLayers;
     }
 
+    function clearLine(ev) {
+      let station = ev.target.parentNode.parentNode;
+      let layer_id = `route-${station.dataset.priority}`;
+      let list = station.children[1];
+      let markers = document.querySelectorAll(`.mini-marker[data-station="${station.dataset.station}"]`);
+      while(list.firstChild) {
+        list.removeChild(list.firstChild);
+      }
+      markers.forEach(x => {x.remove();});
+
+      if (map.getLayer(layer_id)) {
+        map.removeLayer(layer_id);
+      }
+    }
+
     function clearLines(ev) {
       document.querySelectorAll('.station-list-item ol').forEach(x => {
         map.removeLayer('route-'+ x.parentElement.dataset.priority);
@@ -121,6 +154,19 @@ document.addEventListener('DOMContentLoaded', () => {
           x.removeChild(x.firstChild);
         }
       });
+    }
+
+    function createMiniMarker(station) {
+      let el = document.createElement('div');
+      el.classList.add('mini-marker');
+      el.dataset.station = station.dataset.station;
+      return el;
+    }
+
+    function writeCoordsToDOM(station, coords) {
+      let field = document.createElement('li');
+      field.innerHTML = [coords.lng, coords.lat];
+      station.children[1].appendChild(field);
     }
   }
 });

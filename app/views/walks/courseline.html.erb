@@ -43,13 +43,15 @@
                 data-priority="<%= station.priority %>"
                 data-lon="<%= station.lon %>"
                 data-lat="<%= station.lat %>">
-              <i data-feather="map-pin" class="va-middle"></i>
-              <%= station.name %>
-              <% unless station.priority == 0 %>
-                <button type="button" class="btn tooltip text-right" data-tooltip="Clear this">
-                  <i data-feather="delete"></i>
-                </button>
-              <% end %>
+              <span>
+                <i data-feather="map-pin" class="va-middle"></i>
+                <%= station.name %>
+                <% unless station.priority == 0 %>
+                  <button class="clear-station-btn btn tooltip text-right" type="button" data-tooltip="Clear this">
+                    <i data-feather="delete"></i>
+                  </button>
+                <% end %>
+              </span>
               <ol class="d-hide">
                 <% if @walk.courseline.present? && station.line != '[]' %>
                   <% @walk.courseline[station.line.to_i].each do |l| %>
