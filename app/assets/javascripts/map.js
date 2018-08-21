@@ -7,8 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (smallMap) {
         let markerCoord = [smallMap.dataset.lon, smallMap.dataset.lat];
         let map = createMap(smallMap, markerCoord, 12);
-
-        var marker = new mapboxgl.Marker()
+        let marker = new mapboxgl.Marker(createMarkerEl())
             .setLngLat(markerCoord)
             .addTo(map);
     }
@@ -21,8 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let input_lat = document.querySelector('#station_lat');
 
         let map = createMap(pickMap, [input_lon.value, input_lat.value], 11);
-
-        let marker = new mapboxgl.Marker({draggable: true})
+        let marker = new mapboxgl.Marker(createMarkerEl(), {draggable: true})
             .setLngLat([input_lon.value, input_lat.value])
             .addTo(map);
 
@@ -59,6 +57,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+function createMarkerEl() {
+    let el = document.createElement('div');
+    el.classList.add('marker');
+    return el;
+}
+
 function flatten(arr) {
     return [].concat.apply([], arr);
 }
@@ -93,8 +97,7 @@ function createListOfMarkers(map) {
     let coords = document.querySelectorAll('.station-list-item');
 
     coords.forEach((v, i) => {
-        let el = document.createElement('div');
-        el.classList.add('marker');
+        let el = createMarkerEl();
         el.dataset.station = v.dataset.station;
         new mapboxgl.Marker(el)
             .setLngLat([v.dataset.lon, v.dataset.lat])

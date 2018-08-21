@@ -7,6 +7,7 @@ class WalksController < ApplicationController
                                   :courseline,
                                   :save_courseline]
   before_action :authenticate_user!, except: [:index]
+  before_action :force_sort, only: [:courseline]
 
   include BreadcrumbsHelper
 
@@ -30,13 +31,11 @@ class WalksController < ApplicationController
     @walk.courseline = courseline
     @walk.save
 
-    data.each_with_index do |station, index|
-      next if station['priority'] == '0'
-      id = data[index - 1]['id']
-      station = Station.find(id)
-      station.line = index - 1
-      station.line = '[]' if index == data.count - 1
-      station.save
+    data.each do |station|
+      st = Station.find(station['id'].to_i)
+      st.line = station['priority'].to_i - 1
+      st.line = '[]' if station['priority'] == '0'
+      st.save
     end
   end
 
@@ -82,6 +81,11 @@ class WalksController < ApplicationController
   end
 
   private
+
+  def force_sort
+    return true if @walk.stations.first.next.present?
+    redirect_to sort_walk_stations_path(@walk), notice: t('walk.notice.force_sort')
+  end
 
   def walk_params
     params.require(:walk).permit(:name,

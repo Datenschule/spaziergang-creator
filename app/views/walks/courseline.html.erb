@@ -1,50 +1,76 @@
 <div class="container">
   <div class="columns">
     <div class="column col-12">
-      <h1><%= t('walk.course_title')%> <%= @walk.name %></h1>
+      <h1><%= t('walk.course_title')%> <%= link_to @walk.name, walk_path(@walk) %></h1>
+    </div>
+    <div class="column">
+      <p class="text-right">
+        <%= link_to walk_path(@walk), class: "btn tooltip", data: { tooltip: @walk.name }  do %>
+          <i data-feather="map"><%= @walk.name %></i>
+        <% end %>
+        <%= link_to sort_walk_stations_path(@walk),
+        class: "btn tooltip",
+          data: { tooltip: t('station.change_order')} do %>
+          <i data-feather="list"></i>
+        <% end %>
+      </p>
     </div>
   </div>
 
   <div class="columns">
     <div class="column col-6">
-      <%= link_to sort_walk_stations_path(@walk),
-      class: "btn tooltip",
-        data: { tooltip: t('station.change_order')} do %>
-        <i data-feather="list"></i>
-      <% end %>
-      <% if @walk.courseline.present? %>
-        <button typ="button" id="courseline-clear">Clear spaziergang</button>
-      <% end %>
-      <ul class="walk-list">
-        <% @walk.stations.sort_by(&:priority).each do |station| %>
-          <li class="station-list-item"
-              data-station="<%= station.id %>"
-              data-priority="<%= station.priority %>"
-              data-lon="<%= station.lon %>"
-              data-lat="<%= station.lat %>">
-            <i data-feather="map-pin"></i>
-            <%= station.name %>
-            <ol>
-              <% if @walk.courseline.present? && station.line != '[]' %>
-                <% @walk.courseline[station.line.to_i].each do |l| %>
-                  <li><%= "#{l[0].to_s},#{l[1].to_s}" %></li>
-                <% end %>
-              <% end %>
-            </ol>
-          </li>
-        <% end %>
-      </ul>
+      <div id="course-initial-load" class="loading loading-lg"></div>
 
-      <p id="courseline-saving" class="d-none">
-        <span class="loading pr-2"></span>
-        <span class="pl-2"><%= t 'saving' %>...</span>
-      </p>
-      <button type="button" class="courseline-save" id="courseline-save">Route speichern</button>
+      <div id="course-app-section">
+        <p class="text-right">
+          <% if @walk.courseline.present? %>
+            <button typ="button" id="courseline-clear" class="btn tooltip" data-tooltip="Clear courseline">
+              <i data-feather="delete">reset courseline</i>
+            </button>
+          <% end %>
+        </p>
+        <p class="space-t bg-gray p-2">
+          <i data-feather="help-circle" class="mr-2 va-middle"></i>
+          Select a station on the left and then click on the map to the right to mark the path to it.
+          <br>
+          Mark the path going form A to B.<br>
+          Once saved, you will overwrite the path.
+        </p>
+        <ul class="walk-list">
+          <% @walk.stations.sort_by(&:priority).each do |station| %>
+            <li class="station-list-item"
+                data-station="<%= station.id %>"
+                data-priority="<%= station.priority %>"
+                data-lon="<%= station.lon %>"
+                data-lat="<%= station.lat %>">
+              <i data-feather="map-pin" class="va-middle"></i>
+              <%= station.name %>
+              <% unless station.priority == 0 %>
+                <button type="button" class="btn tooltip text-right" data-tooltip="Clear this">
+                  <i data-feather="delete"></i>
+                </button>
+              <% end %>
+              <ol class="d-hide">
+                <% if @walk.courseline.present? && station.line != '[]' %>
+                  <% @walk.courseline[station.line.to_i].each do |l| %>
+                    <li><%= "#{l[0].to_s},#{l[1].to_s}" %></li>
+                  <% end %>
+                <% end %>
+              </ol>
+            </li>
+          <% end %>
+        </ul>
+
+        <p id="courseline-saving" class="d-none">
+          <span class="loading pr-2"></span>
+          <span class="pl-2"><%= t 'saving' %>...</span>
+        </p>
+        <button type="button" class="btn btn-primary courseline-save" id="courseline-save">Route speichern</button>
+      </div>
     </div>
 
-    <div class="column col-6">
-      <div class="map-coord-info">
-      </div>
+    <div class="column col-6 relative">
+      <div id="course-activate-info" class="map-overlay">Activate station on the left side before setting marks!</div>
       <div id="route-map" data-courseline="<%= @walk.courseline if @walk.courseline.present? %>"></div>
     </div>
   </div>

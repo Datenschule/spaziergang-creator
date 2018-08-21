@@ -9,7 +9,9 @@
       <%= render "walks/actions"%>
     </div>
     <div class="column col-5">
-      <div id="big-map" data-courseline="<%= @walk.courseline if @walk.courseline.present? %>"></div>
+      <% if @walk.stations.size >= 1 %>
+        <div id="big-map" data-courseline="<%= @walk.courseline if @walk.courseline.present? %>"></div>
+      <% end %>
       <%= render 'walks/courseline_notice' %>
     </div>
   </div>

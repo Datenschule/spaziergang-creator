@@ -32,6 +32,8 @@ de:
     course: "Route festlegen"
     course_title: "Route festlegen für"
 
+    notice:
+      force_sort: "Bestätige oder verändere die Reihenfolge der Stationen bevor du die Laufroute festlegst."
     form:
       help:
         name: "Gib dem Spaziergang einen Namen, vielleicht etwas das geografisch oder inhaltlich passt."
@@ -47,6 +49,8 @@ de:
     new: "Neue Station"
     new_verb: "Neue Station hinzufügen"
     change_order: "Reihenfolge ändern"
+    save_order: "Reihenfolge speichern"
+    order_changed: "Du hast die Reihenfolge geändert, vergiss nicht zu speichern!"
     none: "Keine Stationen"
     save: "Station speichern"
     saved: "Station erfolgreich gespeichert!"

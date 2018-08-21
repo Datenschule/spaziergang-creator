@@ -1,7 +1,14 @@
 // close button on notifications
 document.addEventListener('DOMContentLoaded', () => {
     let list = document.querySelector('#sortable-list');
-    if (list) {
+    let saveButton = document.querySelector('#sortable-save');
+    let saveStatus = document.querySelector('#sortable-saving');
+    let orderStatus = document.querySelector('#sortable-order-changed');
+
+    if (list && saveButton) {
+
+        saveButton.addEventListener('click', () => sendUpdatedOrder());
+
         function setPositions(){
             document.querySelectorAll('#sortable-list li').forEach((i, index) => {
                 i.setAttribute('data-pos', index);
@@ -21,7 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function sendUpdatedOrder() {
-            document.querySelector('#sortable-saving').classList.remove('d-none');
+            saveStatus.classList.remove('d-none');
+            saveButton.classList.add('d-none');
             fetch(window.location.pathname, {
                 method: 'PUT',
                 headers: {
@@ -34,7 +42,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify({data: setUpdatedOrder()})
             })
                 .then(resp => {
-                    document.querySelector('#sortable-saving').classList.add('d-none');
+                    setTimeout(() => {
+                        saveStatus.classList.add('d-none');
+                        saveButton.classList.remove('d-none');
+                        orderStatus.classList.add('d-none');
+                    }, 500);
                 })
                 .catch(error => console.log(`Fetch Error ${error}`));
         }
@@ -44,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let sortable = Sortable.create(list, {
             onEnd(evt) {
                 setPositions();
-                sendUpdatedOrder();
+                orderStatus.classList.remove('d-none');
             }
         });
     }
