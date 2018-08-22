@@ -1,25 +1,27 @@
 <div class="container">
   <div class="columns">
-    <div class="column col-8">
-      <h1><%= @subject.name %></h1>
-      <p><%= @subject.description %></p>
+    <div class="column col-7">
+      <div class="columns">
+        <div class="column col-8">
+          <h1><%= @subject.name %></h1>
+          <p><%= @subject.description %></p>
+        </div>
+
+        <div class="column col-2 col-ml-auto text-right">
+          <% if @subject.editable_by? current_user %>
+            <%= render("edit_link", sub: @subject) %>
+            <%= render "delete_form" %>
+          <% end %>
+        </div>
+      </div>
     </div>
 
-    <div class="column col-2 col-ml-auto text-right">
-      <% if @subject.editable_by? current_user %>
-        <%= render("edit_link", sub: @subject) %>
-        <%= render "delete_form" %>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="columns">
-    <div class="column col-11 col-ml-auto">
-      <div class="columns space-t">
-        <div class="column col-10">
+    <div class="column col-5">
+      <div class="columns">
+        <div class="column col-9">
           <h2><%= t('page.plural') %></h2>
         </div>
-        <div class="column col-2 text-right">
+        <div class="column col-3 text-right">
           <div>
             <% if @subject.pages.size > 1 %>
               <%= link_to sort_subject_pages_path(@subject),

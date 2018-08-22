@@ -40,6 +40,7 @@ class PagesController < ApplicationController
     @page = Page.new(page_params)
     @page.user_id = current_user.id
     @page.subject_id = @subject.id
+    @page.priority = @subject.pages.size + 1
     if @page.save!
       redirect_to subject_path(@subject), notice: t('page.saved')
     else

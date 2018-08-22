@@ -1,24 +1,19 @@
 <div class="container">
   <div class="columns">
-    <div class="column col-3">
-      <div id="small-map"
-           data-lon="<%= @station.lon %>" data-lat="<%= @station.lat %>"></div>
-    </div>
     <div class="column col-7">
-      <h1><%= @station.name %></h1>
-      <p><%= @station.description %></p>
-    </div>
+      <div class="columns">
+        <div class="column col-10">
+          <h1><%= @station.name %></h1>
+          <p><%= @station.description %></p>
+        </div>
+        <div class="column col-2 text-right">
+          <% if @station.editable_by? current_user %>
+            <%= render("edit_link", st: @station) if @station.editable_by? current_user %>
+            <%= render "delete_form" if @station.deletable_by? current_user %>
+          <% end %>
+        </div>
+      </div>
 
-    <div class="column col-2 text-right">
-      <% if @station.editable_by? current_user %>
-        <%= render("edit_link", st: @station) if @station.editable_by? current_user %>
-        <%= render "delete_form" if @station.deletable_by? current_user %>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="columns">
-    <div class="column col-11 col-ml-auto">
       <div class="columns space-t">
         <div class="column col-10">
           <h2><%= t('subject.plural') %></h2>
@@ -42,6 +37,11 @@
       <% else %>
         <%= render 'subjects/empty' %>
       <% end %>
+    </div>
+
+    <div class="column col-5 col-ml-auto">
+      <div id="small-map"
+           data-lon="<%= @station.lon %>" data-lat="<%= @station.lat %>"></div>
     </div>
   </div>
 </div>
