@@ -68,16 +68,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function showStationClearButton(station) {
-      if (station.children[1].children.length > 0
+      if (station.children[0].children.length > 0
           && station.children[0].children.length > 1) {
-        station.children[0].children[1].classList.remove('d-none');
+        station.children[0].children[2].children[0].classList.remove('d-none');
       }
     }
 
     function hideStationClearButton(station) {
-      if (station.children[1].children.length == 0
+      if (station.children[0].children.length == 0
           && station.children[0].children.length > 1) {
-        station.children[0].children[1].classList.add('d-none');
+        station.children[0].children[2].children[0].classList.add('d-none');
       }
     }
 
@@ -118,7 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
       layerArray = [];
       if (routeMap.dataset.courseline !== '') {
         layerArray = JSON.parse(routeMap.dataset.courseline);
-        //debugger
         layerArray.forEach((x, i) => { addLineLayer(map, x, `route-${i + 1}`) }); // match station priority
       }
       return layerArray;
@@ -135,11 +134,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function clearLine(ev) {
-      let station = ev.target.parentNode.parentNode;
+      let station = ev.target.parentNode.parentNode.parentNode;
       let layer_id = `route-${station.dataset.priority}`;
       let list = station.children[1];
       let markers = document.querySelectorAll(`.mini-marker[data-station="${station.dataset.station}"]`);
       courseChangeStatus.classList.remove('d-none');
+      ev.target.classList.add('d-none');
+
       while(list.firstChild) {
         list.removeChild(list.firstChild);
       }
@@ -153,7 +154,13 @@ document.addEventListener('DOMContentLoaded', () => {
     function clearLines(ev) {
       courseChangeStatus.classList.remove('d-none');
       document.querySelectorAll('.station-list-item ol').forEach(x => {
-        map.removeLayer('route-'+ x.parentElement.dataset.priority);
+        if (x.parentNode.children[0].children.length >2) {
+          x.parentNode.children[0].children[2].children[0].classList.add('d-none');
+        }
+        if (map.getLayer('route-'+ x.parentElement.dataset.priority)) {
+          map.removeLayer('route-'+ x.parentElement.dataset.priority);
+        }
+
         while(x.firstChild) {
           x.removeChild(x.firstChild);
         }

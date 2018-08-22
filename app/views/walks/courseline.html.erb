@@ -38,22 +38,29 @@
         </p>
         <ul class="walk-list">
           <% @walk.stations.sort_by(&:priority).each do |station| %>
+
             <li class="station-list-item"
                 data-station="<%= station.id %>"
                 data-priority="<%= station.priority %>"
                 data-lon="<%= station.lon %>"
                 data-lat="<%= station.lat %>">
-              <span>
-                <i data-feather="map-pin" class="va-middle"></i>
-                <%= station.name %>
+              <div class="tile tile-centered">
+                <div class="tile-icon">
+                  <i data-feather="map-pin" class="va-middle"></i>
+                </div>
+                <div class="tile-content">
+                  <div class="tile-title"><%= station.name %></div>
+                </div>
                 <% unless station.priority == 0 %>
-                  <button class="clear-station-btn btn tooltip text-right"
-                          type="button"
-                          data-tooltip="Clear <%= station.name %>">
-                    <i data-feather="delete"></i>
-                  </button>
+                  <div class="tile-action">
+                    <button class="clear-station-btn btn tooltip text-right"
+                            type="button"
+                            data-tooltip="Clear <%= station.name %>">
+                      <i data-feather="delete"></i>
+                    </button>
+                  </div>
                 <% end %>
-              </span>
+              </div>
               <ol class="d-hide">
                 <% if @walk.courseline.present? && station.line != '[]' %>
                   <% @walk.courseline[station.line.to_i].each do |l| %>
@@ -62,6 +69,7 @@
                 <% end %>
               </ol>
             </li>
+
           <% end %>
         </ul>
 
