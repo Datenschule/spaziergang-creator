@@ -146,6 +146,7 @@ input[readonly] {
 .station-list-item {
   padding: 0.5em 0.4em;
   margin-left: -1em;
+  min-height: 52px; // avoid jumping buttons
   cursor: pointer;
   ol {
     margin: 0;

@@ -22,7 +22,7 @@ class WalksController < ApplicationController
 
   def courseline
     breadcrumb_walk_helper(@walk)
-    add_breadcrumb t('walk.course'), route_walk_path(@walk)
+    add_breadcrumb t('walk.course.label'), route_walk_path(@walk)
   end
 
   def save_courseline

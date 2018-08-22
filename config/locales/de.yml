@@ -29,9 +29,18 @@ de:
     deleted: "Spaziergang gelöscht!"
     public: "öffentlich"
     made_by: "erstellt von"
-    course: "Route festlegen"
-    course_title: "Route festlegen für"
-
+    course:
+      label: "Route festlegen"
+      title: "Route festlegen für"
+      reset: "Laufroute zurücksetzen"
+      reset_verb: "Zurücksetzen"
+      save_note: "Du hast die Laufroute verändert, vergiss nicht zu speichern!"
+      map_note: "Wähle zuerst eine Station aus der Liste aus und lege dann die Laufroute auf der Karte fest."
+      help:
+        title: "Wie funktioniert das?"
+        click: "Klicke auf eine Station in der Liste um ihr eine auf der Karte eine Laufroute zuzuweisen."
+        direction: "Du läufst dabei auf die ausgewählte Station (B) zu, ausgehend von der vorherigen (A)."
+        first: "Der ersten Station kann keine Laufroute zugewiesen werden, sie ist der Ausgangspunkt um zur zweiten Station zu laufen."
     notice:
       force_sort: "Bestätige oder verändere die Reihenfolge der Stationen bevor du die Laufroute festlegst."
     form:
