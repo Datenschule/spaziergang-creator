@@ -1,0 +1,33 @@
+#small-map {
+  height: 200px;
+}
+#pick-map,
+#route-map {
+  height: 600px;
+}
+#big-map {
+  height: 400px;
+}
+
+.marker {
+  display: block;
+  width: 34px;
+  height: 34px;
+  background-image: url(/assets/map-pin.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.mini-marker {
+  display: block;
+  width: 32px;
+  height: 32px;
+  background-image: url(/assets/map-pin-mini.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.mapboxgl-map {
+  border: 4px solid $primary-color;
+  box-shadow: -6px 6px 0 0 $primary-color;
+}

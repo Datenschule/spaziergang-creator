@@ -1,0 +1,53 @@
+.wrapper .container > *{
+  max-width: 1200px;
+  margin: auto;
+}
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+  margin: 2em 0;
+}
+
+.footer {
+  padding: 1em 0;
+  border-top: 3px solid $foam;
+  background-color: $dark-color;
+  color: white;
+  a {
+    color: $foam;
+  }
+}
+
+.user-nav {
+  background-color: $light-color;
+  border-bottom: 1px solid $border-color;
+}
+
+.navigation{
+  border-bottom: 3px solid $foam;
+  background-color: $dark-color;
+  a {
+    color: $foam;
+  }
+}
+
+.breadcrumb {
+  color: $gray-color;
+  a {
+    color: $gray-color;
+  }
+  li {
+    display: inline-block;
+    margin-right: .5em;
+
+    &:not(:first-of-type) {
+      margin-left: .5em;
+    }
+  }
+}

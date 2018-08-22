@@ -1,4 +1,5 @@
 .sortable {
+  margin: 0;
   list-style: none;
   counter-reset: list-item-counter;
 
@@ -9,6 +10,7 @@
     box-shadow: 0 0 2px 0 #333;
     border-radius: 3px;
     padding: .2em 1em;
+    background-color: white;
     &:before {
       content: counter(list-item-counter) ".";
       counter-increment: list-item-counter;

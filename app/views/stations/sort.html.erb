@@ -5,7 +5,7 @@
       <noscript><%= t 'station.sort.noscript' %></noscript>
     </div>
     <div class="column col-6">
-      <p class="bg-gray p-2">
+      <p class="bg-primary p-2">
         <i data-feather="help-circle" class="mr-2 va-middle"></i>
         <%= t 'station.sort.help' %>
       </p>
@@ -23,7 +23,7 @@
           <i data-feather="map"><%= @walk.name %></i>
         <% end %>
         <% if @walk.stations.count > 1 %>
-          <%= link_to route_walk_path(@walk), class: "btn tooltip", data: { tooltip: t('walk.course')} do %>
+          <%= link_to route_walk_path(@walk), class: "btn tooltip", data: { tooltip: t('walk.course.label')} do %>
             <i data-feather="navigation"><%= t('walk.course') %></i>
           <% end %>
         <% end %>
@@ -32,7 +32,7 @@
   </div>
   <div class="columns">
     <div class="column col-6">
-      <p id="sortable-order-changed" class="bg-gray p-2 d-none">
+      <p id="sortable-order-changed" class="bg-warning p-2 d-none">
         <i data-feather="alert-circle" class="mr-2 va-middle"></i>
         <%= t 'station.order_changed' %>
       </p>
@@ -40,7 +40,7 @@
         <span class="loading pr-2"></span>
         <span class="pl-2"><%= t 'saving' %>...</span>
       </p>
-      <button id="sortable-save" class="btn btn-primary"><%= t 'station.save_order' %></button>
+      <button id="sortable-save" class="btn btn-secondary"><%= t 'station.save_order' %></button>
     </div>
   </div>
 </div>

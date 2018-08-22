@@ -1,0 +1,23 @@
+body {
+  background-color: $gray-color-light;
+}
+
+a[href^="http://"]:not([href*="localhost:3000"]):after,
+a[href^="https://"]:not([href*="localhost:3000"]):after{
+  content: "";
+  width: 0.8em;
+  height: 0.8em;
+  display: inline-block;
+  margin-left: 0.3em;
+  background-size: contain;
+  background-image: url('external-link.svg');
+}
+
+iframe {
+  border: 4px solid $primary-color;
+  box-shadow: -6px 6px 0 0 $primary-color;
+}
+
+input[readonly] {
+  cursor: not-allowed;
+}

@@ -8,7 +8,13 @@
   <%= f.text_area :description, class: 'form-input' %>
 </div>
 
-<div class="columns">
+<div class="columns space-t">
+  <div class="column col-12">
+    <p class="column col-12 bg-primary p-2 mb-2">
+      <i data-feather="help-circle" class="va-middle"></i>
+      <%= t('station.form.help.coords') %></p>
+  </div>
+
   <div class="column col-6 form-group">
     <%= f.label :lon, "#{t 'form.longitude'} *", class: 'form-label' %>
     <%= f.text_field :lon, class: 'form-input', readonly: true %>
@@ -18,13 +24,8 @@
     <%= f.label :lat, "#{t 'form.latitude'} *", class: 'form-label' %>
     <%= f.text_field :lat, class: 'form-input', readonly: true %>
   </div>
-  <div class="container">
-  <p class="column col-12 bg-gray p-2 mb-2">
-    <i data-feather="help-circle" class="va-middle"></i>
-    <%= t('station.form.help.coords') %></p>
-  </div>
 </div>
 
-<div class="form-group mt-2">
-  <%= f.submit value: t('station.save'), class: 'btn btn-primary' %>
+<div class="form-group space-t">
+  <%= f.submit value: t('station.save'), class: 'btn btn-secondary' %>
 </div>

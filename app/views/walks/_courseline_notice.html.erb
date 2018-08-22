@@ -1,3 +1,5 @@
 <% unless @walk.courseline.present? %>
-  <p class="bg-gray p-2 mt-2"><%= t 'walk.form.help.courseline' %></p>
+  <p class="bg-warning p-2 mt-2">
+    <i data-feather="alert-circle" class="va-middle"></i>
+    <%= t 'walk.form.help.courseline' %></p>
 <% end %>

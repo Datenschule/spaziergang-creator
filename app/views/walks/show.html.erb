@@ -1,24 +1,18 @@
 <div class="container">
   <div class="columns">
-    <div class="column col-5">
-      <h1><%= @walk.name %></h1>
-      <p><%= @walk.location %></p>
-      <p><%= @walk.description %></p>
-    </div>
-    <div class="column col-2 text-right">
-      <%= render "walks/actions"%>
-    </div>
-    <div class="column col-5">
-      <% if @walk.stations.size >= 1 %>
-        <div id="big-map" data-courseline="<%= @walk.courseline if @walk.courseline.present? %>"></div>
-      <% end %>
-      <%= render 'walks/courseline_notice' %>
-    </div>
-  </div>
-
-  <div class="columns">
-    <div class="column col-11 col-ml-auto">
+    <div class="column col-7">
+      <div class="columns">
+        <div class="column col-8">
+          <h1><%= @walk.name %></h1>
+          <p><%= @walk.location %></p>
+          <p><%= @walk.description %></p>
+        </div>
+        <div class="column col-4 text-right">
+          <%= render "walks/actions"%>
+        </div>
+      </div>
       <div class="columns space-t">
+        <%= render 'walks/courseline_notice' %>
         <div class="column col-10">
           <h2><%= t('station.plural') %></h2>
         </div>
@@ -42,6 +36,11 @@
       </div>
 
       <%= render 'stations/list' %>
+    </div>
+    <div class="column col-5">
+      <% if @walk.stations.size >= 1 %>
+        <div id="big-map" data-courseline="<%= @walk.courseline if @walk.courseline.present? %>"></div>
+      <% end %>
     </div>
   </div>
 </div>

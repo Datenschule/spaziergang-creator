@@ -1,10 +1,12 @@
 <div class="container">
   <% if @walks.first %>
-    <ul class="columns walk-list">
-      <% for walk in @walks do %>
-        <%= render 'walks/list_item', walk: walk %>
-      <% end %>
-    </ul>
+    <div class="columns">
+      <ul class="column col-12 walk-list">
+        <% for walk in @walks do %>
+          <%= render 'walks/list_item', walk: walk %>
+        <% end %>
+      </ul>
+    </div>
   <% else %>
     <%= render 'walks/empty' %>
   <% end %>
