@@ -9,8 +9,10 @@
       <% end %>
     </section>
     <section class="navbar-section">
-      <span class="mr-2"><%= current_user.email %></span>
-      <%= link_to t('signout.label'), destroy_user_session_path, method: :delete %>
+      <% if current_user.present? %>
+        <span class="mr-2"><%= current_user.email %></span>
+        <%= link_to t('signout.label'), destroy_user_session_path, method: :delete %>
+      <% end %>
     </section>
   </nav>
 </header>
