@@ -1,13 +1,12 @@
 <footer class="container footer">
   <div class="columns">
-    <div class="column col-3">
-      <p><%= image_tag("Logo_okfde_black.svg", size: "220x120", alt: "OKF DE logo") %></p>
+    <div class="column col-2">
+      <p><%= image_tag("Logo_okfde_white_scaled.png", alt: "OKF DE logo", class: "footer-logo") %></p>
     </div>
     <div class="column col-3">
-      <ul>
-        <li><%= t(:app_license) %></li>
-        <li><%= t(:link_github) %> <a href="https://github.com/Datenschule/spaziergang-creator">GitHub</a></li>
-      </ul>
+      <p><%= t 'app_about' %></p>
+      <p><%= t(:app_license) %>
+      <%= link_to t('link_github'), "https://github.com/Datenschule/spaziergang-creator"%></p>
     </div>
   </div>
 </footer>

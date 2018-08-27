@@ -111,7 +111,7 @@ de:
       help: "Ziehe die Listenelemente mit gedrückter Maustaste in die gewünschte Reihenfolge."
       noscript: "Du musst JavaScript aktivieren um die Reihenfolge ändern zu können."
     correct: "richtig"
-    iframe_cors: "Fals die Webseite hier nicht angezeigt wird, kann es sein, dass der Webseitenbetreibende das Einbetten via iFrame verbietet."
+    iframe_csp: "Falls die Webseite hier nicht angezeigt wird, verbietet der Websitebetreibende das Einbetten per iframe."
     form:
       noscript:
         story: "Bei Stories sind nur Inhalt und Herausforderungen relevant."
@@ -138,5 +138,6 @@ de:
     question: "Frage"
     answers: "Antworten"
 
-  app_license: "Veröffentlicht unter der MIT Lizenz"
-  link_github: "Code verfügbar auf"
+  app_about: "Spaziergang Creator ist ein Projekt der Open Knowledge Foundation Deutschland."
+  app_license: "Der Quellcode ist unter der MIT Lizenz veröffentlicht"
+  link_github: "und auf GitHub verfügbar."

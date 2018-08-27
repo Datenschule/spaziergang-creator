@@ -16,6 +16,7 @@ a[href^="https://"]:not([href*="localhost:3000"]):after{
 iframe {
   border: 4px solid $primary-color;
   box-shadow: -6px 6px 0 0 $primary-color;
+  background-color: white;
 }
 
 input[readonly] {

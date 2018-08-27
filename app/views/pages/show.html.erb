@@ -13,51 +13,8 @@
   </div>
 
   <div class="columns">
-    <% if @page.variant == 'story'%>
-      <% if @page.content.present? %>
-        <div class="column col-6">
-          <h2 class="h4"><%= t('form.content')%></h2>
-          <%= simple_format @page.content %>
-        </div>
-      <% end %>
-
-      <% if @challenges %>
-        <div class="column col-6">
-          <h2 class="h4">Challenges</h2>
-          <ol>
-            <% @challenges.each do |challenge| %>
-              <li><%= challenge %></li>
-            <% end %>
-          </ol>
-        </div>
-      <% end %>
-    <% end  %>
-
-    <% if @page.variant == 'iframe' %>
-      <% if @page.link.present? %>
-        <div class="column col-8">
-          <div class="d-block"><code><%= @page.link %></code></div>
-          <iframe width="790" height="400" src="<%= @page.link %>"></iframe>
-          <p class="bg-gray p-2"><%=  t('page.iframe_cors') %></p>
-        </div>
-      <% end %>
-    <% end %>
-
-    <% if @page.variant == 'quiz' %>
-      <% if @page.question && @answers %>
-        <div class="column col-12">
-        <h2 class="h4"><%= @page.question if @page.question.present? %></h2>
-        <ul>
-          <%=  %>
-          <% @answers.each_with_index do |answer, index| %>
-            <li>
-              <%= answer %>
-              <%= "(#{t 'page.correct'})" if @correct_answer == index %>
-            </li>
-          <% end %>
-        </ul>
-        </div>
-      <% end %>
-    <% end  %>
+    <%= render "pages/story" %>
+    <%= render "pages/iframe" %>
+    <%= render "pages/quiz" %>
   </div>
 </div>

@@ -1,0 +1,21 @@
+<p>
+  <% if @walk.stations.count >= 2 %>
+    <%= link_to route_walk_path(@walk), class: "btn tooltip", data: { tooltip: t('walk.course.label')} do %>
+      <i data-feather="navigation"><%= t('walk.course.label') %></i>
+    <% end %>
+  <% end %>
+
+  <% if @walk.stations.size > 1 %>
+    <%= link_to sort_walk_stations_path(@walk),
+    class: "btn tooltip",
+      data: { tooltip: t('station.change_order')} do %>
+      <i data-feather="list"></i>
+    <% end %>
+  <% end %>
+
+  <%= link_to new_walk_station_path(@walk),
+  class: "btn tooltip",
+    data: { tooltip: t('station.new_verb')} do %>
+    <i data-feather="plus-circle"></i>
+  <% end %>
+</p>

@@ -1,6 +1,6 @@
-<% if @pages.first %>
-  <ol class="column col-12 walk-list">
-    <% @pages.sort_by(&:priority).each do |page| %>
+<% if pages.first %>
+  <ol class="walk-list">
+    <% pages.sort_by(&:priority).each do |page| %>
       <%= render("pages/list_item", page: page) %>
     <% end %>
   </ol>

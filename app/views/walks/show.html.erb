@@ -13,26 +13,12 @@
       </div>
       <div class="columns space-t">
         <%= render 'walks/courseline_notice' %>
-        <div class="column col-10">
+        <div class="column col-9">
           <h2><%= t('station.plural') %></h2>
         </div>
-        <div class="column col-2 text-right">
-          <p>
-            <% if @walk.stations.size > 1 %>
-              <%= link_to sort_walk_stations_path(@walk),
-              class: "btn tooltip",
-                data: { tooltip: t('station.change_order')} do %>
-                <i data-feather="list"></i>
-              <% end %>
-            <% end %>
-
-            <%= link_to new_walk_station_path(@walk),
-            class: "btn tooltip",
-              data: { tooltip: t('station.new_verb')} do %>
-              <i data-feather="plus-circle"></i>
-            <% end %>
+        <div class="column col-3 text-right">
+          <%= render "stations/actions" %>
         </div>
-          </p>
       </div>
 
       <%= render 'stations/list' %>
