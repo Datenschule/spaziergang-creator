@@ -40,6 +40,7 @@ class WalksController < ApplicationController
   end
 
   def new
+    redirect_to onboarding_path if needs_onboarding_page
     @walk = Walk.new
     add_breadcrumb t('walk.new'), new_walk_path
   end
@@ -81,6 +82,11 @@ class WalksController < ApplicationController
   end
 
   private
+
+  def needs_onboarding_page
+    return false if params[:knows_help_site] == "true"
+    current_user.walks.empty?
+  end
 
   def force_sort
     return true if @walk.stations.first.next.present?
