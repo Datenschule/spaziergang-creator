@@ -12,6 +12,10 @@ de:
     label: "ausloggen"
   last_edited: "zuletzt bearbeitet"
   saving: "speichern"
+  password:
+    forgot: "Passwort vergessen?"
+    min_chars: "Zeichen Mindestlänge"
+    reset: "Passwort zurücksetzen"
 
   walk:
     singular: "Spaziergang"
