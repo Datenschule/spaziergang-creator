@@ -3,6 +3,8 @@ de:
   mobile_app: "Datenspaziergang App"
   index:
     blurb: "Erstelle deinen eigenen Datenspaziergang!"
+  onboarding:
+    link: "Hilfeseite"
   signup:
     label: "Anmelden"
     text: "Melde dich an um deinen eigenen Datenspaziergang zu erstellen."
@@ -16,6 +18,14 @@ de:
     forgot: "Passwort vergessen?"
     min_chars: "Zeichen Mindestlänge"
     reset: "Passwort zurücksetzen"
+    leave_blank: "Lasse das Feld frei wenn du dein Passwort nicht ändern willst"
+    confirm: "Wir brauchen dein aktuelles Passwort um die Änderungen zu speichern."
+  user:
+    name: "Nutzer"
+    edit: "bearbeiten"
+    delete: "Mein Konto löschen"
+    delete_notice: "Willst du dein Konto wirklich löschen?"
+    delete_blurb: "Es wird nur dein Konto mit den persönlichen Daten gelöscht. Bestehende öffentliche Spaziergänge bleiben weiterhin zugänglich. Lösche diese manuell falls gewünscht."
 
   walk:
     singular: "Spaziergang"

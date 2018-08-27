@@ -10,8 +10,19 @@
     </section>
     <section class="navbar-section">
       <% if current_user.present? %>
-        <span class="mr-2"><%= current_user.email %></span>
-        <%= link_to t('signout.label'), destroy_user_session_path, method: :delete %>
+
+        <div class="dropdown">
+          <a href="#" class=" dropdown-toggle" tabindex="0">
+            <%= current_user.email %> <i data-feather="chevron-down" class="va-middle"></i>
+          </a>
+          <ul class="menu bg-dark">
+            <li class="menu-item"><%= link_to t("onboarding.link"), onboarding_path %></li>
+            <li class="menu-item"><%= link_to "Profil bearbeiten", edit_user_registration_path %></li>
+            <li class="menu-item">
+              <%= link_to t('signout.label'), destroy_user_session_path, method: :delete %>
+            </li>
+          </ul>
+        </div>
       <% end %>
     </section>
   </nav>

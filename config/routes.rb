@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
     root 'static#index'
 
+    get '/onboarding', controller: :static, action: :onboarding
+
     resources :walks do
       get '/private', to: 'walks#private', on: :collection
       get '/route', to: 'walks#courseline', on: :member
