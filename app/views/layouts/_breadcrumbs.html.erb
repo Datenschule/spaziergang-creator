@@ -1,7 +1,7 @@
-<% if current_user %>
-  <nav class="container">
-    <div class="pl-2 pr-2">
-      <ul class="breadcrumb">
+<% if current_user && breadcrumbs.present?%>
+  <nav class="container bg-darlk-gray breadcrumb">
+    <div class="px-2 pb-2">
+      <ul>
         <%= render_breadcrumbs tag: :li, separator: "/" %>
       </ul>
     </div>

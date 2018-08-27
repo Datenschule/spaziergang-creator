@@ -30,21 +30,23 @@
   margin-top: 0.4rem;
 }
 
-.user-nav {
-  background-color: $light-color;
-  border-bottom: 1px solid $border-color;
-}
-
 .navigation{
   border-bottom: 3px solid $foam;
   background-color: $dark-color;
+  color: white;
   a {
     color: $foam;
   }
 }
 
 .breadcrumb {
+  background-color: $light-color;
   color: $gray-color;
+  margin-top: 0;
+  ul {
+    margin: 0;
+    padding: 0;
+  }
   a {
     color: $gray-color;
   }

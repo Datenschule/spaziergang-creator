@@ -2,10 +2,15 @@
   <nav class="navbar p-2">
     <section class="navbar-section pt-2 pb-2">
       <a href="/" class="navbar-brand mr-2"><%= t :app_name %></a>
-      <%= link_to t('walk.plural'), walks_path, class: "ml-2" %>
+      <%= link_to t('walk.plural'), walks_path, class: "mx-2" %>
+
+      <% if current_user.present? %>
+        <%= link_to t('walk.own'), private_walks_path() %>
+      <% end %>
     </section>
     <section class="navbar-section">
-      <a href="https://spaziergang.datenschule.de/"><%= t :mobile_app %></a>
+      <span class="mr-2"><%= current_user.email %></span>
+      <%= link_to t('signout.label'), destroy_user_session_path, method: :delete %>
     </section>
   </nav>
 </header>
