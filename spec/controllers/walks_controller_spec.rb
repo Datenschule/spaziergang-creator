@@ -31,42 +31,42 @@ RSpec.describe WalksController, type: :controller do
 
     describe 'GET walks#private' do
       context 'when the user is logged in' do
-        it 'should render walks#private'
+        pending 'should render walks#private'
       end
 
       context 'when the user is not logged in' do
-        it 'should redirect to walks#index'
+        pending 'should redirect to walks#index'
       end
     end
 
     describe 'GET walks#new' do
       context 'when the user is logged in' do
-        it 'should render walks#new'
+        pending 'should render walks#new'
       end
 
       context 'when the user is not logged in' do
-        it 'should redirect to walks#index'
+        pending 'should redirect to walks#index'
       end
     end
 
     describe 'POST walks#create' do
       context 'width valid attributes' do
-        it 'should save the new walk in the database'
-        it 'should redirect to walks#private'
+        pending 'should save the new walk in the database'
+        pending 'should redirect to walks#private'
       end
 
       context 'width invalid attributes' do
-        it 'should not save the walk in the database'
-        it 'should render walks#new template'
+        pending 'should not save the walk in the database'
+        pending 'should render walks#new template'
       end
     end
 
     describe 'PUT walks#update' do
-      it 'should update an existing walk'
+      pending 'should update an existing walk'
     end
 
     describe 'DELETE walks#destroy' do
-      it 'should delete a walk'
+      pending 'should delete a walk'
     end
   end
 end
