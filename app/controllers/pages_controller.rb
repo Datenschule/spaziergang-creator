@@ -42,7 +42,7 @@ class PagesController < ApplicationController
     @page.subject_id = @subject.id
     @page.priority = @subject.pages.size + 1
     if @page.save!
-      redirect_to subject_path(@subject), notice: t('page.saved')
+      redirect_to page_path(@page), notice: t('page.saved')
     else
       render action: :new
     end
@@ -98,6 +98,7 @@ class PagesController < ApplicationController
   end
 
   def destroy
+    @subject = @page.subject
     @page.destroy
     redirect_to subject_path(@subject), notice: t('page.deleted')
   end
