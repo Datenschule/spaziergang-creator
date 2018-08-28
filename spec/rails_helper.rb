@@ -9,6 +9,8 @@ require 'rspec/rails'
 require 'database_cleaner'
 require 'capybara/rails'
 require 'capybara/rspec'
+require 'coveralls'
+Coveralls.wear!
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
