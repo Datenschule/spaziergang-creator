@@ -94,6 +94,20 @@ RSpec.describe WalksController, type: :controller do
     end
   end
 
+  describe 'GET edit' do
+    let(:user) { create(:user) }
+    let(:walk) { create(:walk, name: 'Testwalk', user: user) }
+    before do
+      allow(controller).to receive :authenticate_user!
+      allow(controller).to receive(:current_user).and_return(user)
+    end
+
+    it 'renders the edit template' do
+      get :edit, params: { locale: :de, id: walk.id }
+      expect(response).to render_template('edit')
+    end
+  end
+
   describe 'PUT update' do
     let(:user) { create(:user) }
     let(:walk) { create(:walk, name: 'Testwalk', user: user) }
