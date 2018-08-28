@@ -52,8 +52,9 @@ class SubjectsController < ApplicationController
   end
 
   def destroy
+    @station = @subject.station
     @subject.destroy
-    redirect_to subjects_path, notice: t('subject.deleted')
+    redirect_to station_path(@station), notice: t('subject.deleted')
   end
 
   private
