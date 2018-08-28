@@ -123,4 +123,44 @@ RSpec.describe WalksController, type: :controller do
       expect(response.location).to match private_walks_path
     end
   end
+
+  describe 'GET courseline' do
+    let(:user) { create(:user) }
+    let(:walk) { create(:walk, name: 'Testwalk', user: user) }
+    before do
+      allow(controller).to receive :authenticate_user!
+      allow(controller).to receive(:current_user).and_return(user)
+    end
+    context 'walk has less than two stations' do
+      it 'redirect to walk path' do
+        get :courseline, params: { locale: :de, id: walk.id }
+        expect(response).to be_redirect
+        expect(response.location).to match walk_path walk.id
+      end
+    end
+
+    context 'walk has at least two stations and they are sorted' do
+      let(:stations) { create_list(:station, 3, user: user, walk: walk, next: 1) }
+      pending 'renders the template' do
+        get :courseline, params: { locale: :de, id: walk.id }
+        #byebug
+        expect(response).to render_template('courseline')
+      end
+    end
+
+    context 'walk has at least two stations but they are not sorted' do
+      let(:stations) { create_list(:station, 3, user: user, walk_id: walk.id) }
+
+      pending 'redirects to stations sort' do
+        get :courseline, params: { locale: :de, id: walk.id }
+        expect(response).to be_redirect
+        expect(response.location).to match sort_walk_stations_path walk.id
+        expect(flash[:notice]).to eq t('walk.notice.force_sort')
+      end
+    end
+  end
+
+  describe "PUT save_courseline" do
+    pending "something"
+  end
 end

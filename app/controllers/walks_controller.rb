@@ -7,6 +7,7 @@ class WalksController < ApplicationController
                                   :courseline,
                                   :save_courseline]
   before_action :authenticate_user!, except: [:index]
+  before_action :ensure_station_length, only: [:courseline]
   before_action :force_sort, only: [:courseline]
 
   include BreadcrumbsHelper
@@ -87,9 +88,15 @@ class WalksController < ApplicationController
     current_user.walks.empty?
   end
 
+  def ensure_station_length
+    return true if @walk.stations.length > 1
+    redirect_to walk_path(@walk) and return
+  end
+
   def force_sort
-    return true if @walk.stations.first.next.present?
-    redirect_to sort_walk_stations_path(@walk), notice: t('walk.notice.force_sort')
+    @stations = @walk.stations
+    return true if @stations.first.present? && @stations.first.next.present?
+    redirect_to sort_walk_stations_path(@walk), notice: t('walk.notice.force_sort') and return
   end
 
   def walk_params

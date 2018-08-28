@@ -4,5 +4,6 @@ FactoryBot.define do
     description { Faker::Friends.quote }
     lon { Faker::Number.decimal(2, 5) }
     lat { Faker::Number.decimal(2, 5) }
+    next 0
   end
 end
