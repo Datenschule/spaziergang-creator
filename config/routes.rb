@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'static#index'
 
-  scope '/:locale', locale: /de|en/ do
+  scope '/:locale', locale: /de|en/, defaults: {format: 'html'} do
     devise_for :users
 
     root 'static#index'

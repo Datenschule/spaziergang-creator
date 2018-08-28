@@ -30,13 +30,7 @@ class WalksController < ApplicationController
     courseline = data.map { |d| d['coords'] }
     @walk.courseline = courseline
     @walk.save
-
-    data.each do |station|
-      st = Station.find(station['id'].to_i)
-      st.line = station['priority'].to_i - 1
-      st.line = '[]' if station['priority'] == '0'
-      st.save
-    end
+    save_station_order data
   end
 
   def new
@@ -51,7 +45,7 @@ class WalksController < ApplicationController
     if @walk.save!
       redirect_to walk_path(@walk), notice: t('walk.save_success')
     else
-      render action: :new
+      render :new, format: :html
     end
   end
 
@@ -73,15 +67,20 @@ class WalksController < ApplicationController
   end
 
   def destroy
-    @walk.stations.each do |s|
-      s.walk_id = 0
-      s.save
-    end
     @walk.destroy
     redirect_to private_walks_path, notice: t('walk.deleted')
   end
 
   private
+
+  def save_station_order(stations)
+    stations.each do |station|
+      st = Station.find(station['id'].to_i)
+      st.line = station['priority'].to_i - 1
+      st.line = '[]' if station['priority'] == '0'
+      st.save
+    end
+  end
 
   def needs_onboarding_page
     return false if params[:knows_help_site] == "true"
