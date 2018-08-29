@@ -1,0 +1,18 @@
+.field_with_errors {
+  .form-label {
+    color: $error-color;
+  }
+
+  .form-input {
+    border-color: $error-color;
+  }
+}
+
+#error_explanation {
+  padding: 0.7em 0.7em 0.1em;
+  background-color: $error-color;
+  color: white;
+  h2 {
+    font-size: 1.1rem;
+  }
+}

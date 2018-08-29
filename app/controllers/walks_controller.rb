@@ -9,6 +9,12 @@ class WalksController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   before_action :ensure_station_length, only: [:courseline]
   before_action :force_sort, only: [:courseline]
+  before_action :ensure_user_rights, only: [:show,
+                                            :edit,
+                                            :update,
+                                            :destroy,
+                                            :courseline,
+                                            :save_courseline]
 
   include BreadcrumbsHelper
 
@@ -74,6 +80,10 @@ class WalksController < ApplicationController
 
   private
 
+  def ensure_user_rights
+    render_403 unless current_user == @walk.user
+  end
+
   def save_station_order(stations)
     stations.each do |station|
       st = Station.find(station['id'].to_i)
@@ -101,13 +111,13 @@ class WalksController < ApplicationController
 
   def walk_params
     params.require(:walk).permit(:name,
-                  :location,
-                  :preview_image,
-                  :description,
-                  :entry,
-                  :courseline,
-                  :public,
-                  :data)
+                                 :location,
+                                 :preview_image,
+                                 :description,
+                                 :entry,
+                                 :courseline,
+                                 :public,
+                                 :data)
   end
 
   def set_walk

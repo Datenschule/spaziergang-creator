@@ -2,6 +2,7 @@ class StationsController < ApplicationController
   before_action :set_station, only: [:show, :edit, :update, :destroy]
   before_action :set_walk, only: [:new, :create, :sort]
   before_action :authenticate_user!
+  before_action :ensure_user_rights, only: [:show, :edit, :update, :destroy]
 
   include BreadcrumbsHelper
 
@@ -72,6 +73,10 @@ class StationsController < ApplicationController
   end
 
   private
+
+  def ensure_user_rights
+    render_403 unless current_user == @station.user
+  end
 
   def set_station_next(i)
     @updates[i + 1]['pos'].to_i if @updates[i + 1].present?

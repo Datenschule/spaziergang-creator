@@ -2,6 +2,7 @@ class SubjectsController < ApplicationController
   before_action :set_subject, only: [:show, :edit, :update, :destroy]
   before_action :set_station, only: [:new, :create]
   before_action :authenticate_user!
+  before_action :ensure_user_rights, only: [:show, :edit, :update, :destroy]
 
   include BreadcrumbsHelper
 
@@ -58,6 +59,10 @@ class SubjectsController < ApplicationController
   end
 
   private
+
+  def ensure_user_rights
+    render_403 unless current_user == @subject.user
+  end
 
   def set_station
     @station = Station.find(params[:station_id])
