@@ -39,6 +39,17 @@
   }
 }
 
+.language-switch {
+  display: flex;
+  flex-flow: column nowrap;
+  font-size: 0.7rem;
+  margin-left: 2em;
+  .active {
+    pointer-events: none;
+    cursor: default;
+  }
+}
+
 .breadcrumb {
   background-color: $light-color;
   color: $gray-color;
