@@ -6,7 +6,7 @@
     <% if current_user %>
       <div class="column col-2 text-right">
         <%= link_to new_walk_path, class: 'btn tooltip', data: {tooltip: t('walk.new_verb')} do %>
-          <i data-feather="plus-circle"></i>
+          <i data-feather="plus-circle"><%= t('walk.new_verb') %></i>
         <% end %>
       </div>
     <% end %>
