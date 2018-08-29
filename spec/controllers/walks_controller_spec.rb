@@ -16,12 +16,15 @@ RSpec.describe WalksController, type: :controller do
   end
 
   describe 'GET private' do
-    let!(:user) { create(:user) }
-    let!(:walks) { create_list(:walk, 3, user: user, public: false) }
-
     context 'user is logged in' do
+      let!(:user) { create(:user) }
+      let!(:walks) { create_list(:walk, 3, user: user, public: false) }
+      before do
+        allow(controller).to receive :authenticate_user!
+        allow(controller).to receive(:current_user).and_return(user)
+      end
+
       it 'should render template' do
-        sign_in user
         get :private, params: { locale: :de }
         expect(response).to render_template('private_index')
         walks.each do |w|
