@@ -1,6 +1,22 @@
+# coding: utf-8
 require 'rails_helper'
 
 RSpec.describe WalksController, type: :controller do
+  describe 'protects private user content' do
+    let!(:user1) { create(:user) }
+    let!(:user2) { create(:user) }
+    let!(:walk) { create(:walk, user: user2)}
+    before do
+      allow(controller).to receive :authenticate_user!
+      allow(controller).to receive(:current_user).and_return(user1)
+    end
+
+    it 'renders 403 when trying to access others content' do
+      get :show, params: { locale: :de, id: walk.id }
+      expect(response.status).to eq 403
+    end
+  end
+
   describe 'GET index' do
     context 'user is not logged in' do
       let!(:user) { create(:user) }
@@ -178,6 +194,16 @@ RSpec.describe WalksController, type: :controller do
   end
 
   describe "PUT save_courseline" do
-    pending "something"
+    let!(:user) { create(:user) }
+    let!(:walk) { create(:walk, user: user) }
+    before do
+      allow(controller).to receive :authenticate_user!
+      allow(controller).to receive(:current_user).and_return(user)
+    end
+    pending 'accepts new courseline' do
+      put :save_courseline, params: { locale: :de, id: walk.id,
+                                      data: [coords: [[12, 12], [12, 12]]]}
+      expect(response.status).to eq 204
+    end
   end
 end
