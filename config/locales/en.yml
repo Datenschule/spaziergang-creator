@@ -1,36 +1,157 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
-  index_blurb: "Create your own Data Walk!"
+  app_name: "Spaziergang Creator"
+  mobile_app: "Datenspaziergang App"
+  index:
+    blurb: "Create your own data walk!"
+  onboarding:
+    link: "Help page"
+  signup:
+    label: "Register"
+    text: "Register to create your own data walk."
+  signin:
+    label: "Sign in"
+  signout:
+    label: "Sign out"
+  last_edited: "last edited"
+  saving: "saving"
+  password:
+    forgot: "Forgot password?"
+    min_chars: "characters minimun"
+    reset: "Reset password"
+    leave_blank: "Leave field blank if you don't want to change your password"
+    confirm: "We need your current password to save the changes."
+  user:
+    name: "User"
+    edit: "edit"
+    delete: "Cancel my account"
+    delete_notice: "Do you really want to cancel your account?"
+    delete_blurb: "We only delete your account and personal data. Existing public walks will stay online. Please delete them manually if you want to do so."
 
-  walk: "walk"
+  walk:
+    singular: "Walk"
+    plural: "All walks"
+    new: "New walk"
+    own: "Your walks"
+    new_verb: "Create new walk"
+    none: "No walks available"
+    save: "Save walk"
+    save_success: "Walk successfully created!"
+    edit: "Edit walk"
+    edit_verb: "edit"
+    edited: "Walk successully edited!"
+    delete: "Delete walk"
+    deleted: "Walk deleted!"
+    public: "public"
+    made_by: "created by"
+    course:
+      label: "Set route"
+      title: "Set route for"
+      reset: "Reset route"
+      reset_verb: "Reset"
+      save_note: "You changed the route, don't foget to save!"
+      map_note: "First select a station from the list and then set the route on the map."
+      help:
+        title: "How does it work?"
+        click: "Click on a station in the list to assign it a route."
+        direction: "To do this you walk towards the selected station (B), starting at the previous station (A)."
+        first: "You can't assign a route to the first station since this is the stating point to walk towards the second station."
+    notice:
+      force_sort: "Confirm or change the order of stations before setting the route."
+    form:
+      help:
+        name: "Give the walk a name, maybe something geographically related or in regards to content."
+        location: "Where is the walk happening? This is mainly a rough information for users."
+        description: "Describe the walk briefly. What are the stations about, what makes it interesting?"
+        step: "After saving the walk you can assign it stations."
+        delete: "Do  you want to delete the walk (and all stations, subjects and pages belonging to it)?"
+        courseline: "You can set a route between stations as soon as you have at least two stations."
+
+  station:
+    singular: "Station"
+    plural: "Stations"
+    new: "New station"
+    new_verb: "Create new station"
+    change_order: "Change order"
+    save_order: "Save order"
+    order_changed: "You changed the order, don't forget to save!"
+    none: "No stations"
+    save: "Save station"
+    saved: "Station successfully saved!"
+    edit: "Edit station"
+    edited: "Station successfully edited!"
+    delete: "Delete station"
+    deleted: "Deleted station!"
+    form:
+      help:
+        delete: "Do you want to delete the station (as well as all subjects and pages belonging to it)?"
+        coords: "Use the map to search for a place or drag the marker to the desired spot."
+        noscript: "You need to have JavaScript enabled to use the map."
+    sort:
+      title: "Change order of stations for"
+      breadcrumb: "Change order of stations"
+      help: "Click and drag the list elements into the desired order."
+      noscript: "You need to have JavaScript enabled to change order."
+
+  subject:
+    singular: "Subject"
+    plural: "Subjects"
+    new_verb: "Create new subject"
+    new: "New subject"
+    none: "No subjects"
+    save: "Save subject"
+    saved: "Subject successfully saved!"
+    edit: "Edit subject"
+    edited: "Subject successfully edited!"
+    delete: "Delete subject"
+    deleted: "Subject successfully deleted!"
+    form:
+      help:
+        delete: "Do you want to delete the topic (along with the pages belonging to it)?"
+
+  page:
+    singular: "Page"
+    plural: "Pages"
+    none: "No pages"
+    new_verb: "Create new page"
+    new: "New page"
+    saved: "Page successfully created!"
+    edit: "Edit page"
+    edited: "Page successfully edited!"
+    delete: "Delete page"
+    deleted: "Page successfully deleted!"
+    change_order: "Change order of pages"
+    sort:
+      title: "Change order of pages for"
+      help: "Click and drag the list elements into the desired order."
+      noscript: "You need to have JavaScript enabled to change order."
+    correct: "correct"
+    iframe_csp: "If the website doesn't show, the website maintainer forbids embedding it via iframe."
+    form:
+      noscript:
+        story: "Stories only care about content and challenges."
+        iframe: "Iframes only care about link."
+        quiz: "Quiz only cares about question and answers."
+      help:
+        delete: "Do you want to delete this page?"
+        new_line: "Line breaks are preserved."
+        challenge_list: "Please list several challenges with <code>-</code> and a new line."
+        answers_list: "Please list the possible answers with <code>-</code> and a new line."
+        answers_correct: "Mark the correct answer with an asterisk after the hyphen (<code>-* correct answer</code>)."
+
+  form:
+    name: "Name"
+    location: "Location"
+    description: "Description"
+    public: "Make public?"
+    longitude: "Longitude"
+    latitude: "latitude"
+    type: "Type"
+    content: "Content"
+    challenges: "Challenges"
+    link: "Link to project (will be embedded as iFrame)"
+    question: "Question"
+    answers: "Answers"
+
+  app_about: "Spaziergang Creator is a project by  Open Knowledge Foundation Deutschland."
+  app_license: "The source code is published under MIT license"
+  link_github: "and available on GitHub."
