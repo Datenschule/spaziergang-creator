@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .addTo(map);
     }
 
-    // station#edit
+    // station#edit and #new
     // draggble pin and geocoding for forms
     let pickMap = document.querySelector('#pick-map');
     if (pickMap) {

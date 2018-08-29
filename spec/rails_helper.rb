@@ -10,6 +10,7 @@ require 'database_cleaner'
 require 'capybara/rails'
 require 'capybara/rspec'
 require 'coveralls'
+
 Coveralls.wear!
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
@@ -40,7 +41,7 @@ RSpec.configure do |config|
   config.include Shoulda::Matchers::ActiveRecord, type: :model
   config.include Capybara::DSL
   config.include Devise::Test::ControllerHelpers, type: :controller
-  config.include Devise::Test::IntegrationHelpers
+  config.include Devise::Test::IntegrationHelpers, type: :feature
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation
