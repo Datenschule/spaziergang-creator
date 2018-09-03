@@ -31,3 +31,5 @@
 
 # Ignore more things
 /coverage
+
+/config/database.yml
