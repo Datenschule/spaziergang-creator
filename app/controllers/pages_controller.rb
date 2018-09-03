@@ -107,7 +107,7 @@ class PagesController < ApplicationController
   private
 
   def ensure_user_rights
-    render_403 unless current_user == @walk.user
+    render_403 unless current_user == @page.user
   end
 
   def set_page

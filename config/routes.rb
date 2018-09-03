@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     root 'static#index'
 
     get '/onboarding', controller: :static, action: :onboarding
+    get '/impressum', controller: :static, action: :impressum
+    get '/datenschutzerklaerung', controller: :static, action: :data_protection
 
     resources :walks do
       get '/private', to: 'walks#private', on: :collection

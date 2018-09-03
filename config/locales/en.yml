@@ -155,3 +155,9 @@ en:
   app_about: "Spaziergang Creator is a project by  Open Knowledge Foundation Deutschland."
   app_license: "The source code is published under MIT license"
   link_github: "and available on GitHub."
+  imprint:
+    title: "Imprint"
+    content: "content missing"
+  data_protection:
+    title: "Data protection statement"
+    content: "content missing"

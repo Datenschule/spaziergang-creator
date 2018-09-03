@@ -24,6 +24,14 @@
   }
 }
 
+.legal {
+  padding: .5rem 0 .4rem;
+  background-color: $secondary-color;
+  a {
+    color: $dark-color;
+  }
+}
+
 .footer-logo {
   width: 100%;
   height: auto;
