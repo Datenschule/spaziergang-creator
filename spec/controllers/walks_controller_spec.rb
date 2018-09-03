@@ -94,21 +94,23 @@ RSpec.describe WalksController, type: :controller do
     end
 
     context 'width valid attributes' do
-      it 'should redirect to #private' do
-        post :create, params: { locale: :de, user: user,
+      it 'should save walk and redirect to #private' do
+        expect {
+          post :create, params: { locale: :de, user: user,
                                 walk: { name: 'foo',
                                         description: 'barbaz',
                                         location: 'a city' }}
+        }.to change { Walk.count }.by 1
         expect(response).to be_redirect
       end
     end
 
     context 'width invalid attributes' do
-      pending 'should render new template' do
-        post :create, params: { locale: :de, user: user,
-                                walk: { name: 'foo'}}
+      it 'should not save nor redirect' do
+        expect { post :create, params: { locale: :de, user: user,
+                                         walk: { name: 'foo'}}
+        }.to_not change { Walk.count }
         expect(response).to_not be_redirect
-        expect(response).to render_template('new')
       end
     end
   end
@@ -129,7 +131,7 @@ RSpec.describe WalksController, type: :controller do
 
   describe 'PUT update' do
     let(:user) { create(:user) }
-    let(:walk) { create(:walk, name: 'Testwalk', user: user) }
+    let!(:walk) { create(:walk, name: 'Testwalk', user: user) }
     before do
       allow(controller).to receive :authenticate_user!
       allow(controller).to receive(:current_user).and_return(user)
@@ -145,13 +147,15 @@ RSpec.describe WalksController, type: :controller do
 
   describe 'DELETE destroy' do
     let(:user) { create(:user) }
-    let(:walk) { create(:walk, name: 'Testwalk', user: user) }
+    let!(:walk) { create(:walk, name: 'Testwalk', user: user) }
     before do
       allow(controller).to receive :authenticate_user!
       allow(controller).to receive(:current_user).and_return(user)
     end
     it 'should redirect to private_walks_path' do
-      delete :destroy, params: { locale: :de, id: walk.id }
+      expect {
+        delete :destroy, params: { locale: :de, id: walk.id }
+      }.to change { Walk.count }.by -1
       expect(response).to be_redirect
       expect(response.location).to match private_walks_path
     end
@@ -159,7 +163,7 @@ RSpec.describe WalksController, type: :controller do
 
   describe 'GET courseline' do
     let(:user) { create(:user) }
-    let(:walk) { create(:walk, name: 'Testwalk', user: user) }
+    let!(:walk) { create(:walk, name: 'Testwalk', user: user) }
     before do
       allow(controller).to receive :authenticate_user!
       allow(controller).to receive(:current_user).and_return(user)
@@ -173,22 +177,21 @@ RSpec.describe WalksController, type: :controller do
     end
 
     context 'walk has at least two stations and they are sorted' do
-      let(:stations) { create_list(:station, 3, user: user, walk: walk, next: 1) }
-      pending 'renders the template' do
+      let!(:stations) { create_list(:station, 3, user: user, walk: walk, next: 1) }
+      it 'renders the template' do
         get :courseline, params: { locale: :de, id: walk.id }
-        #byebug
         expect(response).to render_template('courseline')
       end
     end
 
     context 'walk has at least two stations but they are not sorted' do
-      let(:stations) { create_list(:station, 3, user: user, walk_id: walk.id) }
+      let!(:stations) { create_list(:station, 3, user: user, walk_id: walk.id) }
 
-      pending 'redirects to stations sort' do
+      it 'redirects to stations sort' do
         get :courseline, params: { locale: :de, id: walk.id }
         expect(response).to be_redirect
         expect(response.location).to match sort_walk_stations_path walk.id
-        expect(flash[:notice]).to eq t('walk.notice.force_sort')
+        expect(flash[:notice]).to eq I18n.t('walk.notice.force_sort')
       end
     end
   end
@@ -196,14 +199,21 @@ RSpec.describe WalksController, type: :controller do
   describe "PUT save_courseline" do
     let!(:user) { create(:user) }
     let!(:walk) { create(:walk, user: user) }
+    let!(:stations) { create_list(:station, 2, user: user, walk: walk)}
     before do
       allow(controller).to receive :authenticate_user!
       allow(controller).to receive(:current_user).and_return(user)
     end
-    pending 'accepts new courseline' do
-      put :save_courseline, params: { locale: :de, id: walk.id,
-                                      data: [coords: [[12, 12], [12, 12]]]}
+    it 'accepts new courseline' do
+      put :save_courseline,
+          params: { locale: :de, id: walk.id,
+                    walk: {},
+                    data: [
+                      {id: stations[0].id, coords: [[12, 12], [12, 12]]},
+                      {id: stations[1].id, coords: [[12, 12], [12, 12]]}
+                    ]}
       expect(response.status).to eq 204
+      expect(response).to_not be_redirect
     end
   end
 end
