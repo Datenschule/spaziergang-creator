@@ -1,5 +1,8 @@
 lanugage: ruby
 
+addons:
+  chrome: stable
+
 services:
   - postgresql
 
@@ -16,6 +19,7 @@ rvm:
 before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
   - cp config/database.yml.travis config/database.yml
+  - ln -s /usr/lib/chromium-browser/chromedriver ~/bin/chromedriver
 
 install:
   - bundle install --jobs=3 --retry=3

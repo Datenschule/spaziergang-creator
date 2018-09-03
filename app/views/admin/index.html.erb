@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="columns">
+    <div class="column col-8">
+      <h1><%= t('admin.dash')%></h1>
+
+      <ul class="tabbed">
+        <li class="tabbed-item" id="users">
+          <a class="tabbed-nav" href="#users"><%= t('user.name') %></a>
+          <div class="tabbed-body">
+            <ul class="walk-list">
+            <% @users.each do |u| %>
+              <li>
+                <div class="tile tile-centered">
+                  <div class="tile-icon">
+                    <i data-feather="user"></i>
+                  </div>
+                  <div class="tile-content">
+                    <div class="tile-title"><%= u.email %></div>
+                    <div class="tile-subtitle text-gray"><%=  pluralize(u.walks.count, t('walk.singular'), t('walk.plural')) %> |
+                      <%= t('user.last_login') %> <%= u.last_sign_in_at.strftime('%d.%m.%Y %H:%M') if u.last_sign_in_at %>
+                    </div>
+                  </div>
+                  <div class="tile-action">
+                    <%= render 'admin/make_admin', user: u %>
+                    / block
+                    <%= render 'admin/delete_user', user: u %>
+                  </div>
+                </div>
+              </li>
+            <% end %>
+            </ul>
+          </div>
+        </li>
+        <li class="tabbed-item" id="walks">
+          <a class="tabbed-nav" href="#walks"><%= t('walk.plural') %></a>
+          <div class="tabbed-body">
+            <%= render 'walks/walk_list' %>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <aside class="column col-3 col-ml-auto">
+      <h2><%= t('admin.numbers') %></h2>
+      <p><%= @users.count %> registered users.<br>
+        Last signup <%= @users.last.email %>, <%= @users.last.created_at.strftime '%d.%m.%Y %H:%M' %></p>
+      <p><%= @walks.count %> walks in the database, <%= pluralize(@walks.is_public.count, 'is', 'are') %> public.<br>
+        Last created <%= link_to @walks.last.name, walk_path(@walks.last.id) if @walks.last %>, <%= @walks.last.created_at.strftime '%d.%m.%Y %H:%M' if @walks.last %></p>
+    </aside>
+  </div>
+</div>

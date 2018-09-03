@@ -6,10 +6,6 @@ class SubjectsController < ApplicationController
 
   include BreadcrumbsHelper
 
-  def index
-    @subjects = Subject.all
-  end
-
   def show
     @pages = Page.where(subject_id: @subject.id)
 
@@ -61,7 +57,7 @@ class SubjectsController < ApplicationController
   private
 
   def ensure_user_rights
-    render_403 unless current_user == @subject.user
+    render_403 unless current_user == @subject.user || current_user.admin?
   end
 
   def set_station

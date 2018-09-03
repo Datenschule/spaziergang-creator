@@ -1,0 +1,56 @@
+.tabbed {
+  min-height: 250px;
+  position: relative;
+  width: 100%;
+  margin: 0;
+}
+
+.tabbed-item {
+  display: inline;
+}
+
+.tabbed-body {
+  z-index: -2;
+  left: 0;
+  top: 34px;
+  bottom: 0;
+  right: 0;
+  padding: 20px 0;
+  background-color: $gray-color-light;
+  border-top: 2px solid $gray-color;
+}
+
+.tabbed-nav {
+  margin-left: -1px;
+  position: relative;
+  left: 1px;
+  display: inline-block;
+  padding: 5px 10px;
+  border-bottom: 2px solid transparent;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.tabbed-item:target {
+  .tabbed-nav {
+    border-color: $primary-color;
+    color: $primary-color;
+    z-index: 2;
+  }
+  .tabbed-body {
+    position: absolute;
+    z-index: 1;
+  }
+}
+
+.tabbed-item:not(:target) {
+  .tabbed-nav {
+    border-bottom: 0;
+    color: $dark-color;
+  }
+  .tabbed-body {
+    position: absolute;
+    visibility: collapse;
+  }
+}

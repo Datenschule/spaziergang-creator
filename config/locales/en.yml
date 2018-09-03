@@ -22,14 +22,18 @@ en:
     confirm: "We need your current password to save the changes."
   user:
     name: "User"
+    last_login: "last login"
     edit: "edit"
+    saved: "saved"
+    not_saved: "could not be saved"
     delete: "Cancel my account"
     delete_notice: "Do you really want to cancel your account?"
     delete_blurb: "We only delete your account and personal data. Existing public walks will stay online. Please delete them manually if you want to do so."
 
   walk:
     singular: "Walk"
-    plural: "All walks"
+    plural: "Walks"
+    all: "All walks"
     new: "New walk"
     own: "Your walks"
     new_verb: "Create new walk"
@@ -161,3 +165,12 @@ en:
   data_protection:
     title: "Data protection statement"
     content: "content missing"
+
+  admin:
+    dash: "Admin dashboard"
+    numbers: "Some numbers"
+    admin: "Give admin powers"
+    unadmin: "Revoke admin powers"
+    deleted: "deleted"
+    delete: "Do you really want to delete this user? This cannot be undone!"
+    delete_notice: "Delete user"

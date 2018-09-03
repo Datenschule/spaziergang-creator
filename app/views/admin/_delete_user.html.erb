@@ -1,0 +1,10 @@
+<%= form_for :user,
+  method: :delete,
+  url: user_path(user),
+  data: { confirm: t('admin.delete') },
+  html: {class: 'd-inline'} do %>
+  <button class="btn btn-error tooltip"
+          data-tooltip="<%= t('admin.delete_notice') %> <%= user.email %>">
+    <i data-feather="trash-2"></i>
+  </button>
+<% end  %>

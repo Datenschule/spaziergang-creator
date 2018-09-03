@@ -21,5 +21,6 @@ class Page < ApplicationRecord
   def page_access?(current_user)
     return false unless current_user
     return true if current_user.id == user_id
+    return true if current_user.admin?
   end
 end

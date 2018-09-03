@@ -1,8 +1,42 @@
 require 'rails_helper'
 
 RSpec.describe PagesController, type: :controller do
-  describe 'GET index' do
-    pending 'renders template for admin'
+  describe 'protects private user content' do
+    context 'as regular user' do
+      let!(:user1) { create(:user) }
+      let!(:user2) { create(:user) }
+      let(:walk) { create(:walk, user: user2)}
+      let(:station) { create(:station, user: user2, walk: walk) }
+      let(:subject) { create(:subject, user: user2, station: station)}
+      let!(:page) { create(:page, user: user2, subject: subject) }
+      before do
+        allow(controller).to receive :authenticate_user!
+        allow(controller).to receive(:current_user).and_return(user1)
+      end
+
+      it 'renders 403 when trying to access others content' do
+        get :show, params: { locale: :de, id: page.id }
+        expect(response.status).to eq 403
+      end
+    end
+
+    context 'as admin' do
+      let!(:admin) { create(:user, admin: true) }
+      let!(:user2) { create(:user) }
+      let(:walk) { create(:walk, user: user2)}
+      let(:station) { create(:station, user: user2, walk: walk) }
+      let(:subject) { create(:subject, user: user2, station: station)}
+      let!(:page) { create(:page, user: user2, subject: subject) }
+      before do
+        allow(controller).to receive :authenticate_user!
+        allow(controller).to receive(:current_user).and_return(admin)
+      end
+
+      it 'allows access' do
+        get :show, params: { locale: :de, id: page.id }
+        expect(response).to render_template('show')
+      end
+    end
   end
 
   describe 'GET show' do

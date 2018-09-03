@@ -3,17 +3,34 @@ require 'rails_helper'
 
 RSpec.describe WalksController, type: :controller do
   describe 'protects private user content' do
-    let!(:user1) { create(:user) }
-    let!(:user2) { create(:user) }
-    let!(:walk) { create(:walk, user: user2)}
-    before do
-      allow(controller).to receive :authenticate_user!
-      allow(controller).to receive(:current_user).and_return(user1)
+    context 'as regular user' do
+      let!(:user1) { create(:user) }
+      let!(:user2) { create(:user) }
+      let!(:walk) { create(:walk, user: user2)}
+      before do
+        allow(controller).to receive :authenticate_user!
+        allow(controller).to receive(:current_user).and_return(user1)
+      end
+
+      it 'renders 403 when trying to access others content' do
+        get :show, params: { locale: :de, id: walk.id }
+        expect(response.status).to eq 403
+      end
     end
 
-    it 'renders 403 when trying to access others content' do
-      get :show, params: { locale: :de, id: walk.id }
-      expect(response.status).to eq 403
+    context 'as admin' do
+      let!(:admin) { create(:user, admin: true) }
+      let!(:user) { create(:user) }
+      let!(:walk) { create(:walk, user: user)}
+      before do
+        allow(controller).to receive :authenticate_user!
+        allow(controller).to receive(:current_user).and_return(admin)
+      end
+
+      it 'allows access' do
+        get :show, params: { locale: :de, id: walk.id }
+        expect(response).to render_template('show')
+      end
     end
   end
 
