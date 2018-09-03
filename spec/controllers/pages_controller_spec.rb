@@ -66,9 +66,14 @@ RSpec.describe PagesController, type: :controller do
         allow(controller).to receive :authenticate_user!
         allow(controller).to receive(:current_user).and_return(user)
       end
-      it 'redirects to page show' do
-        post :create, params: { locale: :de, subject_id: subject.id,
-                                page: { name: 'Foo page', variant: 'story', content: 'Yeah yeah'}}
+      it 'saves and redirects to page show' do
+        expect {
+          post :create,
+               params: { locale: :de, subject_id: subject.id,
+                         page: { name: 'Foo page',
+                                 variant: 'story',
+                                 content: 'Yeah yeah'}}
+        }.to change { Page.count }.by 1
         expect(response).to be_redirect
         expect(response.location).to match page_path Page.last
         expect(flash[:notice]).to eq I18n.t('page.saved')
@@ -76,7 +81,24 @@ RSpec.describe PagesController, type: :controller do
     end
 
     context 'with invalid params' do
-      pending 'does not redirect'
+      let(:user) { create(:user) }
+      let(:walk) { create(:walk, user: user) }
+      let(:station) { create(:station, user: user, walk: walk) }
+      let(:subject) { create(:subject, user: user, station: station) }
+      before do
+        allow(controller).to receive :authenticate_user!
+        allow(controller).to receive(:current_user).and_return(user)
+      end
+      it 'does not save nor redirect' do
+        expect {
+          post :create,
+               params: { locale: :de, subject_id: subject.id,
+                         page: { name: nil,
+                                 variant: nil,
+                                 content: nil}}
+        }.to_not change { Page.count }
+        expect(response).to_not be_redirect
+      end
     end
   end
 
@@ -103,13 +125,15 @@ RSpec.describe PagesController, type: :controller do
     let(:walk) { create(:walk, user: user) }
     let(:station) { create(:station, user: user, walk: walk) }
     let(:subject) { create(:subject, user: user, station: station) }
-    let(:page) { create(:page, user: user, subject: subject) }
+    let!(:page) { create(:page, user: user, subject: subject) }
     before do
       allow(controller).to receive :authenticate_user!
       allow(controller).to receive(:current_user).and_return(user)
     end
     it 'redirects to subject show' do
-      delete :destroy, params: { locale: :de, id: page.id }
+      expect {
+        delete :destroy, params: { locale: :de, id: page.id }
+      }.to change { Page.count }.by -1
       expect(response).to be_redirect
       expect(response.location).to match subject_path subject.id
       expect(flash[:notice]).to eq I18n.t('page.deleted')
@@ -134,6 +158,29 @@ RSpec.describe PagesController, type: :controller do
   end
 
   describe 'PUT update_after_sort' do
-    pending 'prev and next logic'
+    let(:user) { create(:user) }
+    let(:walk) { create(:walk, user: user) }
+    let(:station) { create(:station, user: user, walk: walk) }
+    let(:subject) { create(:subject, user: user, station: station) }
+    let!(:pages) { create_list(:page, 2, user: user, subject: subject,
+                              variant: "story") }
+    let(:data) {{ locale: :de,
+                  subject_id: subject.id,
+                  page: {},
+                  data: [{ id: pages[0].id, pos: 1 },
+                         { id: pages[1].id, pos: 0 }] }}
+    before do
+      allow(controller).to receive :authenticate_user!
+      allow(controller).to receive(:current_user).and_return(user)
+    end
+
+    it 'prev and next logic' do
+      expect(Page.last.priority).to eq -1
+      expect(Page.first.priority).to eq -1
+      put :update_after_sort, params: data
+      expect(response.status).to eq 204
+      expect(Page.last.priority).to eq 0
+      expect(Page.first.priority).to eq 1
+    end
   end
 end

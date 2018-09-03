@@ -45,9 +45,11 @@ RSpec.describe SubjectsController, type: :controller do
         allow(controller).to receive :authenticate_user!
         allow(controller).to receive(:current_user).and_return(user)
       end
-      it 'redirects to subject path' do
-        post :create, params: { locale: :de, station_id: station.id,
-                                subject: { name: 'Foo', description: 'barbar'}}
+      it 'saves and redirects to subject path' do
+        expect {
+          post :create, params: { locale: :de, station_id: station.id,
+                                  subject: { name: 'Foo', description: 'barbar'}}
+        }.to change { Subject.count }.by 1
         expect(response).to be_redirect
         expect(response.location).to match subject_path Subject.last
         expect(flash[:notice]).to eq I18n.t('subject.saved')
@@ -55,7 +57,20 @@ RSpec.describe SubjectsController, type: :controller do
     end
 
     context 'with invalid attributes' do
-      pending 'does not redirect'
+      let(:user) { create(:user) }
+      let(:walk) { create(:walk, user: user) }
+      let(:station) { create(:station, user: user, walk: walk) }
+      before do
+        allow(controller).to receive :authenticate_user!
+        allow(controller).to receive(:current_user).and_return(user)
+      end
+      it 'does not save nor redirect' do
+        expect {
+          post :create, params: { locale: :de, station_id: station.id,
+                                  subject: { name: nil, description: nil}}
+        }.to_not change { Subject.count }
+        expect(response).to_not be_redirect
+      end
     end
   end
 
