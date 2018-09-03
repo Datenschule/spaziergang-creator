@@ -36,17 +36,21 @@ RSpec.describe StationsController, type: :controller do
   end
 
   describe 'POST create' do
-    let(:user) { create(:user) }
-    let(:walk) { create(:walk, user: user) }
+    let!(:user) { create(:user) }
+    let!(:walk) { create(:walk, user: user) }
+    let!(:params) {{ locale: :de, walk_id: walk.id,
+                     user_id: user.id,
+                     station: { name: 'foo', description: 'barbaz',
+                                lat: 0.0, lon: 0.0 }}}
     before do
       allow(controller).to receive :authenticate_user!
       allow(controller).to receive(:current_user).and_return(user)
     end
     context 'with valid attributes' do
-      it 'should save the station and redirect' do
-        post :create, params: { locale: :de, walk_id: walk.id, user_id: user.id,
-                                station: { name: 'foo', description: 'barbaz',
-                                           lat: 0.0, lon: 0.0 }}
+      it 'should save and redirect' do
+        expect do
+          post :create, params: params
+        end.to change{ Station.count }.by(1)
         expect(response).to be_redirect
         expect(response.location).to match station_path Station.last
         expect(flash[:notice]).to match I18n.t('station.saved')
@@ -54,7 +58,13 @@ RSpec.describe StationsController, type: :controller do
     end
 
     context 'with invalid attributes' do
-      pending 'should not save nor redirect'
+      it 'should not save the station' do
+        expect {
+          post :create, params: {locale: :de, user: user,
+                                 walk_id: walk.id, station: {foo: 'bar'}}
+        }.to_not change { Station.count }
+        expect(response).to_not be_redirect
+      end
     end
   end
 
@@ -91,13 +101,15 @@ RSpec.describe StationsController, type: :controller do
   describe 'DELETE destroy' do
     let(:user) { create(:user) }
     let(:walk) { create(:walk, user: user) }
-    let(:station) { create(:station, user: user, walk: walk) }
+    let!(:station) { create(:station, user: user, walk: walk) }
     before do
       allow(controller).to receive :authenticate_user!
       allow(controller).to receive(:current_user).and_return(user)
     end
     it 'redirects to walk' do
-      delete :destroy, params: { locale: :de, id: station.id }
+      expect {
+        delete :destroy, params: { locale: :de, id: station.id }
+      }.to change { Station.count }.by(-1)
       expect(response).to be_redirect
       expect(response.location).to match walk_path walk
     end
@@ -118,6 +130,23 @@ RSpec.describe StationsController, type: :controller do
   end
 
   describe 'PUT update_after_sort' do
-    pending 'saves station priorities'
+    let(:user) { create(:user) }
+    let(:walk) { create(:walk, user: user) }
+    let(:stations) { create_list(:station, 3, user: user, walk: walk) }
+    let(:data) {{ locale: :de,
+                  walk_id: walk.id,
+                  station: {},
+                  data: [{ id: stations[0].id, pos: 2 },
+                         { id: stations[1].id, pos: 0 },
+                         { id: stations[2].id, pos: 1 }] }}
+    before do
+      allow(controller).to receive :authenticate_user!
+      allow(controller).to receive(:current_user).and_return(user)
+    end
+    it 'saves station priorities' do
+      put :update_after_sort, params: data
+      expect(response).to_not be_redirect
+      expect(response.status).to be 204
+    end
   end
 end
