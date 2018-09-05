@@ -1,8 +1,38 @@
 require 'rails_helper'
 
 RSpec.describe StationsController, type: :controller do
-  describe 'GET index' do
-    pending 'shows all stations for admins'
+  describe 'protects private user content' do
+    context 'as regular user' do
+      let!(:user1) { create(:user) }
+      let!(:user2) { create(:user) }
+      let!(:walk) { create(:walk, user: user2)}
+      let!(:station) { create(:station, user: user2, walk: walk) }
+      before do
+        allow(controller).to receive :authenticate_user!
+        allow(controller).to receive(:current_user).and_return(user1)
+      end
+
+      it 'renders 403 when trying to access others content' do
+        get :show, params: { locale: :de, id: station.id }
+        expect(response.status).to eq 403
+      end
+    end
+
+    context 'as admin' do
+      let!(:admin) { create(:user, admin: true) }
+      let!(:user2) { create(:user) }
+      let!(:walk) { create(:walk, user: user2)}
+      let!(:station) { create(:station, user: user2, walk: walk) }
+      before do
+        allow(controller).to receive :authenticate_user!
+        allow(controller).to receive(:current_user).and_return(admin)
+      end
+
+      it 'allows access' do
+        get :show, params: { locale: :de, id: station.id }
+        expect(response).to render_template('show')
+      end
+    end
   end
 
   describe 'GET show' do
@@ -15,7 +45,7 @@ RSpec.describe StationsController, type: :controller do
     end
 
     it 'renders show template' do
-      get :show, params: { locale: :de, user_id: user.id, id: station.id }
+      get :show, params: { locale: :de, id: station.id }
       expect(response).to render_template('show')
       expect(response.body).to match station.name
     end

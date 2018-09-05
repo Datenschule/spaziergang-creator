@@ -1,21 +1,19 @@
 <li class="">
   <div class="tile tile-centered">
     <div class="tile-icon">
-      <div class="tile-icon">
-        <% if walk.public && action_name == 'private' %>
-          <span class="tooltip" data-tooltip="<%= t 'walk.public' %>">
-            <i data-feather="globe"></i>
-          </span>
-        <% else %>
-          <i data-feather="map"></i>
-        <% end %>
-      </div>
+      <% if walk.public && action_name == 'private' %>
+        <span class="tooltip" data-tooltip="<%= t 'walk.public' %>">
+          <i data-feather="globe"></i>
+        </span>
+      <% else %>
+        <i data-feather="map"></i>
+      <% end %>
     </div>
     <div class="tile-content">
       <div class="tile-title"><%= link_to walk.name, walk_path(walk) %></div>
       <div class="tile-subtitle text-gray">
         <% if action_name == 'index' %>
-          <%= t 'walk.made_by' %> <%= walk.user.email %>
+          <%= t 'walk.made_by' %> <%= walk.user.email? ? walk.user.email : 'anon' %>
         <% else %>
           <%= pluralize(walk.stations.size, t('station.singular'), t('station.plural')) %> |
           <%= t 'last_edited' %> <%= walk.updated_at.strftime '%d.%m.%Y %H:%M' %>

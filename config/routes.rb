@@ -4,11 +4,16 @@ Rails.application.routes.draw do
   scope '/:locale', locale: /de|en/, defaults: {format: 'html'} do
     devise_for :users
 
+    resources :users, only: [:update, :destroy]
+
     root 'static#index'
 
     get '/onboarding', controller: :static, action: :onboarding
     get '/impressum', controller: :static, action: :impressum
     get '/datenschutzerklaerung', controller: :static, action: :data_protection
+
+    resources :admin do
+    end
 
     resources :walks do
       get '/private', to: 'walks#private', on: :collection

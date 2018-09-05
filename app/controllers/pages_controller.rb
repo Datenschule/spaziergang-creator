@@ -2,19 +2,10 @@ class PagesController < ApplicationController
   include PagesHelper
   before_action :authenticate_user!
   before_action :set_page, only: [:show, :edit, :update, :destroy]
-  before_action :set_subject, only: [:index, :new, :create]
+  before_action :set_subject, only: [:new, :create]
   before_action :ensure_user_rights, only: [:show, :edit, :update, :destroy]
 
   include BreadcrumbsHelper
-
-  def index
-    @pages = Page.where(subject_id: @subject.id)
-
-    breadcrumb_walk_helper(@page.subject.station.walk)
-    breadcrumb_station_helper(@page.subject.station)
-    breadcrumb_subject_helper(@page.subject)
-    add_breadcrumb t('page.plural'), subject_pages_path(@subject)
-  end
 
   def show
     @challenges = pages_parse_challenges @page.challenges if @page.challenges.present?
@@ -107,7 +98,7 @@ class PagesController < ApplicationController
   private
 
   def ensure_user_rights
-    render_403 unless current_user == @page.user
+    render_403 unless current_user == @page.user || current_user.admin?
   end
 
   def set_page

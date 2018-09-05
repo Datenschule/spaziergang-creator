@@ -6,12 +6,6 @@ class StationsController < ApplicationController
 
   include BreadcrumbsHelper
 
-  def index
-    @stations = Station.all.select do |s|
-      s.walk.user == current_user
-    end
-  end
-
   def show
     breadcrumb_walk_helper(@station.walk)
     breadcrumb_station_helper(@station)
@@ -75,7 +69,7 @@ class StationsController < ApplicationController
   private
 
   def ensure_user_rights
-    render_403 unless current_user == @station.user
+    render_403 unless current_user == @station.user || current_user.admin?
   end
 
   def set_station_next(i)

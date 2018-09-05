@@ -1,0 +1,11 @@
+<%= form_for :user,
+  method: :patch,
+  url: user_path(user),
+  html: { class: "d-inline-block" } do |f| %>
+  <%= f.hidden_field :admin, value: (user.admin? ? false : true) %>
+  <button type="submit"
+          class="btn btn-secondary tooltip"
+          data-tooltip="<%= (user.admin? ? t('admin.unadmin') : t('admin.admin')) %>">
+    <i data-feather="<%= (user.admin? ? 'sunset' : 'sunrise') %>"></i>
+  </button>
+<% end %>

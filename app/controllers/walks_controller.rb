@@ -81,7 +81,7 @@ class WalksController < ApplicationController
   private
 
   def ensure_user_rights
-    render_403 unless current_user == @walk.user
+    render_403 unless current_user == @walk.user || current_user.admin?
   end
 
   def save_station_order(stations)

@@ -22,14 +22,18 @@ de:
     confirm: "Wir brauchen dein aktuelles Passwort um die Änderungen zu speichern."
   user:
     name: "Nutzer"
+    last_login: "letzter Login"
     edit: "bearbeiten"
+    saved: "gespeichert"
+    not_saved: "konnte nicht gespeichert werden"
     delete: "Mein Konto löschen"
     delete_notice: "Willst du dein Konto wirklich löschen?"
     delete_blurb: "Es wird nur dein Konto mit den persönlichen Daten gelöscht. Bestehende öffentliche Spaziergänge bleiben weiterhin zugänglich. Lösche diese manuell falls gewünscht."
 
   walk:
     singular: "Spaziergang"
-    plural: "Alle Spaziergänge"
+    plural: "Spaziergänge"
+    all: "Alle Spaziergänge"
     new: "Neuer Spaziergang"
     own: "Deine Spaziergänge"
     new_verb: "Neuen Spaziergang erstellen"
@@ -161,3 +165,12 @@ de:
   data_protection:
     title: "Datenschutzerklärung"
     content: "content missing"
+
+  admin:
+    dash: "Admin dashboard"
+    numbers: "Ein paar Zahlen"
+    admin: "Adminrechte geben"
+    unadmin: "Adminrechte nehmen"
+    deleted: "gelöscht"
+    delete: "Willst du diesen Nutzer wirklich löschen? Das ist unwiderruflich!"
+    delete_notice: "Nutzer löschen"
