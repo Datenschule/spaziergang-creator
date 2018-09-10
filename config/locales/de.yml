@@ -23,6 +23,7 @@ de:
   user:
     name: "Nutzer"
     last_login: "letzter Login"
+    anon: "anonym"
     edit: "bearbeiten"
     saved: "gespeichert"
     not_saved: "konnte nicht gespeichert werden"

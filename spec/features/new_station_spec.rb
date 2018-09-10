@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.feature 'Create new station', type: :feature do
   context 'when user is signed in and walk exists' do
-    user = FactoryBot.create(:user)
-    let!(:walk) { FactoryBot.create(:walk, user: user)}
+    let!(:user) { FactoryBot.create(:user) }
+    let!(:walk) { FactoryBot.create(:walk, user: user) }
 
     it 'user can add new station' do
       sign_in user
