@@ -50,7 +50,6 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = false
 
   config.include FactoryBot::Syntax::Methods
-  config.include RequestSpecHelper, type: :request
   config.include Shoulda::Matchers::ActiveModel, type: :model
   config.include Shoulda::Matchers::ActiveRecord, type: :model
   config.include Capybara::DSL
