@@ -1,0 +1,8 @@
+<% form_for :walk, method: :patch,
+  url: walk_path(@walk) do |f| %>
+  <%= f.hidden_field :public, value: true %>
+  <button type="submit" class="btn tooltip" data-tooltip="<%= t 'walk.publish' %>">
+    <i data-feather="globe"><%= t 'walk.publish' %></i>
+    hhellpo
+  </button>
+<% end %>
