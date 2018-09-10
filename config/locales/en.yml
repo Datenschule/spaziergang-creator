@@ -23,6 +23,7 @@ en:
   user:
     name: "User"
     last_login: "last login"
+    anon: "anonymous"
     edit: "edit"
     saved: "saved"
     not_saved: "could not be saved"

@@ -13,7 +13,7 @@
       <div class="tile-title"><%= link_to walk.name, walk_path(walk) %></div>
       <div class="tile-subtitle text-gray">
         <% if action_name == 'index' %>
-          <%= t 'walk.made_by' %> <%= walk.user.email? ? walk.user.email : 'anon' %>
+          <%= t 'walk.made_by' %> <%= walk.user.username? ? walk.user.username : t('user.anon') %>
         <% else %>
           <%= pluralize(walk.stations.size, t('station.singular'), t('station.plural')) %> |
           <%= t 'last_edited' %> <%= walk.updated_at.strftime '%d.%m.%Y %H:%M' %>
