@@ -1,6 +1,6 @@
 <div class="container">
   <div class="columns">
-    <div class="column col-7 col-mr-auto">
+    <div class="column col-7 col-md-12 col-mr-auto">
       <div class="columns">
         <div class="column col-8">
           <h1><%= @walk.name %></h1>
@@ -25,7 +25,7 @@
 
       <%= render 'stations/list' %>
     </div>
-    <div class="column col-5">
+    <div class="column col-5 col-md-10">
       <% if @walk.stations.size >= 1 %>
         <div id="big-map" data-courseline="<%= @walk.courseline if @walk.courseline.present? %>"></div>
       <% end %>

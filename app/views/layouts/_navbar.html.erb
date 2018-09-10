@@ -26,6 +26,8 @@
             </li>
           </ul>
         </div>
+      <% else %>
+        <%= link_to t('signin.label'), new_user_session_path %>
       <% end %>
       <div class="language-switch">
         <%= link_to "EN", url_for( :locale => 'en' ), class: ('active' if params[:locale] == 'en') %>

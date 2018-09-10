@@ -1,6 +1,6 @@
 <div class="container">
   <div class="columns">
-    <div class="column col-5 col-mx-auto">
+    <div class="column col-5 col-md-10 col-mx-auto">
       <h2><%= t("user.name") %> <%= t("user.edit") %></h2>
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -48,7 +48,7 @@
     </div>
   </div>
   <div class="columns">
-    <div class="space-t column col-5 col-mx-auto">
+    <div class="space-t column col-5 col-md-10 col-mx-auto">
       <h3><%= t("user.delete") %></h3>
 
       <p><%= t('user.delete_blurb') %>

@@ -3,7 +3,7 @@
     <h1 class="column col-12 mb-2"><%= t('walk.new_verb') %></h1>
   </div>
   <div class="columns">
-    <div class="column col-8">
+    <div class="column col-8 col-md-10">
       <%= form_for :walk, method: :post, url: walks_path do |f| %>
         <%=  render 'walks/form',  f: f %>
       <% end %>

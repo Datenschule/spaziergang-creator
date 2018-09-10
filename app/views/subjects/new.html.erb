@@ -3,7 +3,7 @@
     <h1 class="column col-12 mb-2"><%= t('subject.new_verb') %></h1>
   </div>
   <div class="columns">
-    <div class="column col-7">
+    <div class="column col-7 col-md-10">
       <%= form_for :subject, method: :post, url: station_subjects_path(@station) do |f| %>
         <%= render "form", f: f %>
       <% end %>

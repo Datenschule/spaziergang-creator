@@ -1,13 +1,13 @@
 <% if @page.variant == 'story'%>
   <% if @page.content.present? %>
-    <div class="column col-6">
+    <div class="column col-6 col-md-10">
       <h2 class="h4"><%= t('form.content')%></h2>
       <div class="box pt-2"><%= simple_format @page.content %></div>
     </div>
   <% end %>
 
   <% if @challenges %>
-    <div class="column col-6">
+    <div class="column col-6 col-md-10">
       <h2 class="h4">Challenges</h2>
       <ol class="box pb-2 no-m">
         <% @challenges.each do |challenge| %>

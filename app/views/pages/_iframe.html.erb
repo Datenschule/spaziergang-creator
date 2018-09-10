@@ -1,6 +1,6 @@
 <% if @page.variant == 'iframe' %>
   <% if @page.link.present? %>
-    <div class="column col-8">
+    <div class="column col-8 col-md-10">
       <iframe width="790" height="400" src="<%= @page.link %>"></iframe>
       <p class="bg-gray p-2"><%=  t('page.iframe_csp') %></p>
     </div>

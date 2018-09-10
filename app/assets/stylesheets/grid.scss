@@ -1,0 +1,31 @@
+$md: 840px;
+
+
+.order-0 {
+  order: 0;
+}
+.order-1 {
+  order: 1;
+}
+
+.order-2 {
+  order: 2;
+}
+
+
+.order-md-0 {
+  @media (max-width: $md) {
+    order: 0;
+  }
+}
+.order-md-1 {
+  @media (max-width: $md) {
+    order: 1;
+  }
+}
+
+.order-md-2 {
+  @media (max-width: $md) {
+    order: 2;
+  }
+}

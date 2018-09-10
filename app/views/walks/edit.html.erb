@@ -3,7 +3,7 @@
     <h1 class="column col-12 mb-2"><%= @walk.name%> <%= t('walk.edit_verb') %> </h1>
   </div>
   <div class="columns">
-    <div class="column col-8">
+    <div class="column col-8 col-md-10">
       <%= form_for :walk, method: :patch, url: walk_path(@walk) do |f| %>
         <%=  render 'walks/form',  f: f %>
       <% end %>

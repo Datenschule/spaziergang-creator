@@ -18,7 +18,7 @@
   </div>
 
   <div class="columns">
-    <div class="column col-6">
+    <div class="column col-6 col-md-12">
       <div id="course-initial-load" class="loading loading-lg"></div>
 
       <div id="course-app-section">
@@ -70,23 +70,25 @@
             </li>
           <% end %>
         </ul>
-
-        <div class="space-t">
-          <p id="courseline-saving" class="d-none">
-            <span class="loading pr-2"></span>
-            <span class="pl-2"><%= t 'saving' %>...</span>
-          </p>
-          <p id="courseline-changed" class="d-none bg-warning p-2">
-            <i data-feather="alert-circle" class="va-middle"></i>
-            <%= t 'walk.course.save_note' %></p>
-          <button type="button" class="btn btn-secondary courseline-save" id="courseline-save">Route speichern</button>
-        </div>
       </div>
     </div>
 
-    <div class="column col-6 relative">
+    <div class="column col-6 col-md-12 relative">
       <div id="course-activate-info" class="map-overlay"><%= t 'walk.course.map_note' %></div>
       <div id="route-map" data-courseline="<%= @walk.courseline if @walk.courseline.present? %>"></div>
+    </div>
+
+    <div class="column col-12">
+      <div class="space-t">
+        <p id="courseline-saving" class="d-none">
+          <span class="loading pr-2"></span>
+          <span class="pl-2"><%= t 'saving' %>...</span>
+        </p>
+        <p id="courseline-changed" class="d-none bg-warning p-2">
+          <i data-feather="alert-circle" class="va-middle"></i>
+          <%= t 'walk.course.save_note' %></p>
+        <button type="button" class="btn btn-secondary courseline-save" id="courseline-save">Route speichern</button>
+      </div>
     </div>
   </div>
 </div>

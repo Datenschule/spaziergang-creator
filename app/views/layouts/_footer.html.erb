@@ -1,6 +1,6 @@
 <footer class="container legal">
   <div class="columns">
-    <div class="column col-3 col-ml-auto text-right">
+    <div class="column col-4 col-md-12 col-ml-auto text-right">
       <%= link_to t('imprint.title'), impressum_path() %>
       <%= link_to t('data_protection.title'), datenschutzerklaerung_path(), class: 'ml-2' %>
     </div>
@@ -8,15 +8,15 @@
 </footer>
 <footer class="container footer">
   <div class="columns">
-    <div class="column col-2">
+    <div class="column col-2 col-md-2 col-xs-8">
       <p><%= image_tag("Logo_okfde_white_scaled.png", alt: "OKF DE logo", class: "footer-logo") %></p>
     </div>
-    <div class="column col-3">
+    <div class="column col-3 col-md-5 col-xs-10">
       <p><%= t 'app_about' %></p>
       <p><%= t(:app_license) %>
       <%= link_to t('link_github'), "https://github.com/Datenschule/spaziergang-creator"%></p>
     </div>
-    <div class="column col-3">
+    <div class="column col-3 col-md-5 col-xs-10">
       <a href="https://spaziergang.datenschule.de/"><%= t :mobile_app %></a>
     </div>
   </div>
