@@ -14,7 +14,9 @@ RSpec.feature 'Order stations and set routes', type: :feature do
 
     scenario 'cannot find route button' do
       sign_in_go_to_walk_page
-      expect(page).to_not have_css('[data-tooltip="Set route"]')
+      within '.walk-container' do
+        expect(page).to_not have_css('[data-tooltip="Set route"]')
+      end
     end
   end
 
@@ -49,7 +51,9 @@ RSpec.feature 'Order stations and set routes', type: :feature do
   end
 
   def click_route_btn_get_redirected_to_order
-    find('[data-tooltip="Set route"]').click
+    within '.walk-container' do
+      find('[data-tooltip="Set route"]').click
+    end
     expect(page).to have_content I18n.t('walk.notice.force_sort')
     expect(page).to have_content I18n.t('walk.course.title')
     click_button I18n.t('station.save_order')
