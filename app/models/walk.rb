@@ -11,7 +11,7 @@ class Walk < ApplicationRecord
   end
 
   def publishable?
-    stations.count > 2 &&
+    stations.count >= 2 &&
       courseline.present? &&
       stations.first.subjects.present? &&
       stations.first.subjects.first.pages.present? &&
