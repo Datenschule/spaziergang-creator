@@ -47,8 +47,18 @@ en:
     delete: "Delete walk"
     deleted: "Walk deleted!"
     public: "public"
+    publish:
+      btn_tooltip: "Publish walk"
+      can: "You can publish your walk now."
+      cannot: "You cannot publish your walk right now."
+      step_walk: "Walk created"
+      step_station: "Added at least 2 stations"
+      step_course: "Set route"
+      step_subject: "Added at last 1 topic"
+      step_page: "Added at least 1 page"
     made_by: "created by"
     course:
+      name: "Route"
       label: "Set route"
       title: "Set route for"
       reset: "Reset route"

@@ -47,8 +47,18 @@ de:
     delete: "Spaziergang löschen"
     deleted: "Spaziergang gelöscht!"
     public: "öffentlich"
+    publish:
+      btn_tooltip: "Spaziergang veröffentlichen"
+      can: "Du kannst den spaziergang jetzt veröffentlichen."
+      cannot: "Du kannst deinen Spaziergang noch nicht veröffentlichen."
+      step_walk: "Spaziergang erstellt"
+      step_station: "Mindestens 2 Stationen hinzugefügt"
+      step_course: "Laufroute hinzugefügt"
+      step_subject: "Mindestens 1 Thema hinzugefügt"
+      step_page: "Mindestens 1 Seite hinzugefügt"
     made_by: "erstellt von"
     course:
+      name: "Laufroute"
       label: "Route festlegen"
       title: "Route festlegen für"
       reset: "Laufroute zurücksetzen"

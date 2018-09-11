@@ -4,7 +4,7 @@
       <div class="column col-6 col-md-10 col-mx-auto box">
         <div class="columns">
           <div class="column col-10">
-            <p class="va-middle  m-2">Du kannst den spaziergang jetzt veröffentlichen</p>
+            <p class="va-middle  m-2"><%= t('walk.publish.can') %></p>
           </div>
           <div class="column col-2 text-right">
             <%= render "walks/publish"%>
@@ -13,47 +13,50 @@
       </div>
     <% else %>
       <div class="column col-12 box">
-        <p class="mt-2">Du kannst deinen Spaziergang noch nicht veröffentlichen.</p>
+        <p class="mt-2"><%= t('walk.publish.cannot') %></p>
         <ul class="step mt-2 mb-2">
           <li class="step-item <%= 'active' if walks_public_status_helper == 'walk' %>">
-            <%= link_to 'Spaziergang', walk_path(@walk),
-            data: { tooltip: "Spaziergang erstellt" },
+            <%= link_to t('walk.singular'), walk_path(@walk),
+            data: { tooltip: t('walk.publish.step_walk') },
             class: "tooltip"%>
           </li>
 
           <li class="step-item <%= 'active' if walks_public_status_helper == 'station' %>">
-            <%= link_to 'Station', new_walk_station_path(@walk),
-            data: { tooltip: "Mindestens 2 Stationen hinzugefügt" },
+            <%= link_to t('station.singular'), new_walk_station_path(@walk),
+            data: { tooltip: t('walk.publish.step_station') },
             class: "tooltip"%>
           </li>
 
           <li class="step-item <%= 'active' if walks_public_status_helper == 'courseline' %>">
             <% if @walk.stations.count >= 2 %>
-              <%= link_to 'Laufroute', route_walk_path(@walk),
-              data: { tooltip: "Laufroute hinzugefügt" },
+              <%= link_to t('walk.course.name'), route_walk_path(@walk),
+              data: { tooltip: t('walk.publish.step_course') },
               class: "tooltip"%>
             <% else %>
-              <a disabled="disabled" class="tooltip" data-tooltip="Laufroute hinzugefügt">Laufroute</a>
+              <a disabled="disabled" class="tooltip"
+                 data-tooltip="<%= t('walk.publish.step_course')%>"><%= t('walk.course.name')%></a>
             <% end %>
           </li>
 
           <li class="step-item <%= 'active' if walks_public_status_helper == 'subject' %>">
             <% if @walk.stations.first.present? %>
-              <%= link_to 'Thema', new_station_subject_path(@walk.stations.first),
-              data: { tooltip: "Mindestens 1 Thema hinzugefügt" },
+              <%= link_to t('subject.singular'), new_station_subject_path(@walk.stations.first),
+              data: { tooltip: t('walk.publish.step_subject') },
               class: "tooltip"%>
             <% else %>
-              <a disabled="disabled" class="tooltip" data-tooltip="Mindestens 1 Thema hinzugefügt">Thema</a>
+              <a disabled="disabled" class="tooltip"
+                 data-tooltip="<%= t('walk.publish.step_subject')%>"><%= t('subject.singular') %></a>
             <% end %>
           </li>
 
           <li class="step-item <%= 'active' if walks_public_status_helper == 'page' %>">
             <% if @walk.stations.first.present? && @walk.stations.first.subjects.first.present? %>
-              <%= link_to 'Seite', new_subject_page_path(@walk.stations.first.subjects.first),
-              data: { tooltip: "Mindestens 1 Seite hinzugefügt" },
+              <%= link_to t('page.singular'), new_subject_page_path(@walk.stations.first.subjects.first),
+              data: { tooltip: t('walk.publish.step_page') },
               class: "tooltip"%>
             <% else %>
-              <a disabled="disabled" class="tooltip" data-tooltip="Mindestens 1 Seite hinzugefügt">Seite</a>
+              <a disabled="disabled" class="tooltip"
+                 data-tooltip="<%= t('walk.publish.step_page') %>"><%= t('page.singular') %></a>
             <% end %>
           </li>
         </ul>

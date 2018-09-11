@@ -8,7 +8,7 @@
           <h1>
             <% if @walk.public %>
               <span class="tooltip va-middle"
-                    data-tooltip="ist öffentlich">
+                    data-tooltip="<%= t('walk.public') %>">
                 <i data-feather="globe"></i></span>
             <% end %>
             <%= @walk.name %>
