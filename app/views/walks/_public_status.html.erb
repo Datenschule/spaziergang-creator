@@ -15,19 +15,19 @@
       <div class="column col-12 box">
         <p class="mt-2"><%= t('walk.publish.cannot') %></p>
         <ul class="step mt-2 mb-2">
-          <li class="step-item <%= 'active' if walks_public_status_helper == 'walk' %>">
+          <li class="step-item <%= 'active' if walks_public_status_helper(@walk) == 'walk' %>">
             <%= link_to t('walk.singular'), walk_path(@walk),
             data: { tooltip: t('walk.publish.step_walk') },
             class: "tooltip"%>
           </li>
 
-          <li class="step-item <%= 'active' if walks_public_status_helper == 'station' %>">
+          <li class="step-item <%= 'active' if walks_public_status_helper(@walk) == 'station' %>">
             <%= link_to t('station.singular'), new_walk_station_path(@walk),
             data: { tooltip: t('walk.publish.step_station') },
             class: "tooltip"%>
           </li>
 
-          <li class="step-item <%= 'active' if walks_public_status_helper == 'courseline' %>">
+          <li class="step-item <%= 'active' if walks_public_status_helper(@walk) == 'courseline' %>">
             <% if @walk.stations.count >= 2 %>
               <%= link_to t('walk.course.name'), route_walk_path(@walk),
               data: { tooltip: t('walk.publish.step_course') },
@@ -38,7 +38,7 @@
             <% end %>
           </li>
 
-          <li class="step-item <%= 'active' if walks_public_status_helper == 'subject' %>">
+          <li class="step-item <%= 'active' if walks_public_status_helper(@walk) == 'subject' %>">
             <% if @walk.stations.first.present? %>
               <%= link_to t('subject.singular'), new_station_subject_path(@walk.stations.first),
               data: { tooltip: t('walk.publish.step_subject') },
@@ -49,7 +49,7 @@
             <% end %>
           </li>
 
-          <li class="step-item <%= 'active' if walks_public_status_helper == 'page' %>">
+          <li class="step-item <%= 'active' if walks_public_status_helper(@walk) == 'page' %>">
             <% if @walk.stations.first.present? && @walk.stations.first.subjects.first.present? %>
               <%= link_to t('page.singular'), new_subject_page_path(@walk.stations.first.subjects.first),
               data: { tooltip: t('walk.publish.step_page') },
