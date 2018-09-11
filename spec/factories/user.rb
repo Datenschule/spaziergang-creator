@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :user do
-    username { Faker::Seinfeld.character.downcase.split(' ').first }
+    username { Faker::Cat.name }
     email { Faker::Internet.email }
     password 'testtesttest'
   end
