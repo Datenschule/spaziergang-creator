@@ -1,15 +1,20 @@
 <div class="container space-b">
-  <div class="columns box">
-    <div class="column col-12">
-      <h2>Spaziergang veröffentlichen</h2>
-
-      <% if @walk.publishable? %>
-        <p>Du kannst deinen Spaziergang jetzt veröffentlichen.</p>
-        <%= render 'walks/publish' %>
-      <% else %>
-
-        <p>Du kannst deinen Spaziergang noch nicht veröffentlichen.</p>
-        <ul class="step space-t space-b">
+  <div class="columns">
+    <% if @walk.publishable? %>
+      <div class="column col-6 col-md-10 col-mx-auto box">
+        <div class="columns">
+          <div class="column col-10">
+            <p class="va-middle  m-2">Du kannst den spaziergang jetzt veröffentlichen</p>
+          </div>
+          <div class="column col-2 text-right">
+            <%= render "walks/publish"%>
+          </div>
+        </div>
+      </div>
+    <% else %>
+      <div class="column col-12 box">
+        <p class="mt-2">Du kannst deinen Spaziergang noch nicht veröffentlichen.</p>
+        <ul class="step mt-2 mb-2">
           <li class="step-item <%= 'active' if walks_public_status_helper == 'walk' %>">
             <%= link_to 'Spaziergang', walk_path(@walk),
             data: { tooltip: "Spaziergang erstellt" },
@@ -52,7 +57,7 @@
             <% end %>
           </li>
         </ul>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
 </div>

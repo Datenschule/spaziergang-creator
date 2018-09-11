@@ -14,6 +14,7 @@ class Walk < ApplicationRecord
     stations.count > 2 &&
       courseline.present? &&
       stations.first.subjects.present? &&
-      stations.first.subjects.first.pages.present?
+      stations.first.subjects.first.pages.present? &&
+      !public
   end
 end

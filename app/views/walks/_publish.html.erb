@@ -1,8 +1,5 @@
-<% form_for :walk, method: :patch,
-  url: walk_path(@walk) do |f| %>
-  <%= f.hidden_field :public, value: true %>
-  <button type="submit" class="btn tooltip" data-tooltip="<%= t 'walk.publish' %>">
-    <i data-feather="globe"><%= t 'walk.publish' %></i>
-    hhellpo
-  </button>
+<%= form_for :walk, method: :patch, url: walk_path(@walk), html: { class: 'd-inline' } do |f| %>
+  <%= f.hidden_field :public %>
+  <button class="btn btn-secondary tooltip"
+          data-tooltip="Spaziergang veröffentlichen"><i data-feather="globe"></i></button>
 <% end %>
