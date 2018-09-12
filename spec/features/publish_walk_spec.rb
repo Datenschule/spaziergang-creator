@@ -13,14 +13,14 @@ RSpec.feature 'Publish a walk', type: :feature do
         expect(page).to have_content(walk.name)
       end
       expect(page).to have_selector('.walk-publish-container')
-      expect(page).to have_content I18n.t('walk.publish.cannot')
+      expect(page).to have_content "You cannot publish your walk right now."
 
       within '.walk-publish-container' do
         expect(page).to have_selector('.step-item:first-of-type.active')
         expect(page).to_not have_selector('.step-item:nth-of-type(3) a:not([disabled])')
         click_link('Station')
       end
-      expect(page).to have_content(I18n.t('station.new'))
+      expect(page).to have_content "Create new station"
 
     end
   end
@@ -36,7 +36,7 @@ RSpec.feature 'Publish a walk', type: :feature do
     scenario 'click on route link', js: true do
       sign_in user
       visit "/en/walks/#{walk.id}"
-      expect(page).to have_content I18n.t('walk.publish.cannot')
+      expect(page).to have_content "You cannot publish your walk right now."
 
       within '.walk-publish-container' do
         expect(page).to have_selector('.step-item:nth-of-type(2).active')
@@ -44,7 +44,7 @@ RSpec.feature 'Publish a walk', type: :feature do
         expect(page).to_not have_selector('.step-item:nth-of-type(5) a:not([disabled])')
         click_link('Route')
       end
-      expect(page).to have_content(I18n.t('walk.course.label'))
+      expect(page).to have_content "Set route"
     end
   end
 
@@ -61,7 +61,7 @@ RSpec.feature 'Publish a walk', type: :feature do
     scenario 'click on subject link', js: true do
       sign_in user
       visit "/en/walks/#{walk.id}"
-      expect(page).to have_content I18n.t('walk.publish.cannot')
+      expect(page).to have_content "You cannot publish your walk right now."
 
       within '.walk-publish-container' do
         expect(page).to have_selector('.step-item:nth-of-type(3).active')
@@ -69,7 +69,7 @@ RSpec.feature 'Publish a walk', type: :feature do
         expect(page).to_not have_selector('.step-item:nth-of-type(5) a:not([disabled])')
         click_link('Subject')
       end
-      expect(page).to have_content(I18n.t('subject.new_verb'))
+      expect(page).to have_content "Create new subject"
     end
   end
 
@@ -88,16 +88,17 @@ RSpec.feature 'Publish a walk', type: :feature do
     scenario 'click on page link', js: true do
       sign_in user
       visit "/en/walks/#{walk.id}"
-      expect(page).to have_content I18n.t('walk.publish.cannot')
+      expect(page).to have_content "You cannot publish your walk right now."
 
       within '.walk-publish-container' do
         expect(page).to have_selector('.step-item:nth-of-type(4).active')
         expect(page).to have_selector('.step-item:nth-of-type(5) a:not([disabled])')
         click_link('Page')
       end
-      expect(page).to have_content(I18n.t('page.new_verb'))
+      expect(page).to have_content "Create new page"
     end
   end
+
 
   context 'with a walk with a subject' do
     let!(:user) { FactoryBot.create(:user) }
@@ -114,18 +115,18 @@ RSpec.feature 'Publish a walk', type: :feature do
     scenario 'click on page link', js: true do
       sign_in user
       visit "/en/walks/#{walk.id}"
-      expect(page).to have_content I18n.t('walk.publish.cannot')
+      expect(page).to have_content "You cannot publish your walk right now."
 
       within '.walk-publish-container' do
         expect(page).to have_selector('.step-item:nth-of-type(4).active')
         expect(page).to have_selector('.step-item:nth-of-type(5) a:not([disabled])')
         click_link('Page')
       end
-      expect(page).to have_content(I18n.t('page.new_verb'))
+      expect(page).to have_content "Create new page"
     end
   end
 
-  pending 'with a publishable walk' do
+  context 'with a publishable walk' do
     let!(:user) { FactoryBot.create(:user, username: 'foobi') }
     let!(:walk) { FactoryBot.create(:walk,
                                     user: user,
@@ -139,17 +140,17 @@ RSpec.feature 'Publish a walk', type: :feature do
     let!(:page) { FactoryBot.create(:page, user: user,
                                     subject_id: subject.id) }
 
-    scenario 'click on publish button', js: true do
+    pending 'click on publish button', js: true do
       sign_in user
       visit "/en/walks/#{walk.id}"
       click_link 'Your walks'
       click_link walk.name
-      expect(page).to have_content I18n.t('walk.publish.can')
+      expect(page).to have_content "You cannot publish your walk right now."
 
       within '.walk-publish-container' do
         find('[data-tooltip="Publish walk"]').click
       end
-      expect(page).to_not have_content I18n.t('walk.publish.can')
+      expect(page).to_not have_content "You can publish your walk now."
       expect(page).to_not have_selector '.walk-publish-container'
       expect(page).to have_selector '.walk-container span[data-tooltip="public"]'
     end
