@@ -1,4 +1,4 @@
-<%= form_for :walk, method: :patch, url: walk_path(@walk), html: { class: 'd-inline' } do |f| %>
+<%= form_for :walk, method: :patch, url: walk_path(walk), html: { class: 'd-inline' } do |f| %>
   <%= f.hidden_field :public %>
   <button class="btn btn-secondary tooltip"
           data-tooltip="<%= t('walk.publish.btn_tooltip')%>"><i data-feather="globe"></i></button>

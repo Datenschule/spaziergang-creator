@@ -21,7 +21,11 @@
       </div>
     </div>
     <div class="tile-action">
-      open in app or publizise
+      open in app
+
+      <% if walk.editable_by?(current_user) && walk.publishable? %>
+        <%= render 'walks/publish', walk: walk %>
+      <% end %>
     </div>
   </div>
 </li>
