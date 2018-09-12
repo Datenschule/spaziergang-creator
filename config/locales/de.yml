@@ -46,6 +46,7 @@ de:
     edited: "Spaziergang erfolgreich bearbeitet!"
     delete: "Spaziergang löschen"
     deleted: "Spaziergang gelöscht!"
+    open_in: "In Spaziergang-App öffnen"
     public: "öffentlich"
     publish:
       btn_tooltip: "Spaziergang veröffentlichen"

@@ -1,7 +1,7 @@
 # coding: utf-8
 require 'rails_helper'
 
-RSpec.feature 'Publish a walk', type: :feature do
+RSpec.feature 'Publish a walk from walk show', type: :feature do
   context 'with a fresh walk' do
     let!(:user) { FactoryBot.create(:user) }
     let!(:walk) { FactoryBot.create(:walk, user: user) }
@@ -143,8 +143,6 @@ RSpec.feature 'Publish a walk', type: :feature do
     pending 'click on publish button', js: true do
       sign_in user
       visit "/en/walks/#{walk.id}"
-      click_link 'Your walks'
-      click_link walk.name
       expect(page).to have_content "You cannot publish your walk right now."
 
       within '.walk-publish-container' do

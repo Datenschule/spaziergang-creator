@@ -46,6 +46,7 @@ en:
     edited: "Walk successully edited!"
     delete: "Delete walk"
     deleted: "Walk deleted!"
+    open_in: "Open in Spaziergang-App"
     public: "public"
     publish:
       btn_tooltip: "Publish walk"
