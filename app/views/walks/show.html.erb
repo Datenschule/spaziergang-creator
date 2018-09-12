@@ -1,9 +1,18 @@
-<div class="container">
+<%= render 'walks/public_status' unless @walk.public %>
+
+<div class="container walk-container">
   <div class="columns">
     <div class="column col-7 col-md-12 col-mr-auto">
       <div class="columns">
         <div class="column col-8">
-          <h1><%= @walk.name %></h1>
+          <h1>
+            <% if @walk.public %>
+              <span class="tooltip va-middle"
+                    data-tooltip="<%= t('walk.public') %>">
+                <i data-feather="globe"></i></span>
+            <% end %>
+            <%= @walk.name %>
+          </h1>
           <p><%= @walk.location %></p>
           <p><%= @walk.description %></p>
         </div>

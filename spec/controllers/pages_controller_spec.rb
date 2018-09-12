@@ -4,7 +4,7 @@ RSpec.describe PagesController, type: :controller do
   describe 'protects private user content' do
     context 'as regular user' do
       let!(:user1) { create(:user) }
-      let!(:user2) { create(:user) }
+      let!(:user2) { create(:user, username: 'heyholetsgo') }
       let(:walk) { create(:walk, user: user2)}
       let(:station) { create(:station, user: user2, walk: walk) }
       let(:subject) { create(:subject, user: user2, station: station)}

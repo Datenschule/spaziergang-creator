@@ -14,11 +14,7 @@
   <p><%= t 'walk.form.help.description' %></p>
 </div>
 
-<% if action_name == 'new' %>
-  <p class="bg-gray p-2"><%= t 'walk.form.help.step' %></p>
-<% end %>
-
-<% if action_name == 'edit' %>
+<% if @walk.publishable? || @walk.public %>
   <div class="form-group">
     <%= f.label :public, class: 'form-checkbox' do %>
       <%= f.check_box :public %>
