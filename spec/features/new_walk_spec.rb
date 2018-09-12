@@ -31,7 +31,9 @@ RSpec.feature 'Create new walk', type: :feature do
 
   def go_to_new_walk
     click_link I18n.t('walk.own')
-    find_link(class: ['btn', 'tooltip']).click
+    within '.walk-header' do
+      find_link(class: ['btn', 'tooltip']).click
+    end
   end
 
   def be_redirected_to_help_page
