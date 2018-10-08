@@ -24,5 +24,8 @@ module SpaziergangCreator
       'Access-Control-Allow-Origin' => '*',
       'Access-Control-Allow-Method' => 'GET'
     }
+    config.log_level = :debug
+    config.log_tags  = [:subdomain, :uuid]
+    config.logger    = ActiveSupport::TaggedLogging.new(Logger.new(STDOUT))
   end
 end

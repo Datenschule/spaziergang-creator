@@ -33,3 +33,9 @@
 /coverage
 
 /config/database.yml
+/config/database.yml.local
+
+.app.env
+assets-vol/
+postgres-vol/
+
