@@ -9,10 +9,10 @@ json.data do
     json.preview_image @walk.preview_image
     json.description @walk.description
     json.courseline @walk.courseline
-    json.entry @walk.entry
+    json.entry @walk.entry.to_i + 1
     json.stations do
-      json.array! @walk.stations do |station|
-        json.id station.priority
+      json.array! @walk.stations.sort_by(&:priority) do |station|
+        json.id (station.priority.to_i + 1)
         json.name station.name
         json.description station.description
         json.position do
