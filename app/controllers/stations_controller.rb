@@ -55,8 +55,18 @@ class StationsController < ApplicationController
     @updates.each_with_index do |v, i|
       station = Station.find(v['id'])
       station.priority = v['pos'].to_i
-      station.next = set_station_next(i)
-      station.save
+
+      if @updates[i + 1].present?
+        station.next = @updates[i + 1]['pos'].to_i + 1
+      else
+        station.next = 999
+      end
+
+      if station.save!
+        head :ok
+      else
+        head :forbidden
+      end
     end
   end
 
@@ -72,10 +82,6 @@ class StationsController < ApplicationController
     render_403 unless current_user == @station.user || current_user.admin?
   end
 
-  def set_station_next(i)
-    @updates[i + 1]['pos'].to_i if @updates[i + 1].present?
-  end
-
   def set_walk
     @walk = Walk.find(params[:walk_id])
   end
@@ -89,6 +95,7 @@ class StationsController < ApplicationController
                                     :description,
                                     :lon,
                                     :lat,
-                                    :walk_id)
+                                    :walk_id,
+                                    :data)
   end
 end

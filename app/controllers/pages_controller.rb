@@ -85,7 +85,11 @@ class PagesController < ApplicationController
         page.next = nil
       end
 
-      page.save
+      if page.save!
+        head :ok
+      else
+        head :forbidden
+      end
     end
   end
 

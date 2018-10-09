@@ -19,7 +19,7 @@ json.data do
           json.lat station.lat
           json.lon station.lon
         end
-        json.next station.next if station.next.present?
+        json.next station.next if station.next != 999
         json.line station.line
         json.subjects do
           json.array! station.subjects do |subject|
@@ -28,7 +28,9 @@ json.data do
             json.description subject.description
             json.entry subject.entry
 
-            json.pages subject.pages, partial: 'api/walks/page', as: :page
+            json.pages subject.pages.sort_by(&:priority),
+                       partial: 'api/walks/page',
+                       as: :page
           end
         end
       end
