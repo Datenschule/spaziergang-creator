@@ -15,5 +15,14 @@ module SpaziergangCreator
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+
+    config.action_dispatch.default_headers = {
+      #'Access-Control-Allow-Origin' => ['http://localhost:4200',
+      #                                  'https://spaziergang.demokratielabore.de',
+      #                                  'https://spaziergang.datenschule.de',
+      #                                 ].join(','),
+      'Access-Control-Allow-Origin' => '*',
+      'Access-Control-Allow-Method' => 'GET'
+    }
   end
 end

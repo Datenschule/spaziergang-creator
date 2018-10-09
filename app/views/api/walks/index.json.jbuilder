@@ -8,6 +8,7 @@ json.data do
       json.location walk.location
       json.preview_image walk.preview_image
       json.description walk.description
+      json.entry walk.entry.to_i + 1
       json.courseline walk.courseline
     end
   end

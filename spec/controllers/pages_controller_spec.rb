@@ -192,29 +192,31 @@ RSpec.describe PagesController, type: :controller do
   end
 
   describe 'PUT update_after_sort' do
-    let(:user) { create(:user) }
-    let(:walk) { create(:walk, user: user) }
-    let(:station) { create(:station, user: user, walk: walk) }
-    let(:subject) { create(:subject, user: user, station: station) }
-    let!(:pages) { create_list(:page, 2, user: user, subject: subject,
-                              variant: "story") }
-    let(:data) {{ locale: :de,
-                  subject_id: subject.id,
-                  page: {},
-                  data: [{ id: pages[0].id, pos: 1 },
-                         { id: pages[1].id, pos: 0 }] }}
-    before do
-      allow(controller).to receive :authenticate_user!
-      allow(controller).to receive(:current_user).and_return(user)
-    end
+    context 'user is also creator' do
+      let(:user) { create(:user) }
+      let(:walk) { create(:walk, user: user) }
+      let(:station) { create(:station, user: user, walk: walk) }
+      let(:subject) { create(:subject, user: user, station: station) }
+      let!(:pages) { create_list(:page, 2, user: user, subject: subject,
+                                 variant: "story") }
+      let(:data) {{ locale: :de,
+                    subject_id: subject.id,
+                    page: {},
+                    data: [{ id: pages[0].id, pos: 1 },
+                           { id: pages[1].id, pos: 0 }] }}
+      before do
+        allow(controller).to receive :authenticate_user!
+        allow(controller).to receive(:current_user).and_return(user)
+      end
 
-    it 'prev and next logic' do
-      expect(Page.last.priority).to eq -1
-      expect(Page.first.priority).to eq -1
-      put :update_after_sort, params: data
-      expect(response.status).to eq 204
-      expect(Page.last.priority).to eq 0
-      expect(Page.first.priority).to eq 1
+      it 'prev and next logic' do
+        expect(Page.last.priority).to eq -1
+        expect(Page.first.priority).to eq -1
+        put :update_after_sort, params: data
+        expect(response.status).to eq 200
+        expect(Page.last.priority).to eq 0
+        expect(Page.first.priority).to eq 1
+      end
     end
   end
 end

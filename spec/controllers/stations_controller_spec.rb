@@ -176,7 +176,7 @@ RSpec.describe StationsController, type: :controller do
     it 'saves station priorities' do
       put :update_after_sort, params: data
       expect(response).to_not be_redirect
-      expect(response.status).to be 204
+      expect(response.status).to be 200
     end
   end
 end
