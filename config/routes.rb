@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     get '/datenschutzerklaerung', controller: :static, action: :data_protection
 
     resources :admin do
+      get '/walks', controller: :admin, action: :walks, on: :collection
     end
 
     resources :walks do

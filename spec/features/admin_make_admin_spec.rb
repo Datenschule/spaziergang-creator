@@ -8,7 +8,7 @@ RSpec.feature 'Make user admin', type: :feature do
 
     scenario 'from admin dashboard' do
       sign_in admin
-      visit '/en/admin/#users'
+      visit '/en/admin/'
 
       expect(page).to have_css('[data-tooltip="Give admin powers"]', count: 1)
       expect(page).to have_css('[data-tooltip="Revoke admin powers"]', count: 1)

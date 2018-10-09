@@ -4,7 +4,12 @@ class AdminController < ApplicationController
 
   def index
     @users = User.all
-    @walks = Walk.all
+    @walks = Walk.all.sort_by(&:created_at)
+  end
+
+  def walks
+    @users = User.all
+    @walks = Walk.all.sort_by(&:created_at)
   end
 
   private
