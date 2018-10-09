@@ -8,7 +8,7 @@ RSpec.feature 'Delete another user', type: :feature do
 
     scenario 'from admin dashboard', js: true do
       sign_in admin
-      visit '/en/admin/#users'
+      visit '/en/admin/'
 
       expect(page).to have_content(user.email)
 
