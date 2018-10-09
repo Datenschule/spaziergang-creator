@@ -11,7 +11,7 @@ if page.variant == "story"
     json.array! pages_parse_content(page.content)
   end
   json.challenges do
-    json.array! pages_parse_challenges(page.challenges)
+    json.array! pages_parse_challenges(page.challenges) unless page.challenges.empty?
   end
 end
 
