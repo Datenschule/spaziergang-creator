@@ -1,0 +1,10 @@
+<ul class="tab">
+  <li class="tab-item">
+    <%= link_to t('user.name'), admin_index_path,
+    class: "tabbed-nav #{'active' if action_name == 'index'}" %>
+  </li>
+  <li class="tab-item">
+    <%= link_to t('walk.plural'), walks_admin_index_path,
+    class: "tabbed-nav #{'active' if action_name == 'walks'}" %>
+  </li>
+</ul>

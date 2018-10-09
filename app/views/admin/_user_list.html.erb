@@ -1,0 +1,22 @@
+<ul class="column col-12 walk-list" id="users">
+  <% @users.each do |u| %>
+    <li>
+      <div class="tile tile-centered">
+        <div class="tile-icon">
+          <i data-feather="user"></i>
+        </div>
+        <div class="tile-content">
+          <div class="tile-title"><%= u.email %></div>
+          <div class="tile-subtitle text-gray"><%=  pluralize(u.walks.count, t('walk.singular'), t('walk.plural')) %> |
+            <%= t('user.last_login') %> <%= u.last_sign_in_at.strftime('%d.%m.%Y %H:%M') if u.last_sign_in_at %>
+          </div>
+        </div>
+        <div class="tile-action">
+          <%= render 'admin/make_admin', user: u %>
+          / block
+          <%= render 'admin/delete_user', user: u %>
+        </div>
+      </div>
+    </li>
+  <% end %>
+</ul>

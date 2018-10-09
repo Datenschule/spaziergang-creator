@@ -1,0 +1,7 @@
+<aside class="column col-3 col-ml-auto col-md-12">
+  <h2><%= t('admin.numbers') %></h2>
+  <p><%= @users.count %> registered users.<br>
+    Last signup <%= @users.last.email %>, <%= @users.last.created_at.strftime '%d.%m.%Y %H:%M' %></p>
+  <p><%= @walks.count %> walks in the database, <%= pluralize(Walk.is_public.count, 'is', 'are') %> public.<br>
+    Last created <%= link_to @walks.last.name, walk_path(@walks.last.id) if @walks.last %>, <%= @walks.last.created_at.strftime '%d.%m.%Y %H:%M' if @walks.last %></p>
+</aside>
