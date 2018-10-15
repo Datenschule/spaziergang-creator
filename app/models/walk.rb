@@ -4,6 +4,8 @@ class Walk < ApplicationRecord
 
   validates_presence_of :name, :location, :description
 
+  WALK_BASE_URL = 'https://spaziergang.demokratielabore.de/'
+
   scope :is_public, -> { where(public: true) }
 
   def editable_by?(current_user)
