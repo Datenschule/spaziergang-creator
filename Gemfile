@@ -1,15 +1,15 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.1'
+ruby '2.5.3'
 
 gem 'addressable', '~> 2.5'
-gem "breadcrumbs_on_rails"
+gem 'breadcrumbs_on_rails'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise', '~> 4.4'
 gem 'devise-i18n'
 gem 'jbuilder', '~> 2.5'
-gem 'pg'
+gem 'pg', '~> 1.1.3'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.0'
 gem 'rails-i18n', '~> 5.1'
