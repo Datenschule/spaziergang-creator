@@ -18,7 +18,7 @@ COPY Gemfile Gemfile.lock ./
 COPY config/database.yml.example ./config/database.yml
 
 RUN gem install bundler && bundle install --jobs 20 --retry 5 --without test \
-    && npm install \
+    && yarn install \
     && bundle exec rails assets:precompile
 
 COPY . ./
