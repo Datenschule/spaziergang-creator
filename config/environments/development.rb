@@ -65,4 +65,5 @@ Rails.application.configure do
 
   config.i18n.available_locales = [:en, :de]
   config.i18n.default_locale = :de
+  config.i18n.fallbacks = [I18n.default_locale]
 end
