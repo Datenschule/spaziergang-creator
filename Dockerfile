@@ -1,4 +1,4 @@
-FROM ruby:2.5.3-slim-stretch
+FROM ruby:2.6-slim-stretch
 
 RUN apt-get update \
     && apt-get install -qq -y build-essential libpq-dev curl wget gnupg2 vim \
@@ -9,15 +9,15 @@ RUN apt-get update \
     && apt-get update \
     && apt-get install -qq -y nodejs yarn \
     && apt-get clean \
-    && rm -f /var/lib/apt/lists/*_*
+    && rm -f /var/lib/apt/lists/*_* \
+    && mkdir -p /app
 
-RUN mkdir -p /app
 WORKDIR /app
 
 COPY Gemfile Gemfile.lock ./
 COPY config/database.yml.example ./config/database.yml
 
-RUN gem install bundler && bundle install --jobs 20 --retry 5 --without test \
+RUN bundle install \
     && yarn install \
     && bundle exec rails assets:precompile
 
