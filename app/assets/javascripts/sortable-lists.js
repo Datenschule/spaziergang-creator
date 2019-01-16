@@ -33,10 +33,11 @@ document.addEventListener('DOMContentLoaded', () => {
             fetch(window.location.pathname, {
                 method: 'PUT',
                 headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-Token': grabCSRF(),
-                    'X-Requested-With': 'XMLHttpRequest',
-                    'Accept': 'application/json'
+                  'Origin': window.location.origin,
+                  'Content-Type': 'application/json',
+                  'X-CSRF-Token': grabCSRF(),
+                  'X-Requested-With': 'XMLHttpRequest',
+                  'Accept': 'application/json'
                 },
                 credentials: "same-origin",
                 body: JSON.stringify({data: setUpdatedOrder()})
