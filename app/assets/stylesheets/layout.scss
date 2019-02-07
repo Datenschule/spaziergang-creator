@@ -19,6 +19,7 @@
   border-top: 3px solid $foam;
   background-color: $dark-color;
   color: white;
+  font-size: 0.8rem;
   a {
     color: $foam;
   }
@@ -35,6 +36,7 @@
 .footer-logo {
   width: 100%;
   height: auto;
+  max-width: 170px;
   margin-top: 0.4rem;
 }
 
