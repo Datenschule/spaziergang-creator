@@ -17,7 +17,6 @@ $purple: $purple-dark;
 $inactive-purple: #a576f1;
 $foam: #00ff9d;
 
-
 $primary-color: $purple;
 $secondary-color: $foam;
 
@@ -38,6 +37,7 @@ $error: $pink-light;
 @import "tab";
 @import "util";
 @import "courseline";
+@import "onboarding";
 
 .walk-list {
   margin: 0;

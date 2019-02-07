@@ -151,7 +151,7 @@ de:
       help: "Ziehe die Listenelemente mit gedrückter Maustaste in die gewünschte Reihenfolge."
       noscript: "Du musst JavaScript aktivieren um die Reihenfolge ändern zu können."
     correct: "richtig"
-    iframe_csp: "Falls die Webseite hier nicht angezeigt wird, verbietet der Websitebetreibende das Einbetten per iframe."
+    iframe_csp: "Falls die Webseite hier nicht angezeigt wird, verbietet der Websitebetreibende eventuell das Einbetten per iframe."
     form:
       noscript:
         story: "Bei Stories sind nur Inhalt und Herausforderungen relevant."
@@ -196,3 +196,39 @@ de:
     deleted: "gelöscht"
     delete: "Willst du diesen Nutzer wirklich löschen? Das ist unwiderruflich!"
     delete_notice: "Nutzer löschen"
+
+  onboarding:
+    title_0: "Wie ist ein Datenspaziergang aufgebaut?"
+    elem_0: >
+      Ein Datenspaziergang besteht aus zwei oder mehr Stationen, die die geografische Route des Spaziergangs bestimmen. Jede Station kann ein oder mehrere Themen behandeln.
+    elem_1: >
+      Ein Thema steht im Idealfall in irgendeiner Verbindung zum geografischen Ort der Station, z.B. vor einer Schule kann man an das Thema Bildung oder Jugend anknüpfen. Jedes Thema enthält ein oder mehrere Seiten.
+    elem_2: >
+      Eine Seite kann einer von drei Typen sein: eine Story, ein iFrame oder ein Quiz.
+    title_1: "Wie erstelle ich einen Datenspaziergang?"
+    elem_3: "Gib deinem Spaziergang einen Namen, einen ungefähren Ort, wo er stattfinden soll und beschreibe die Lokalität kurz oder um was es gehen wird. Klicke auf Spaziergang speichern."
+    elem_4: >
+      Nun siehst du die Einzelansicht deines Spaziergangs. Über dem Spaziergangnamen befindet sich eine Übersicht welche Bestandteile mindestens noch fehlen bevor der Spaziergang veröffentlicht werden kann.
+    elem_5: >
+      Erstelle eine oder mehrere Stationen über “Neue Station hinzufügen”. Gib den Stationen Namen und eine kurze Beschreibung. Über die Karte und das Suchfeld auf der rechten Seite kannst du Orte finden und den Marker der Drag’n’Drop genau dorthin verschieben, wo du die Station setzen möchtest. Die Geo-Koordinaten werden automatisch gesetzt.
+    elem_6: >-
+      Füge der Station mit dem Button ein oder mehrere Themen hinzu. Ein Thema ein einen Titel und eine Beschreibung.
+    elem_7: >-
+      Ein Thema kann und sollte mehrere Seiten haben. Auf der Themenansicht kannst du rechts die entsprechenden Seiten im Überblick finden, mehr hinzufügen, bearbeiten, löschen oder die Reihenfolge ändern.
+    elem_8: >-
+      Eine Story-Seite enthält einen Titel und etwas Text. In unserer Erfahrung ist ein Absatz pro Story-Seite ausreichend. Um mehr zu erzählen ist es dramaturgisch besser mehrere Story-Seiten hintereinander zu setzen, durch die sich Teilnehmende selbst klicken können. Eine Story kann optional auch eine oder mehrere Herausforderungen beinhalten. Eine Herausforderung kann etwas mit dem geografischen Ort oder mit einem vorgestellten Projekt zu tun haben. Eine Aufgabe damit Teilnehmende sich intensiver mit dem Thema beschäftigen.
+    elem_9: >-
+      Eine iFrame-Seite bettet eine andere Webseite in den Datenspaziergang ein. Hierzu reicht ein Link zur gewünschten Webseite aus. IFrames sind dazu gedacht Datenprojekte die mit dem Thema oder der Station zu tun haben, direkt im Spaziergang vorstellen zu können. Achtung: manche Webseiten verbieten das Einbetten durch iFrames. Da können wir leider nichts machen.
+    elem_10: >-
+      Quiz-Seiten bestehen aus einem Titel, einem Fragetext und einer Liste möglicher Antworten, von denen eine die richtige Antwort ist. Ein Quiz kann źum Abschluss eines Themas genutzt werden um über besprochene Punkte noch einmal zu wiederholen.
+    elem_11: >-
+      Sobald der Spaziergang mindestens zwei Stationen hat, kannst du die Laufroute hinzufügen. Benutze dafür den Button mit dem Navigationspfeil.
+    elem_12: >-
+      Wenn du zum ersten Mal die Laufroute für einen bestimmten Spaziergang verändern willst, wirst du zuerst gebeten die Reihenfolge der Stationen zu bestätigen. Wenn du Änderungen an der Reihenfolge vornehmen möchtest kannst du das per Drag’n’Drop tun, oder du klickst einfach auf speichern und dann erneut auf den Button mit dem Navigationspfeil.
+    elem_13: >-
+      Um eine Route festzulegen, markiere zuerst die Station, zu der du hinlaufen willst (!!) auf der linken Seite. Dadurch werden auf der rechten Seite in der Karte die Marker als A und B gekennzeichnet, zwischen denen den Laufweg abstecken musst. Klicke auf die Karte um einen Punkt zu setzen und arbeite dich so von A nach B. Dabei musst du nicht extra auf die Punkte der Marker klicken, diese sind durch die Stationen selbst definiert. Gefällt dir der Weg, kannst du auf speichern klicken. Wenn nicht, kannst du den Abschnitt auf der rechten Seite zurücksetzen.
+    elem_14: >-
+      Wenn der Spaziergang Stationen, Themen, Seiten und eine Laufroute hat, kann er veröffentlicht werden. Klicke dafür auf den Button mit dem Globus. Nun ist er in der Datenspaziergang-App verfügbar.
+    title_2: "Bereit?"
+    elem_15: "Keine Angst, diese Seite findest du im Dropdown in der Navigationsleiste wieder, falls du nochmal was nachschauen musst."
+    jumplink: "Hilfe überspringen"

@@ -1,0 +1,38 @@
+.onboarding {
+  h1, h2 {
+    margin-bottom: 1em
+  }
+  li {
+    margin-bottom: 3em;
+  }
+  ol {
+    counter-reset: ol-counter;
+    li {
+      list-style: none;
+      position: relative;
+      left: 3.5em;
+      &:before {
+        content: counter(ol-counter);
+        counter-increment: ol-counter;
+        display: block;
+        position: absolute;
+        left: -3.3em;
+        width: 2.4em;
+        height: 2.4em;
+        border-radius: 50%;
+        line-height: 2.2;
+        text-align: center;
+        font-weight: 600;
+        font-size: 1.3em;
+        border: 3px solid currentColor;
+        background-color: $foam;
+      }
+    }
+  }
+  img {
+    margin-top: 1em;
+    width: 100%;
+    display: block;
+    box-shadow: black 0 0 4px -1px;
+  }
+}

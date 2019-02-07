@@ -141,7 +141,7 @@ en:
       help: "Click and drag the list elements into the desired order."
       noscript: "You need to have JavaScript enabled to change order."
     correct: "correct"
-    iframe_csp: "If the website doesn't show, the website maintainer forbids embedding it via iframe."
+    iframe_csp: "If the website doesn't show, the website maintainer may forbids embedding it via iframe."
     form:
       noscript:
         story: "Stories only care about content and challenges."
