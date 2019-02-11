@@ -26,3 +26,8 @@ module SpaziergangCreator
     }
   end
 end
+
+Raven.configure do |config|
+  config.dsn = 'https://<key>:<secret>@sentry.io/<project>'
+  config.environments = %w[ production ]
+end
