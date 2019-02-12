@@ -3,8 +3,6 @@ en:
   mobile_app: "Datenspaziergang App"
   index:
     blurb: "Create your own data walk!"
-  onboarding:
-    link: "Help page"
   signup:
     label: "Register"
     text: "Register to create your own data walk."
@@ -186,3 +184,26 @@ en:
     deleted: "deleted"
     delete: "Do you really want to delete this user? This cannot be undone!"
     delete_notice: "Delete user"
+
+  onboarding:
+    link: "Help page"
+    title_0: "How is a Data walk structured?"
+    elem_0: ""
+    elem_1: ""
+    elem_2: ""
+    title_1: ""
+    elem_3: ""
+    elem_4: ""
+    elem_5: ""
+    elem_6: ""
+    elem_7: ""
+    elem_8: ""
+    elem_9: ""
+    elem_10: ""
+    elem_11: ""
+    elem_12: ""
+    elem_13: ""
+    elem_14: ""
+    title_2: ""
+    elem_15: ""
+    jumplink: "Hilfe überspringen"

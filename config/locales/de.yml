@@ -13,8 +13,6 @@ de:
     head3: "Was ist der Spaziergang Creator?"
     text3_0: "Mit Spaziergang Creator kannst du deinen eigenen Datenspaziergang erstellen. Er hilft dir Schritt für Schritt dabei für dich interessante Stationen, Themen, Texte und Projekte zu einem Spaziergang zusammenzufügen."
     text3_1: "Dein fertiger Spaziergang erscheint nach der Veröffentlichung in unserer Datenspaziergang-App. Natürlich unter einer offenen CC-BY Lizenz."
-  onboarding:
-    link: "Hilfeseite"
   signup:
     label: "Anmelden"
     text: "Melde dich an um deinen eigenen Datenspaziergang zu erstellen."
@@ -198,6 +196,7 @@ de:
     delete_notice: "Nutzer löschen"
 
   onboarding:
+    link: "Hilfeseite"
     title_0: "Wie ist ein Datenspaziergang aufgebaut?"
     elem_0: >
       Ein Datenspaziergang besteht aus zwei oder mehr Stationen, die die geografische Route des Spaziergangs bestimmen. Jede Station kann ein oder mehrere Themen behandeln.

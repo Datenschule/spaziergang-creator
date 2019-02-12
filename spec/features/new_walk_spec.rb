@@ -37,7 +37,7 @@ RSpec.feature 'Create new walk', type: :feature do
   end
 
   def be_redirected_to_help_page
-    expect(page).to have_content('Was ist ein Datenspaziergang')
+    expect(page).to have_content I18n.t('onboarding.title_0')
     click_link 'Ersten Spaziergang anlegen'
   end
 
