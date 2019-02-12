@@ -28,6 +28,6 @@ module SpaziergangCreator
 end
 
 Raven.configure do |config|
-  config.dsn = 'https://<key>:<secret>@sentry.io/<project>'
+  config.dsn = ENV['SENTRY_DSN'] if ENV['SENTRY_DSN']
   config.environments = %w[ production ]
 end
