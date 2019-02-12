@@ -6,10 +6,10 @@ RSpec.feature 'Order stations and set routes', type: :feature do
     let(:walk) { FactoryBot.create(:walk, user: user) }
     let!(:station) { FactoryBot.create(:station, user: user, walk: walk) }
 
-    scenario 'cannot find order button' do
+    scenario 'can find order button' do
       sign_in_go_to_walk_page
       expect(page).to have_content(station.name)
-      expect(page).to_not have_css('[data-tooltip="Change order"]')
+      expect(page).to have_css('[data-tooltip="Change order"]')
     end
 
     scenario 'cannot find route button' do

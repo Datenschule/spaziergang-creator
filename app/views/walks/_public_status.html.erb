@@ -27,17 +27,6 @@
             class: "tooltip"%>
           </li>
 
-          <li class="step-item <%= 'active' if walks_public_status_helper(@walk) == 'courseline' %>">
-            <% if @walk.stations.count >= 2 %>
-              <%= link_to t('walk.course.name'), route_walk_path(@walk),
-              data: { tooltip: t('walk.publish.step_course') },
-              class: "tooltip"%>
-            <% else %>
-              <a disabled="disabled" class="tooltip"
-                 data-tooltip="<%= t('walk.publish.step_course')%>"><%= t('walk.course.name')%></a>
-            <% end %>
-          </li>
-
           <li class="step-item <%= 'active' if walks_public_status_helper(@walk) == 'subject' %>">
             <% if @walk.stations.first.present? %>
               <%= link_to t('subject.singular'), new_station_subject_path(@walk.stations.first),
@@ -57,6 +46,17 @@
             <% else %>
               <a disabled="disabled" class="tooltip"
                  data-tooltip="<%= t('walk.publish.step_page') %>"><%= t('page.singular') %></a>
+            <% end %>
+          </li>
+
+          <li class="step-item <%= 'active' if walks_public_status_helper(@walk) == 'courseline' %>">
+            <% if @walk.stations.count >= 2 %>
+              <%= link_to t('walk.course.name'), route_walk_path(@walk),
+              data: { tooltip: t('walk.publish.step_course') },
+              class: "tooltip"%>
+            <% else %>
+              <a disabled="disabled" class="tooltip"
+                 data-tooltip="<%= t('walk.publish.step_course')%>"><%= t('walk.course.name')%></a>
             <% end %>
           </li>
         </ul>

@@ -40,8 +40,8 @@ RSpec.feature 'Publish a walk from walk show', type: :feature do
 
       within '.walk-publish-container' do
         expect(page).to have_selector('.step-item:nth-of-type(2).active')
-        expect(page).to have_selector('.step-item:nth-of-type(4) a:not([disabled])')
-        expect(page).to_not have_selector('.step-item:nth-of-type(5) a:not([disabled])')
+        expect(page).to have_selector('.step-item:nth-of-type(4) a[disabled]')
+        expect(page).to_not have_selector('.step-item:nth-of-type(5) a[disabled]')
         click_link('Route')
       end
       expect(page).to have_content "Set route"
@@ -57,6 +57,8 @@ RSpec.feature 'Publish a walk from walk show', type: :feature do
                                              user: user,
                                              walk_id: walk.id,
                                              next: 1) }
+    let!(:subject) { FactoryBot.create(:subject, user: user,
+                                       station: stations.first) }
 
     scenario 'click on subject link', js: true do
       sign_in user
@@ -64,9 +66,9 @@ RSpec.feature 'Publish a walk from walk show', type: :feature do
       expect(page).to have_content "You cannot publish your walk right now."
 
       within '.walk-publish-container' do
-        expect(page).to have_selector('.step-item:nth-of-type(3).active')
+        expect(page).to have_selector('.step-item:nth-of-type(3) a:not([disabled])')
         expect(page).to have_selector('.step-item:nth-of-type(4) a:not([disabled])')
-        expect(page).to_not have_selector('.step-item:nth-of-type(5) a:not([disabled])')
+        expect(page).to_not have_selector('.step-item:nth-of-type(5).active')
         click_link('Subject')
       end
       expect(page).to have_content "Create new subject"
@@ -76,8 +78,7 @@ RSpec.feature 'Publish a walk from walk show', type: :feature do
   context 'with a walk with a subject' do
     let!(:user) { FactoryBot.create(:user) }
     let!(:walk) { FactoryBot.create(:walk,
-                                    user: user,
-                                    courseline: [[12, 12], [12.1, 12]]) }
+                                    user: user) }
     let!(:stations) { FactoryBot.create_list(:station, 2,
                                              user: user,
                                              walk_id: walk.id,
@@ -91,34 +92,8 @@ RSpec.feature 'Publish a walk from walk show', type: :feature do
       expect(page).to have_content "You cannot publish your walk right now."
 
       within '.walk-publish-container' do
-        expect(page).to have_selector('.step-item:nth-of-type(4).active')
-        expect(page).to have_selector('.step-item:nth-of-type(5) a:not([disabled])')
-        click_link('Page')
-      end
-      expect(page).to have_content "Create new page"
-    end
-  end
-
-
-  context 'with a walk with a subject' do
-    let!(:user) { FactoryBot.create(:user) }
-    let!(:walk) { FactoryBot.create(:walk,
-                                    user: user,
-                                    courseline: [[12, 12], [12.1, 12]]) }
-    let!(:stations) { FactoryBot.create_list(:station, 2,
-                                             user: user,
-                                             walk_id: walk.id,
-                                             next: 1) }
-    let!(:subject) { FactoryBot.create(:subject, user: user,
-                                       station: stations.first) }
-
-    scenario 'click on page link', js: true do
-      sign_in user
-      visit "/en/walks/#{walk.id}"
-      expect(page).to have_content "You cannot publish your walk right now."
-
-      within '.walk-publish-container' do
-        expect(page).to have_selector('.step-item:nth-of-type(4).active')
+        expect(page).to have_selector('.step-item:nth-of-type(3).active')
+        expect(page).to have_selector('.step-item:nth-of-type(4) a:not([disabled])')
         expect(page).to have_selector('.step-item:nth-of-type(5) a:not([disabled])')
         click_link('Page')
       end
