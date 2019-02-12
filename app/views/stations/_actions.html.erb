@@ -5,12 +5,10 @@
     <% end %>
   <% end %>
 
-  <% if @walk.stations.size > 1 %>
-    <%= link_to sort_walk_stations_path(@walk),
-    class: "btn tooltip",
-      data: { tooltip: t('station.change_order')} do %>
-      <i data-feather="list"></i>
-    <% end %>
+  <%= link_to sort_walk_stations_path(@walk),
+  class: "btn tooltip",
+    data: { tooltip: t('station.change_order')} do %>
+    <i data-feather="list"></i>
   <% end %>
 
   <%= link_to new_walk_station_path(@walk),

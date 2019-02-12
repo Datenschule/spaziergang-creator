@@ -23,13 +23,11 @@
         </div>
         <div class="column col-3 text-right">
           <div>
-            <% if @subject.pages.size > 1 %>
-              <%= link_to sort_subject_pages_path(@subject),
-              class: "btn tooltip",
-                data: { tooltip: t("page.change_order")} do %>
-                <i data-feather="list"><%= t('page.change_order') %></i>
-              <% end%>
-            <% end %>
+            <%= link_to sort_subject_pages_path(@subject),
+            class: "btn tooltip",
+              data: { tooltip: t("page.change_order")} do %>
+              <i data-feather="list"><%= t('page.change_order') %></i>
+            <% end%>
 
             <%= link_to new_subject_page_path(@subject),
             class: "btn tooltip",
