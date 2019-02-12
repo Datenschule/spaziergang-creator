@@ -7,6 +7,8 @@
       <%= form_for :walk, method: :patch, url: walk_path(@walk) do |f| %>
         <%=  render 'walks/form',  f: f %>
       <% end %>
+
+      <p class="mt-2"><%= link_to t("back"), walk_path(@walk) %></p>
     </div>
   </div>
 </div>

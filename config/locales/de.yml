@@ -22,6 +22,7 @@ de:
     label: "ausloggen"
   last_edited: "zuletzt bearbeitet"
   saving: "speichern"
+  back: "zurück"
   password:
     forgot: "Passwort vergessen?"
     min_chars: "Zeichen Mindestlänge"

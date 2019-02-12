@@ -7,6 +7,8 @@
       <%= form_for :subject, method: :put, url: subject_path(@subject) do |f| %>
         <%= render "form", f: f %>
       <% end %>
+
+      <p class="mt-2"><%= link_to t("back"), subject_path(@subject) %></p>
     </div>
   </div>
 </div>

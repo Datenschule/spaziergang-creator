@@ -12,6 +12,7 @@ en:
     label: "Sign out"
   last_edited: "last edited"
   saving: "saving"
+  back: "back"
   password:
     forgot: "Forgot password?"
     min_chars: "characters minimun"
