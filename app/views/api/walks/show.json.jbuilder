@@ -4,6 +4,7 @@ json.status status
 json.data do
   json.walk do
     json.id @walk.id
+    json.author @walk.user.username
     json.name @walk.name
     json.location @walk.location
     json.preview_image @walk.preview_image
