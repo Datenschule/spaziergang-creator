@@ -18,6 +18,7 @@ rvm:
   - 2.6.0
 
 before_script:
+  - bundle exec chromedriver-update 2.46
   - psql -c 'create database travis_ci_test;' -U postgres
   - cp config/database.yml.travis config/database.yml
   - ln -s /usr/lib/chromium-browser/chromedriver ~/bin/chromedriver
