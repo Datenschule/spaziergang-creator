@@ -1,4 +1,5 @@
 lanugage: ruby
+dist: xenial
 
 addons:
   chrome: stable
