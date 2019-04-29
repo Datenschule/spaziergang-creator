@@ -4,6 +4,11 @@ en:
   app:
     hosted_by: "This page is hosted by"
     walk_app: "Go to Datenspaziergang App"
+  matomo:
+    desc: "We use <a href='https://matomo.org/'>Matomo</a>'s privacy-friendly technology for statistical analysis of site usage."
+    opt_out_1: "If you do not want this,"
+    opt_out_2: "can remove the tick here"
+    more: "For more information see our"
   index:
     blurb: "Create your own data walk!"
   signup:
