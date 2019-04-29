@@ -31,6 +31,8 @@ services:
       SECRET_KEY_BASE: 1ce948cf5b5597f0acab869e9cd42058e0a2a0f5f4d5ae9c1144e1ff4201de85f3ebf4f25760f6b1
       DATABASE_URL: postgresql://user:password@db:5432/user?pool=5&timeout=5000
       SENTRY_DSN: "https://secretkey@sentry.server/projectid"
+      MATOMO_URL: "https://yourmatomo.server"
+      MATOMO_ID: "matomoid"
     networks:
       spaziergang-net:
         aliases:

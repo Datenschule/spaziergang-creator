@@ -4,6 +4,11 @@ de:
   app:
     hosted_by: "Diese Seite wird betrieben von "
     walk_app: "Zur Datenspaziergang-App"
+  matomo:
+    desc: "Wir verwenden die datenschutzfreundliche Technologie von <a href='https://matomo.org/'>Matomo</a>, um statistische Auswertungen der Seitennutzung zu erhalten."
+    opt_out_1: "Wenn Sie dies nicht wollen, können Sie"
+    opt_out_2: "den Haken entfernen"
+    more: "Näheres in unserer"
   index:
     blurb: "Stelle dir deinen eigenen Datenspaziergang zusammen!"
     head1: "Was ist ein Datenspaziergang?"
