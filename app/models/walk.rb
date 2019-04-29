@@ -19,4 +19,8 @@ class Walk < ApplicationRecord
       stations.first.subjects.first.pages.present? &&
       !public
   end
+
+  def link_in_frontend
+    "#{WALK_BASE_URL}/course/#{id}"
+  end
 end

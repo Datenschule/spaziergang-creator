@@ -26,7 +26,7 @@
       <% end %>
 
       <% if walk.public? %>
-        <%= link_to "#{Walk::WALK_BASE_URL}course/#{walk.id}",
+        <%= link_to walk.link_in_frontend,
         class: 'btn tooltip',
         data: { tooltip: t('walk.open_in') } do %>
           <i data-feather="external-link"></i>

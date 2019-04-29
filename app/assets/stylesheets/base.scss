@@ -2,8 +2,8 @@ body {
   background-color: $gray-color-light;
 }
 
-a[href^="http://"]:not([href*="localhost:3000"]):after,
-a[href^="https://"]:not([href*="localhost:3000"]):after{
+a[href^="http://"]:not([href*="localhost:3000"]):not(.tooltip):after,
+a[href^="https://"]:not([href*="localhost:3000"]):not(.tooltip):after {
   content: "";
   width: 0.8em;
   height: 0.8em;
