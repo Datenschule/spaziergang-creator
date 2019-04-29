@@ -15,7 +15,7 @@ notifications:
   email: never
 
 rvm:
-  - 2.6.0
+  - 2.6.3
 
 before_script:
   - bundle exec chromedriver-update 2.46
