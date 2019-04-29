@@ -31,6 +31,7 @@ en:
     name: "User"
     last_login: "last login"
     anon: "anonymous"
+    anon_notice: "Leave the username black to publish walks anonymously."
     edit: "edit"
     saved: "saved"
     not_saved: "could not be saved"
@@ -217,3 +218,8 @@ en:
     title_2: ""
     elem_15: ""
     jumplink: "Hilfe überspringen"
+
+  license:
+    confirm: "I agree to publishing the walk under the CC BY 4.0 license."
+    disclaimer: "Please note: all walks and their contents will be published under CC BY 4.0."
+    text: 'under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>'

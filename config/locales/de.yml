@@ -41,6 +41,7 @@ de:
     name: "Nutzer"
     last_login: "letzter Login"
     anon: "anonym"
+    anon_notice: "Lasse den Usernamen frei, um Spaziergänge anonym zu veröffentlichen."
     edit: "bearbeiten"
     saved: "gespeichert"
     not_saved: "konnte nicht gespeichert werden"
@@ -241,3 +242,8 @@ de:
     title_2: "Bereit?"
     elem_15: "Keine Angst, diese Seite findest du im Dropdown in der Navigationsleiste wieder, falls du nochmal was nachschauen musst."
     jumplink: "Hilfe überspringen"
+
+  license:
+    confirm: "Ich stimme der Veröffentlichung des Spaziergangs unter CC BY 4.0 Lizenz zu."
+    disclaimer: "Bitte beachten: Alle Spaziergänge und Spazierganginhalte werden unter CC BY 4.0 veröffentlicht."
+    text: 'unter <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>'

@@ -15,12 +15,18 @@
 </div>
 
 <% if @walk.publishable? || @walk.public %>
-  <div class="form-group">
+  <div class="form-group js-check-license">
     <%= f.label :public, class: 'form-checkbox' do %>
       <%= f.check_box :public %>
       <i class="form-icon"></i> <%= t 'form.public' %>
     <% end  %>
   </div>
+
+  <div class="toast toast-primary js-license-text <%= "is-hidden" unless @walk.public %>">
+    <%= t('license.disclaimer')%>
+  </div>
 <% end %>
 
-<%= f.submit value: t('walk.save'), class: "btn btn-secondary" %>
+<div class="form-label space-t js-license-submit">
+  <%= f.submit value: t('walk.save'), class: "btn btn-secondary", data: { prompt: t('license.confirm') } %>
+</div>

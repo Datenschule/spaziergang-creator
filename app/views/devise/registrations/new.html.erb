@@ -29,6 +29,10 @@
           <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-input" %>
         </div>
 
+        <div class="toast toast-primary">
+          <%= t('license.disclaimer')%>
+        </div>
+
         <div class="form-label">
           <%= f.submit "Sign up", class: "btn btn-secondary" %>
         </div>

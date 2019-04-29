@@ -9,6 +9,7 @@
         <div class="form-group">
           <%= f.label :username, class: "form-label" %>
           <%= f.text_field :username, autofocus: true, autocomplete: "username", class: "form-input" %>
+          <small><em><%= t "user.anon_notice" %></em></small>
         </div>
 
         <div class="form-group">
