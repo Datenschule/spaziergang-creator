@@ -4,7 +4,7 @@ class Walk < ApplicationRecord
 
   validates_presence_of :name, :location, :description
 
-  WALK_BASE_URL = 'https://spaziergang.demokratielabore.de/'
+  WALK_BASE_URL = ENV['WALK_APP_URL'] || "https://spaziergang.demokratielabore.de/"
 
   scope :is_public, -> { where(public: true) }
 

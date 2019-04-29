@@ -8,7 +8,7 @@ It also serves as an API server for the mentioned frontend app.
 
 ## Development setup
 
-> Ruby 2.5.1
+> Ruby 2.6.3
 > A recent version of node
 
 Clone the repo and run `$ bundle` (install bundler via `gem install bundler` if you haven't yet).

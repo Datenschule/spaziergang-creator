@@ -25,6 +25,8 @@ services:
     depends_on:
       - db
     environment:
+      HOME_NAME: "Datenschule"
+      WALK_APP_URL: "https://spaziergang.demokratielabore.de/"
       RAILS_ENV: production
       SECRET_KEY_BASE: 1ce948cf5b5597f0acab869e9cd42058e0a2a0f5f4d5ae9c1144e1ff4201de85f3ebf4f25760f6b1
       DATABASE_URL: postgresql://user:password@db:5432/user?pool=5&timeout=5000

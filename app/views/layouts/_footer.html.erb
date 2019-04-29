@@ -16,11 +16,12 @@
       <p><%= t 'app_about' %><br>
       <a href="https://datenschule.de">datenschule.de</a><br>
       <a href="https://okfn.de">okfn.de</a></p>
-    </div>
-    <div class="column col-4 col-xs-10">
       <p><%= t(:app_license) %>
         <%= link_to t('link_github'), "https://github.com/Datenschule/spaziergang-creator"%></p>
-      <p><a href="https://spaziergang.demokratielabore.de/"><%= t :mobile_app %></a></p>
+    </div>
+    <div class="column col-3 col-xs-10">
+      <p><%=  t("app.hosted_by") %> <%= ENV["HOME_NAME"] %>.</p>
+      <p><%=  t("app.walk_app") %> <a href="https://spaziergang.demokratielabore.de/"><%= t :mobile_app %></a></p>
     </div>
   </div>
 </footer>

@@ -1,6 +1,9 @@
 de:
   app_name: "Spaziergang Creator"
   mobile_app: "Datenspaziergang App"
+  app:
+    hosted_by: "Diese Seite wird betrieben von "
+    walk_app: "Zur Datenspaziergang-App"
   index:
     blurb: "Stelle dir deinen eigenen Datenspaziergang zusammen!"
     head1: "Was ist ein Datenspaziergang?"

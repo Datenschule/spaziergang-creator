@@ -1,6 +1,9 @@
 en:
   app_name: "Spaziergang Creator"
   mobile_app: "Datenspaziergang App"
+  app:
+    hosted_by: "This page is hosted by"
+    walk_app: "Go to Datenspaziergang App"
   index:
     blurb: "Create your own data walk!"
   signup:
