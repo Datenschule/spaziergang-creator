@@ -1,4 +1,4 @@
-FROM ruby:2.6-slim-stretch
+FROM ruby:2.6.3-slim-stretch
 
 RUN apt-get update \
     && apt-get install -qq -y build-essential libpq-dev curl wget gnupg2 vim \
