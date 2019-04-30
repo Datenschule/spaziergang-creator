@@ -21,9 +21,10 @@ class StationsController < ApplicationController
     @station = Station.new(station_params)
     @station.user_id = current_user.id
     @station.walk_id = @walk.id
+    @station.priority = @walk.next_station_priority
 
-    @station.priority = @walk.stations.size - 1
     if @station.save!
+      @walk.set_next_on_all_stations! if @station.priority > 0
       redirect_to station_path(@station), notice: t('station.saved')
     else
       render action: :new
@@ -50,17 +51,11 @@ class StationsController < ApplicationController
   end
 
   def update_after_sort
-    @updates = params[:data]
-
-    @updates.each_with_index do |v, i|
+    updates = params[:data]
+    updates.each_with_index do |v, i|
       station = Station.find(v['id'])
       station.priority = v['pos'].to_i
-
-      if @updates[i + 1].present?
-        station.next = @updates[i + 1]['pos'].to_i + 1
-      else
-        station.next = 999
-      end
+      station.set_next updates.size
 
       if station.save!
         head :ok

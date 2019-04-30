@@ -22,4 +22,12 @@ class Station < ApplicationRecord
     return true if current_user.id == user_id
     return true if current_user.admin?
   end
+
+  def set_next(max_prio)
+    if priority < max_prio
+      self.next = priority + 1
+    else
+      self.next = nil
+    end
+  end
 end

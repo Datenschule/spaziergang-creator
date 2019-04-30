@@ -23,4 +23,15 @@ class Walk < ApplicationRecord
   def link_in_frontend
     "#{WALK_BASE_URL}/course/#{id}"
   end
+
+  def next_station_priority
+    return stations.size
+  end
+
+  def set_next_on_all_stations!
+    stations.each do |st|
+      st.set_next stations.size
+      st.save!
+    end
+  end
 end

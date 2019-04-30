@@ -20,7 +20,7 @@ json.data do
           json.lat station.lat
           json.lon station.lon
         end
-        json.next station.next if station.next != 999
+        json.next station.next if station.next
         json.line station.line
         json.subjects do
           json.array! station.subjects do |subject|
