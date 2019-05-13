@@ -32,8 +32,9 @@ class PagesController < ApplicationController
     @page = Page.new(page_params)
     @page.user_id = current_user.id
     @page.subject_id = @subject.id
-    @page.priority = @subject.pages.size + 1
+    @page.priority = @subject.next_page_priority
     if @page.save!
+      @subject.set_next_on_collection!(@subject.pages) if @page.priority > 0
       redirect_to page_path(@page), notice: t('page.saved')
     else
       render action: :new

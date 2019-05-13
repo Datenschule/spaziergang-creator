@@ -1,5 +1,6 @@
 class Page < ApplicationRecord
   include ActiveModel::Validations
+  include Nextable
 
   belongs_to :subject
   belongs_to :user

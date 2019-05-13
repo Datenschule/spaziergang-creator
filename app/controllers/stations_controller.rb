@@ -24,7 +24,7 @@ class StationsController < ApplicationController
     @station.priority = @walk.next_station_priority
 
     if @station.save!
-      @walk.set_next_on_all_stations! if @station.priority > 0
+      @walk.set_next_on_collection!(@walk.stations) if @station.priority > 0
       redirect_to station_path(@station), notice: t('station.saved')
     else
       render action: :new

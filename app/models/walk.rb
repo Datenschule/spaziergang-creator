@@ -1,4 +1,6 @@
 class Walk < ApplicationRecord
+  include Nextable
+
   has_many :stations, dependent: :destroy
   belongs_to :user
 
@@ -26,12 +28,5 @@ class Walk < ApplicationRecord
 
   def next_station_priority
     return stations.size
-  end
-
-  def set_next_on_all_stations!
-    stations.each do |st|
-      st.set_next stations.size
-      st.save!
-    end
   end
 end

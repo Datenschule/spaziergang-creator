@@ -1,6 +1,9 @@
 require 'rails_helper'
+require Rails.root.join "spec/concerns/nextable_spec.rb"
 
 RSpec.describe Walk, type: :model do
+  it_behaves_like "nextable_walk"
+
   it { should have_many(:stations).dependent(:destroy) }
   it { should belong_to(:user)}
 

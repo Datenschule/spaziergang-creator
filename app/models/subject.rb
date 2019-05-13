@@ -1,4 +1,6 @@
 class Subject < ApplicationRecord
+  include Nextable
+
   has_many :pages, dependent: :destroy
   belongs_to :station
   belongs_to :user
@@ -17,5 +19,9 @@ class Subject < ApplicationRecord
     return false unless current_user
     return true if current_user.id == user_id
     return true if current_user.admin?
+  end
+
+  def next_page_priority
+    return pages.size
   end
 end
