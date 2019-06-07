@@ -36,7 +36,7 @@
     </section>
   </nav>
 </header>
-<% if current_user.blocked? %>
+<% if current_user && current_user.blocked? %>
   <aside class="container">
     <div class="columns bg-error p-2">
       <%= t("user.block_message") %> <%= ENV['CONTACT_EMAIL'].present? ? ENV['CONTACT_EMAIL'] : "" %>
