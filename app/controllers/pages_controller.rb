@@ -40,6 +40,7 @@ class PagesController < ApplicationController
     @page.priority = @subject.next_page_priority
     if @page.save!
       @subject.set_next_on_collection!(@subject.pages) if @page.priority > 0
+      @subject.set_prev_on_collection!(@subject.pages) if @page.priority != 0
       redirect_to page_path(@page), notice: t('page.saved')
     else
       render action: :new
@@ -102,6 +103,10 @@ class PagesController < ApplicationController
   def destroy
     @subject = @page.subject
     @page.destroy
+    if @subject.pages
+      @subject.set_next_on_collection!(@subject.pages)
+      @subject.set_prev_on_collection!(@subject.pages)
+    end
     redirect_to subject_path(@subject), notice: t('page.deleted')
   end
 

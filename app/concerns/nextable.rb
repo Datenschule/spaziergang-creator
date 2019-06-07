@@ -9,9 +9,24 @@ module Nextable
     end
   end
 
+  def set_prev
+    if self.priority == 0
+      self.prev = nil
+    else
+      self.prev = self.priority - 1
+    end
+  end
+
   def set_next_on_collection!(collection)
     collection.each do |item|
       item.set_next collection.size
+      item.save!
+    end
+  end
+
+  def set_prev_on_collection!(collection)
+    collection.each do |item|
+      item.set_prev
       item.save!
     end
   end

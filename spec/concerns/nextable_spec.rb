@@ -57,4 +57,26 @@ shared_examples_for "nextable_subject" do
       expect(pages.last.next).to eq(nil)
     end
   end
+
+  describe "set_prev_on_collection!" do
+    let(:model) { described_class }
+    it "assigns prev on every item in the collection" do
+      user = build(:user)
+      walk = build(:walk, user: user)
+      station = build(:station, walk: walk, user: user)
+      subject = build(model.to_s.underscore.to_sym,
+                      user: user,
+                      station: station)
+
+      pages = Array.new
+      (1...4).each_with_index do |v, i|
+        pages.push(build(:page, subject: subject, user: user, priority: i))
+      end
+
+      subject.set_prev_on_collection!(pages)
+      expect(pages.first.prev).to eq(nil)
+      expect(pages.second.prev).to eq(0)
+      expect(pages.third.prev).to eq(1)
+    end
+  end
 end

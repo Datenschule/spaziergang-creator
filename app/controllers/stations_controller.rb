@@ -73,6 +73,9 @@ class StationsController < ApplicationController
   def destroy
     @walk = @station.walk
     @station.destroy
+    if @walk.stations
+      @walk.set_next_on_collection!(@walk.stations)
+    end
     redirect_to walk_path(@walk), notice: t('station.deleted')
   end
 
