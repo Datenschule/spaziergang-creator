@@ -1,0 +1,11 @@
+<%= form_for :user,
+  method: :patch,
+  url: user_path(user),
+  html: { class: "d-inline-block" } do |f| %>
+  <%= f.hidden_field :blocked, value: (user.blocked? ? false : true) %>
+  <button type="submit"
+          class="btn btn-secondary tooltip"
+          data-tooltip="<%= (user.blocked? ? t('user.unblock') : t('user.block')) %> <%= user.email %>">
+    <i data-feather="<%= (user.blocked? ? 'play-circle' : 'stop-circle') %>"></i>
+  </button>
+<% end %>

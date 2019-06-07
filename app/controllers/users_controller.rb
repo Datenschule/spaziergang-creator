@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def update
     handle_admin_flag
+    handle_blocked_flag
     if @user.save!
       redirect_to admin_index_path(anchor: 'users'),
                   notice: "#{@user.email} #{t('user.saved')}!"
@@ -26,7 +27,8 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:email,
                                  :password,
-                                 :admin)
+                                 :admin,
+                                 :blocked)
   end
 
   def ensure_user_rights
@@ -35,6 +37,11 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def handle_blocked_flag
+    return unless user_params[:blocked].present?
+    @user.blocked = user_params[:blocked] == 'true'
   end
 
   def handle_admin_flag

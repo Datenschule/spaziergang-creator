@@ -9,6 +9,7 @@ class Walk < ApplicationRecord
   WALK_BASE_URL = ENV['WALK_APP_URL'] || "https://spaziergang.demokratielabore.de/"
 
   scope :is_public, -> { where(public: true) }
+  scope :public_not_blocked, -> { is_public.reject { |w| w.user.blocked? } }
 
   def editable_by?(current_user)
     (current_user) && (user == current_user || current_user.admin?)

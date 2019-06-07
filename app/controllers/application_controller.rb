@@ -25,6 +25,10 @@ class ApplicationController < ActionController::Base
     render file: Rails.root.join('public/400.html'), status: 400
   end
 
+  def is_user_blocked
+    render_403 if current_user && current_user.blocked?
+  end
+
   protected
 
   def configure_permitted_parameters

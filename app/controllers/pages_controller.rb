@@ -1,6 +1,11 @@
 class PagesController < ApplicationController
   include PagesHelper
   before_action :authenticate_user!
+  before_action :is_user_blocked, only: [:create,
+                                         :update,
+                                         :delete,
+                                         :sort,
+                                         :update_after_sort]
   before_action :set_page, only: [:show, :edit, :update, :destroy]
   before_action :set_subject, only: [:new, :create]
   before_action :ensure_user_rights, only: [:show, :edit, :update, :destroy]

@@ -7,6 +7,11 @@ class WalksController < ApplicationController
                                   :courseline,
                                   :save_courseline]
   before_action :authenticate_user!, except: [:index]
+  before_action :is_user_blocked, only: [:create,
+                                         :update,
+                                         :delete,
+                                         :courseline,
+                                         :save_courseline]
   before_action :ensure_station_length, only: [:courseline]
   before_action :force_sort, only: [:courseline]
   before_action :ensure_user_rights, only: [:show,
@@ -19,7 +24,7 @@ class WalksController < ApplicationController
   include BreadcrumbsHelper
 
   def index
-    @walks = Walk.is_public
+    @walks = Walk.public_not_blocked
   end
 
   def private

@@ -2,6 +2,7 @@ class SubjectsController < ApplicationController
   before_action :set_subject, only: [:show, :edit, :update, :destroy]
   before_action :set_station, only: [:new, :create]
   before_action :authenticate_user!
+  before_action :is_user_blocked, only: [:create, :update, :delete]
   before_action :ensure_user_rights, only: [:show, :edit, :update, :destroy]
 
   include BreadcrumbsHelper

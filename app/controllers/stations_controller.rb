@@ -2,6 +2,11 @@ class StationsController < ApplicationController
   before_action :set_station, only: [:show, :edit, :update, :destroy]
   before_action :set_walk, only: [:new, :create, :sort]
   before_action :authenticate_user!
+  before_action :is_user_blocked, only: [:create,
+                                         :update,
+                                         :delete,
+                                         :sort,
+                                         :update_after_sort]
   before_action :ensure_user_rights, only: [:show, :edit, :update, :destroy]
 
   include BreadcrumbsHelper

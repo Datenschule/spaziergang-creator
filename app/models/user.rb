@@ -1,3 +1,4 @@
+# coding: utf-8
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -14,6 +15,9 @@ class User < ApplicationRecord
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
 
   attr_writer :login
+
+  scope :is_blocked, -> { where(blocked: true) }
+  scope :is_not_blocked, -> { where(blocked: false) }
 
   def login
     @login || self.username || self.email

@@ -38,7 +38,9 @@ en:
     delete: "Cancel my account"
     delete_notice: "Do you really want to cancel your account?"
     delete_blurb: "We only delete your account and personal data. Existing public walks will stay online. Please delete them manually if you want to do so."
-
+    block: "Block user"
+    unblock: "Unblock user"
+    block_message: "You have been blocked. All your content is no longer available to the outside and you cannot make any further changes. Please get in touch with the administrators."
   walk:
     singular: "Walk"
     plural: "Walks"
