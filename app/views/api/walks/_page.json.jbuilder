@@ -11,14 +11,14 @@ if page.variant == "story"
     json.array! pages_parse_content(page.content)
   end
   json.challenges do
-    json.array! pages_parse_challenges(page.challenges) unless page.challenges.empty?
+    json.array! pages_parse_list(page.challenges) unless page.challenges.empty?
   end
 end
 
 if page.variant == "quiz"
   json.question page.question if page.question
   json.answers do
-    json.array! pages_clean_answers(pages_parse_answers(page.answers))
+    json.array! pages_clean_answers(pages_parse_list(page.answers))
   end
-  json.correct pages_correct_answer_index(pages_parse_answers(page.answers))
+  json.correct pages_correct_answer_index(pages_parse_list(page.answers))
 end
