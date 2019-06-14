@@ -4,8 +4,7 @@
       <div class="box">
         <h2 class="h4 mt-2"><%= @page.question if @page.question.present? %></h2>
         <ul>
-          <%=  %>
-          <% @answers.each_with_index do |answer, index| %>
+          <% pages_clean_answers(@answers).each_with_index do |answer, index| %>
             <li>
               <%= answer %>
               <%= "(#{t 'page.correct'})" if @correct_answer == index %>

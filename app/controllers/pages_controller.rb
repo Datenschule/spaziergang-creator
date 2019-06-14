@@ -13,10 +13,9 @@ class PagesController < ApplicationController
   include BreadcrumbsHelper
 
   def show
-    @challenges = pages_parse_challenges @page.challenges if @page.challenges.present?
-    answers = pages_parse_answers(@page.answers)
-    @answers = pages_clean_answers(answers) if @page.answers.present?
-    @correct_answer = pages_correct_answer_index(answers)
+    @challenges = pages_parse_list @page.challenges if @page.challenges.present?
+    @answers = pages_parse_list(@page.answers) if @page.answers.present?
+    @correct_answer = pages_correct_answer_index(@answers) if @answers
 
     breadcrumb_walk_helper(@page.subject.station.walk)
     breadcrumb_station_helper(@page.subject.station)
