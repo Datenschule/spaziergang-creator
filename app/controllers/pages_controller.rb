@@ -7,8 +7,9 @@ class PagesController < ApplicationController
                                          :sort,
                                          :update_after_sort]
   before_action :set_page, only: [:show, :edit, :update, :destroy]
-  before_action :set_subject, only: [:new, :create]
+  before_action :set_subject, only: [:new, :create, :sort]
   before_action :ensure_user_rights, only: [:show, :edit, :update, :destroy]
+  before_action :has_enough_pages_to_sort, only: [:sort]
 
   include BreadcrumbsHelper
 
@@ -63,8 +64,6 @@ class PagesController < ApplicationController
   end
 
   def sort
-    @subject = Subject.find(params[:subject_id])
-
     breadcrumb_walk_helper(@subject.station.walk)
     breadcrumb_station_helper(@subject.station)
     breadcrumb_subject_helper(@subject)
@@ -113,6 +112,10 @@ class PagesController < ApplicationController
 
   def ensure_user_rights
     render_403 unless current_user == @page.user || current_user.admin?
+  end
+
+  def has_enough_pages_to_sort
+    redirect_to subject_path(@subject), notice: t("pages.cannot_sort") if @subject.pages.count < 2
   end
 
   def set_page
