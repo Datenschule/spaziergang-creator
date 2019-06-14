@@ -71,6 +71,9 @@ class WalksController < ApplicationController
   end
 
   def update
+    if (walk_params[:public].present?)
+      redirect_to walk_path(@walk), notice: t('walk.cannot_publish') unless @walk.publishable?
+    end
     if @walk.update(walk_params)
       redirect_to walk_path(@walk), notice: t('walk.edited')
     else

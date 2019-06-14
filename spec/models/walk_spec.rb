@@ -41,17 +41,23 @@ RSpec.describe Walk, type: :model do
     expect(walk.editable_by? current_user).to eq false
   end
 
-  it 'is not publishable if it is already public' do
-    walk = create(:walk, public: true)
-    expect(walk.publishable?).to eq false
-  end
-
-  it 'is publishable if all other conditions are met' do
+  it 'is not publishable if not all conditions are met' do
     user = create(:user, username: 'foo')
     walk = create(:walk, courseline: '[[12, 12], [12.1, 12]]', public: false)
     stations = create_list(:station, 2, walk: walk, user: user)
     subjects = create_list(:subject, 2, station: stations.first, user: user)
     page = create(:page, subject: subjects.first, user: user)
+    expect(walk.publishable?).to eq false
+  end
+
+  it 'is publishable if all conditions are met' do
+    user = create(:user, username: 'foo')
+    walk = create(:walk, courseline: '[[12, 12], [12.1, 12]]', public: false)
+    stations = create_list(:station, 2, walk: walk, user: user)
+    subject1 = create(:subject, station: stations.first, user: user)
+    page1 = create(:page, subject: subject1, user: user)
+    subject2 = create(:subject, station: stations.last, user: user)
+    page2 = create(:page, subject: subject2, user: user)
     expect(walk.publishable?).to eq true
   end
 end
