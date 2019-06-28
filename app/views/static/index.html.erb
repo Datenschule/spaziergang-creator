@@ -1,35 +1,63 @@
-<div class="container">
-  <div class="columns">
-    <div class="column col-8 col-md-12">
+<div class="hero hero-lg hero-custom" style="background-image: url(<%= image_path('frontpage-hero.png')%>)">
+  <div class="container">
+    <div class="hero-body column">
       <h1><%= t :app_name %></h1>
       <p class="blurb"><%= t 'index.blurb' %></p>
+    </div>
+  </div>
+</div>
+<div class="container frontpage-content">
+  <section class="columns">
+    <div class="column col-8 col-md-12 col-mx-auto">
       <h2><%= t 'index.head1' %></h2>
       <p><%= t 'index.text1_0' %></p>
       <p><%= t 'index.text1_1' %></p>
       <p><%= t 'index.text1_2' %></p>
+    </div>
+  </section>
+  <section class="columns">
+    <div class="column col-6">
       <h2><%= t 'index.head2' %></h2>
       <p><%= t 'index.text2_0' %></p>
-      <p><%= t 'index.text2_1' %></p>
-      <h2><%= t 'index.head3' %></h2>
-      <p><%= t 'index.text3_0' %></p>
-      <p><%= t 'index.text3_1' %></p>
+      <p><a href="<%= ENV['WALK_APP_URL'] || 'https://spaziergang.demokratielabore.de' %>"><%= t 'index.text2_1' %></a></p>
     </div>
-    <div class="column col-4 col-md-8">
-      <div class="panel">
+    <div class="column col-6">
+      <figure>
+        <%= image_tag('frontpage-courseline.png', alt: 'Screenshot') %>
+        <figcaption><%= t('index.img2_0')%></figcaption>
+      </figure>
+    </div>
+  </section>
+  <section class="columns">
+     <div class="column col-6">
+       <figure>
+         <%= image_tag('frontpage-pages.png', alt: 'Screenshot') %>
+         <figcaption><%= t('index.img3_0') %></figcaption>
+       </figure>
+     </div>
+     <div class="column col-6  space-b">
+       <h2><%= t 'index.head3' %></h2>
+       <p><%= t 'index.text3_0' %></p>
+       <p><%= t 'index.text3_1' %></p>
+     </div>
+  </section>
 
+  <section class="columns">
+    <div class="column col-6 col-md-8 col-mx-auto">
+      <div class="panel text-center">
         <% if current_user %>
           <div class="panel-header">
-            <h4 class="panel-title">Ahoi, <%= current_user.email %>!</h4>
+            <h3 class="panel-title">Ahoi, <%= current_user.email %>!</h3>
           </div>
           <div class="panel-body">
-            <p><%= t(:some_text) %></p>
+            <p><%= t("user.you_are_logged_in") %></p>
           </div>
           <div class="panel-footer">
             <p><%= link_to t('signout.label'), destroy_user_session_path, method: :delete %></p>
           </div>
         <% else %>
           <div class="panel-header">
-            <h4 class="panel-title"><%= t 'signup.label' %></h4>
+            <h3 class="panel-title"><%= t 'signup.label' %></h3>
           </div>
           <div class="panel-body">
             <p><%= t 'signup.text' %></p>
@@ -43,5 +71,5 @@
         <% end %>
       </div>
     </div>
-  </div>
+  </section>
 </div>
