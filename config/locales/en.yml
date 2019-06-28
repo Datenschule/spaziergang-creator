@@ -11,9 +11,21 @@ en:
     more: "For more information see our"
   index:
     blurb: "Create your own data walk!"
+    head1: "What is a data walk?"
+    text1_0: "A data walk is a walk through you neighborhood."
+    text1_1: "We're spicing up the content by combining open data and projects concerned with them with physical places around you. To connect digital data and the analogue world, we've created an app to serve you as a tour guide."
+    text1_2: "This way we establish a new perspective onto your environment and a more tangible understanding of data."
+    head2: "There is an app?"
+    text2_0: "Yes! We have created a web app that you can either use directly in your browser or save it offline on your Android device. The app gives you access to all the walks published with this creator."
+    text2_1: "Try the data walk app right here!"
+    img2_0: "With a few clicks you can decide on the individual spots in your walk. These will then be put together to create the data walk."
+    head3: "What is the Spaziergang Creator?"
+    text3_0: "The Spaziergang Creator is a tool for you to create your own data walks ('Spaziergang' means walk in German). It helps you assembling and structuring stations, topics, text and projects into a complete walk."
+    text3_1: "Your finished walk will appear in the data walk app after you have published it. Of course under the open CC-BY license."
+    img3_0: "Create pages for your stations. Choose between different kinds of pages to better convey the data and topics of stations."
   signup:
     label: "Register"
-    text: "Register to create your own data walk."
+    text: "Register and create your own data walk!"
   signin:
     label: "Sign in"
   signout:
