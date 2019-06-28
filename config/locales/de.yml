@@ -12,18 +12,20 @@ de:
   index:
     blurb: "Stelle dir deinen eigenen Datenspaziergang zusammen!"
     head1: "Was ist ein Datenspaziergang?"
-    text1_0: "Ein Datenspaziergang ist ein ganz klassischer, analoger Spaziergang durch deine Nachbarschaft."
-    text1_1: "Interessanter wird der Spaziergang durch den Zusatz von offenen Daten und Projekten, die sich mit offenen Daten auseinander setzen."
+    text1_0: "Ein Datenspaziergang ist ein Spaziergang durch deine Nachbarschaft."
+    text1_1: "Inhaltlich interessant wird der Spaziergang durch die Verknüpfung von offenen Daten und Projekten, die sich mit den Daten außeinander setzen, und den physischen Raum vor Ort. Um die digitalen Daten mit der analogen Welt zu verbinden, haben wir eine App geschrieben, die als Tourguide funktionieren kann."
     text1_2: "Auf diese Weise entsteht ein neuer Blick auf die eigene Umgebung und ein greifbareres Verständnis von Daten."
-    head2: "Das gibt es als App?"
-    text2_0: "Ja! Wir haben eine Webapp geschrieben, die im Browser und auf Android-Geräten funktioniert."
-    text2_1: "Unter <link> kannst du die Datenspaziergang ansehen und herunterladen."
+    head2: "Es gibt eine App?"
+    text2_0: "Ja! Wir haben eine Webapp geschrieben, die du entweder direkt Browser nutzen kannst oder sie unter Android offline speichern kannst. Die App zeigt die veröffentlichten Spaziergänge aus dem Spaziergang Creator."
+    text2_1: "Probiere die Datenspaziergang App hier aus!"
+    img2_0: "Im Spaziergang Creator kannst du mit wenigen Klicks die einzelnen Punkte der Laufroute bestimmen. Diese werden automatisch zur ganzen Spaziergangroute zusammengefügt."
     head3: "Was ist der Spaziergang Creator?"
-    text3_0: "Mit Spaziergang Creator kannst du deinen eigenen Datenspaziergang erstellen. Er hilft dir Schritt für Schritt dabei für dich interessante Stationen, Themen, Texte und Projekte zu einem Spaziergang zusammenzufügen."
+    text3_0: "Der Spaziergang Creator ist ein Tool mit dem du deinen eigenen Datenspaziergang erstellen kannst. Er hilft dir Schritt für Schritt dabei Stationen, Themen, Texte und Projekte zu einem Spaziergang zusammenzufügen."
     text3_1: "Dein fertiger Spaziergang erscheint nach der Veröffentlichung in unserer Datenspaziergang-App. Natürlich unter einer offenen CC-BY Lizenz."
+    img3_0: "Lege verschiedene Seiten zu deinen Stationen an. Wähle aus verschiedene Seitenformaten aus, um die Daten und Themen der Stationen besser zu vermitteln."
   signup:
     label: "Anmelden"
-    text: "Melde dich an um deinen eigenen Datenspaziergang zu erstellen."
+    text: "Melde dich an und erstelle deinen eigenen Datenspaziergang!"
   signin:
     label: "Einloggen"
   signout:

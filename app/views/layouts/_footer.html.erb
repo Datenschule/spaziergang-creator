@@ -21,7 +21,7 @@
     </div>
     <div class="column col-4 col-sm-6 col-xs-10">
       <p><%=  t("app.hosted_by") %> <%= ENV["HOME_NAME"] %>.</p>
-      <p><%=  t("app.walk_app") %> <a href="https://spaziergang.demokratielabore.de/"><%= t :mobile_app %></a></p>
+      <p><%=  t("app.walk_app") %>  <a href="<%= ENV['WALK_APP_URL'] || 'https://spaziergang.demokratielabore.de' %>"><%= t :mobile_app %></a></p>
     </div>
   </div>
 </footer>
