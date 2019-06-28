@@ -25,11 +25,11 @@
 }
 
 .frontpage-content {
-  h2 {
+  h2, h1 {
     font-size: 1.6rem;
     font-weight: 600;
   }
-  p {
+  p, li {
     font-size: 1rem;
     line-height: 1.65;
   }
@@ -38,5 +38,16 @@
   }
   .columns {
     margin-bottom: 5rem;
+  }
+  a:not(.btn) {
+    color: $foam;
+    padding: .2em .4em;
+    background-color: #454d5ddd;
+  }
+  img {
+    margin-top: 1em;
+    width: 100%;
+    display: block;
+    box-shadow: black 0 0 4px -1px;
   }
 }

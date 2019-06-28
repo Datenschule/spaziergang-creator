@@ -50,7 +50,7 @@
             <h3 class="panel-title">Ahoi, <%= current_user.email %>!</h3>
           </div>
           <div class="panel-body">
-            <p><%= t(:some_text) %></p>
+            <p><%= t("user.you_are_logged_in") %></p>
           </div>
           <div class="panel-footer">
             <p><%= link_to t('signout.label'), destroy_user_session_path, method: :delete %></p>

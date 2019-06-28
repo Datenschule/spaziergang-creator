@@ -41,6 +41,7 @@ de:
     confirm: "Wir brauchen dein aktuelles Passwort um die Änderungen zu speichern."
   user:
     name: "Nutzer"
+    you_are_logged_in: "Du bist eingeloggt"
     last_login: "letzter Login"
     anon: "anonym"
     anon_notice: "Lasse den Usernamen frei, um Spaziergänge anonym zu veröffentlichen."

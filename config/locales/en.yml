@@ -41,6 +41,7 @@ en:
     confirm: "We need your current password to save the changes."
   user:
     name: "User"
+    you_are_logged_in: "You are logged in"
     last_login: "last login"
     anon: "anonymous"
     anon_notice: "Leave the username black to publish walks anonymously."
@@ -212,26 +213,43 @@ en:
 
   onboarding:
     link: "Help page"
-    title_0: "How is a Data walk structured?"
-    elem_0: ""
-    elem_1: ""
-    elem_2: ""
-    title_1: ""
-    elem_3: ""
-    elem_4: ""
-    elem_5: ""
-    elem_6: ""
-    elem_7: ""
-    elem_8: ""
-    elem_9: ""
-    elem_10: ""
-    elem_11: ""
-    elem_12: ""
-    elem_13: ""
-    elem_14: ""
-    title_2: ""
-    elem_15: ""
-    jumplink: "Hilfe überspringen"
+    title_0: "How is a data walk structured?"
+    elem_0: >-
+      A data walk consists of two or more stations that determine the walk's geographical route.
+      Each station can host one or more topics.
+    elem_1: >-
+      Ideally a topic has some connection to the geographical position of a station, e.g. talking about education or youth in front of a school building. Each topic hosts one or more pages.
+    elem_2: >-
+      A page has one of three possible types: a story, an iFrame or a quiz.
+    title_1: >-
+      How do I create a data walk?
+    elem_3: >-
+      Give your walk a name, a location where the walk should take place and describe shortly what the walk will be about. Then click on save walk.
+    elem_4: >-
+      Now you'll see the single view of the walk. Above the name you'll find an overview over what is missing until the walk can be published.
+    elem_5: >-
+      Create one or more stations via "Add new station". Give the stations names and short descriptions. With the map and the seach field on the right side you can find places and drag the map marker where you want to place the station. The geo-coordinates will be set automatically.
+    elem_6: >-
+      Add at least one topic to each station. A topic has a title and a description.
+    elem_7: >-
+      A topic can and should have multiple pages. On the topic single view you can find an overview over the topic's pages on the right side. You can look at them individually, edit or delete them or change their order.
+    elem_8: >-
+      A story page has a title and text. In our experience one paragraph per page is enough. To tell longer stories just add more pages. This way the experience in the app is more fun to click through. Optionally, a story page can have one or more challenges. A challenge is a little task that people can complete or a question that people can figure out on the geographical spot. Challenges are meant to get people into thinking about the station's topic.
+    elem_9: >-
+      An iFrame page embeds another website into the data walk. A link to the other website is all you need for this to work. IFrames are supposed to showcase data driven projects that deal with the topic. Attention though: some websites prohibit embedding their sites with iFrames for resurity reasons. In that case we can't do anything.
+    elem_10: >-
+      Quiz pages consist of a title, a question and a list of possible answers, one of which is correct. You can use a quiz at the end of a topic to repeat or reflect on the data and things learned.
+    elem_11: >-
+      As soon as the walk has at least two stations, you can set a route. Click on the button with the navigational arrow.
+    elem_12: >-
+      When you're trying to set a route for the first time, you have to confirm the order of stations. If you want to change the order, drag'n'drop the stations into the order that you like and save. Then click the button with the navigational arrow again.
+    elem_13: >-
+      To set a route, first mark the station to which you want to walk towards (!!) on the left side. This will mark two stations as A and B on the map on the right side. You can now set markers by clicking on the map. You're walking from A to B. You don't have to click on A and B specifically, these points are automatically set for you via the station. If you're ok the route, click on save. If not you can reset the route on the left side.
+    elem_14: >-
+      Once the walk has stations, topics, pages and a route, you can publish it. Click on the button with the globe. It is now available in the data walk app.
+    title_2: "Ready?"
+    elem_15: "No worries, you can always find this page for reference in the dropdown in the topbar."
+    jumplink: "Skip help"
 
   license:
     confirm: "I agree to publishing the walk under the CC BY 4.0 license."

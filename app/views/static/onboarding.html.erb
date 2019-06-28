@@ -1,57 +1,61 @@
-<div class="container">
+<div class="container frontpage-content">
   <div class="columns onboarding">
     <div class="column col-8 col-md-10">
-      <h1><%= t "app_name" %></h1>
+      <h1><%= t "app_name" %> <%= t "onboarding.link"%></h1>
 
       <p><a href="#i-already-know"><%= t "onboarding.jumplink" %></a></p>
+      <section>
+        <h2><%= t "onboarding.title_0" %></h2>
+        <p><%= t "onboarding.elem_0" %></p>
+        <p><%= t "onboarding.elem_1" %></p>
+        <p><%= t "onboarding.elem_2" %></p>
+      </section>
+      <section>
+        <h2><%= t "onboarding.title_1" %></h2>
+        <ol>
+          <li><%= t "onboarding.elem_3" %>
+            <%= image_tag("onboarding/neuer-spaziergang.png") %>
+          </li>
+          <li><%= t "onboarding.elem_4" %>
+            <%= image_tag("onboarding/neu-uebersicht.png") %>
+          </li>
+          <li><%= t "onboarding.elem_5" %>
+            <%= image_tag("onboarding/neu-station.png") %>
+          </li>
+          <li><%= t "onboarding.elem_6" %>
+            <%= image_tag("onboarding/neu-thema.png") %>
+          </li>
+          <li><p><%= t "onboarding.elem_7" %>
+            <%= image_tag("onboarding/thema-uebersicht.png") %></p>
+            <p><%= t "onboarding.elem_8" %>
+              <%= image_tag("onboarding/story-uebersicht.png") %>
+            </p>
+            <p><%= t "onboarding.elem_9" %>
+              <%= image_tag("onboarding/iframe-uebersicht.png") %>
+            </p>
+            <p><%= t "onboarding.elem_10" %></p>
+          </li>
+          <li><%= t "onboarding.elem_11" %></li>
+          <li><%= t "onboarding.elem_12" %>
+            <%= image_tag("onboarding/reihenfolge-station.png") %>
+          </li>
+          <li><%= t "onboarding.elem_13" %>
+            <%= image_tag("onboarding/laufroute.png") %>
+            <p><%= image_tag("onboarding/laufroute-2.png") %></p>
+          </li>
+          <li><%= t "onboarding.elem_14" %>
+            <p><%= image_tag("onboarding/spaziergang-fertig.png") %></p>
+          </li>
+        </ol>
+      </section>
+    </div>
 
-      <h2><%= t "onboarding.title_0" %></h2>
-      <p><%= t "onboarding.elem_0" %></p>
-      <p><%= t "onboarding.elem_1" %></p>
-      <p><%= t "onboarding.elem_2" %></p>
-
-      <div>
-      <h2><%= t "onboarding.title_1" %></h2>
-      <ol>
-        <li><%= t "onboarding.elem_3" %>
-          <%= image_tag("onboarding/neuer-spaziergang.png") %>
-        </li>
-        <li><%= t "onboarding.elem_4" %>
-          <%= image_tag("onboarding/neu-uebersicht.png") %>
-        </li>
-        <li><%= t "onboarding.elem_5" %>
-          <%= image_tag("onboarding/neu-station.png") %>
-        </li>
-        <li><%= t "onboarding.elem_6" %>
-          <%= image_tag("onboarding/neu-thema.png") %>
-        </li>
-        <li><p><%= t "onboarding.elem_7" %>
-          <%= image_tag("onboarding/thema-uebersicht.png") %></p>
-          <p><%= t "onboarding.elem_8" %>
-            <%= image_tag("onboarding/story-uebersicht.png") %>
-          </p>
-          <p><%= t "onboarding.elem_9" %>
-            <%= image_tag("onboarding/iframe-uebersicht.png") %>
-          </p>
-          <p><%= t "onboarding.elem_10" %></p>
-        </li>
-        <li><%= t "onboarding.elem_11" %></li>
-        <li><%= t "onboarding.elem_12" %>
-          <%= image_tag("onboarding/reihenfolge-station.png") %>
-        </li>
-        <li><%= t "onboarding.elem_13" %>
-          <%= image_tag("onboarding/laufroute.png") %>
-          <p><%= image_tag("onboarding/laufroute-2.png") %></p>
-        </li>
-        <li><%= t "onboarding.elem_14" %>
-          <p><%= image_tag("onboarding/spaziergang-fertig.png") %></p>
-        </li>
-      </ol>
-      </div>
-
+  </div>
+  <section class="columns">
+    <div class="column col-6 col-mx-auto text-center">
       <h2 id="i-already-know"><%= t "onboarding.title_2" %></h2>
       <p><%= link_to "Ersten Spaziergang anlegen", new_walk_path(knows_help_site: true), class: "btn btn-secondary" %></p>
       <p><%= t "onboarding.elem_15" %></p>
     </div>
-  </div>
+  </section>
 </div>
