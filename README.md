@@ -13,6 +13,8 @@ It also serves as an API server for the mentioned frontend app.
 
 Clone the repo and run `$ bundle` (install bundler via `gem install bundler` if you haven't yet).
 
+Copy and adjust the .env variables `$ cp env.sample .env && source .env`
+
 Copy and adjust the database config `$ cp config/database.yml.example config/database.yml`.
 
 Setup database and run migrations `$ rails db:create db:migrate`.
@@ -35,9 +37,7 @@ The `docker-compose.yml` defines three services in a network:
 - the Spaziergang Creator app, called `web`
 - nginx to serve and cache static assets, called `nginx`
 
-**Please adjust the variables in the docker-compose.yml before deployment!**
-
-Give the database a proper name, user and password (db and web have to match) and change the `secret_key_base` in the web service. Adjust the port in nginx to whatever port you want to expose.
+Copy and adjust the env variables `$ cp env.sample .env`, docker-compose will read the values from there.
 
 After that you can `$ docker-compose build` to build the images and `$ docker-compose up -d` to start the whole thing.
 

@@ -12,3 +12,6 @@ yarn-error.log
 /config/database.yml.travis
 /config/database.yml
 /postgres-vol
+.git
+env.sample
+.env
