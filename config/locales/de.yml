@@ -231,7 +231,7 @@ de:
     elem_7: >-
       Ein Thema kann und sollte mehrere Seiten haben. Auf der Themenansicht kannst du rechts die entsprechenden Seiten im Überblick finden, mehr hinzufügen, bearbeiten, löschen oder die Reihenfolge ändern.
     elem_8: >-
-      Eine Story-Seite enthält einen Titel und etwas Text. In unserer Erfahrung ist ein Absatz pro Story-Seite ausreichend. Um mehr zu erzählen ist es dramaturgisch besser mehrere Story-Seiten hintereinander zu setzen, durch die sich Teilnehmende selbst klicken können. Eine Story kann optional auch eine oder mehrere Herausforderungen beinhalten. Eine Herausforderung kann etwas mit dem geografischen Ort oder mit einem vorgestellten Projekt zu tun haben. Eine Aufgabe damit Teilnehmende sich intensiver mit dem Thema beschäftigen.
+      Eine Story-Seite enthält einen Titel und etwas Text. In unserer Erfahrung ist ein Absatz pro Story-Seite ausreichend. Um mehr zu erzählen ist es dramaturgisch besser mehrere Story-Seiten hintereinander zu setzen, durch die sich Teilnehmende selbst klicken können. Eine Story kann optional auch eine oder mehrere Herausforderungen beinhalten. Eine Herausforderung kann etwas mit dem geografischen Ort oder mit einem vorgestellten Projekt zu tun haben. Eine Herausforderung soll Teilnehmende dazu bringen, sich intensiver mit dem Thema beschäftigen.
     elem_9: >-
       Eine iFrame-Seite bettet eine andere Webseite in den Datenspaziergang ein. Hierzu reicht ein Link zur gewünschten Webseite aus. IFrames sind dazu gedacht Datenprojekte die mit dem Thema oder der Station zu tun haben, direkt im Spaziergang vorstellen zu können. Achtung: manche Webseiten verbieten das Einbetten durch iFrames. Da können wir leider nichts machen.
     elem_10: >-
@@ -241,7 +241,7 @@ de:
     elem_12: >-
       Wenn du zum ersten Mal die Laufroute für einen bestimmten Spaziergang verändern willst, wirst du zuerst gebeten die Reihenfolge der Stationen zu bestätigen. Wenn du Änderungen an der Reihenfolge vornehmen möchtest kannst du das per Drag’n’Drop tun, oder du klickst einfach auf speichern und dann erneut auf den Button mit dem Navigationspfeil.
     elem_13: >-
-      Um eine Route festzulegen, markiere zuerst die Station, zu der du hinlaufen willst (!!) auf der linken Seite. Dadurch werden auf der rechten Seite in der Karte die Marker als A und B gekennzeichnet, zwischen denen den Laufweg abstecken musst. Klicke auf die Karte um einen Punkt zu setzen und arbeite dich so von A nach B. Dabei musst du nicht extra auf die Punkte der Marker klicken, diese sind durch die Stationen selbst definiert. Gefällt dir der Weg, kannst du auf speichern klicken. Wenn nicht, kannst du den Abschnitt auf der rechten Seite zurücksetzen.
+      Um eine Route festzulegen, markiere zuerst die Station, zu der du hinlaufen willst (!!) auf der linken Seite. Dadurch werden auf der rechten Seite in der Karte die Marker als A und B gekennzeichnet, zwischen denen den Laufweg abstecken musst. Klicke auf die Karte um einen Punkt zu setzen und arbeite dich so von A nach B. Dabei musst du nicht extra auf die Punkte der Marker klicken, diese sind durch die Stationen selbst definiert. Gefällt dir der Weg, kannst du auf speichern klicken. Wenn nicht, kannst du den Abschnitt auf der linken Seite zurücksetzen.
     elem_14: >-
       Wenn der Spaziergang Stationen, Themen, Seiten und eine Laufroute hat, kann er veröffentlicht werden. Klicke dafür auf den Button mit dem Globus. Nun ist er in der Datenspaziergang-App verfügbar.
     title_2: "Bereit?"
