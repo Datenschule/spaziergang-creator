@@ -75,7 +75,7 @@ RSpec.feature 'Publish a walk from walk show', type: :feature do
     end
   end
 
-  context 'with a walk with a subject' do
+  context 'with a walk with a subject, ' do
     let!(:user) { FactoryBot.create(:user) }
     let!(:walk) { FactoryBot.create(:walk,
                                     user: user) }
@@ -85,6 +85,8 @@ RSpec.feature 'Publish a walk from walk show', type: :feature do
                                              next: 1) }
     let!(:subject) { FactoryBot.create(:subject, user: user,
                                        station: stations.first) }
+    let!(:subject2) { FactoryBot.create(:subject, user: user,
+                                       station: stations.last) }
 
     scenario 'click on page link', js: true do
       sign_in user

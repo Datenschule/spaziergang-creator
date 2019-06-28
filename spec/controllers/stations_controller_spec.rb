@@ -148,14 +148,24 @@ RSpec.describe StationsController, type: :controller do
   describe 'GET sort' do
     let(:user) { create(:user) }
     let(:walk) { create(:walk, user: user) }
-    let(:station) { create(:station, user: user, walk: walk) }
+    let!(:station) { create(:station, user: user, walk: walk) }
     before do
       allow(controller).to receive :authenticate_user!
       allow(controller).to receive(:current_user).and_return(user)
     end
-    it 'renders the sort template' do
-      get :sort, params: { locale: :de, walk_id: walk.id}
-      expect(response).to render_template('sort')
+    describe 'not enough stations' do
+      it 'redirects if there is less than 2 stations' do
+        get :sort, params: { locale: :de, walk_id: walk.id}
+        expect(response).to be_redirect
+        expect(response.location).to match walk_path walk
+      end
+    end
+    describe 'with enough stations' do
+      let!(:station2) { create(:station, user: user, walk: walk) }
+      it 'renders the sort template' do
+        get :sort, params: { locale: :de, walk_id: walk.id}
+        expect(response).to render_template('sort')
+      end
     end
   end
 

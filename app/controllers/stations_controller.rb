@@ -8,6 +8,7 @@ class StationsController < ApplicationController
                                          :sort,
                                          :update_after_sort]
   before_action :ensure_user_rights, only: [:show, :edit, :update, :destroy]
+  before_action :has_enough_stations_to_sort, only: [:sort]
 
   include BreadcrumbsHelper
 
@@ -83,6 +84,10 @@ class StationsController < ApplicationController
 
   def ensure_user_rights
     render_403 unless current_user == @station.user || current_user.admin?
+  end
+
+  def has_enough_stations_to_sort
+    redirect_to walk_path(@walk), notice: t("station.cannot_sort") if @walk.stations.count < 2
   end
 
   def set_walk

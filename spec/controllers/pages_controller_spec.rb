@@ -179,7 +179,7 @@ RSpec.describe PagesController, type: :controller do
     let(:walk) { create(:walk, user: user) }
     let(:station) { create(:station, user: user, walk: walk) }
     let(:subject) { create(:subject, user: user, station: station) }
-    let(:pages) { create_list(:page, 3, user: user, subject: subject) }
+    let!(:pages) { create_list(:page, 3, user: user, subject: subject) }
     before do
       allow(controller).to receive :authenticate_user!
       allow(controller).to receive(:current_user).and_return(user)
