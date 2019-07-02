@@ -51,3 +51,43 @@
     box-shadow: black 0 0 4px -1px;
   }
 }
+
+.staticpage-content {
+  h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: .5em;
+  }
+  h2 {
+    font-size: 1.55em;
+    font-weight: 600;
+    margin: 1.3em 0 .5em;
+  }
+  h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin: 1.3em 0 .5em;
+  }
+  p, li {
+    font-size: .9rem;
+    line-height: 1.65;
+  }
+  figcaption {
+    font-size: 0.7rem;
+  }
+  .columns {
+    margin-bottom: 5rem;
+  }
+  a:not(.btn) {
+    color: $foam;
+    padding: .2em .4em;
+    background-color: #454d5ddd;
+  }
+  img {
+    margin-top: 1em;
+    width: 100%;
+    display: block;
+    box-shadow: black 0 0 4px -1px;
+  }
+
+}
