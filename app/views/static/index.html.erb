@@ -1,4 +1,4 @@
-<div class="hero hero-lg hero-custom" >
+<div class="hero hero-lg hero-custom" style="background-image: url(<%= image_path('frontpage-hero.png')%>)" >
   <div class="container">
     <div class="hero-body column">
       <h1><%= t :app_name %></h1>
@@ -44,7 +44,7 @@
 
   <section class="columns">
     <div class="column col-6 col-md-8 col-mx-auto">
-      <div class="panel text-center">
+      <div class="text-center">
         <% if current_user %>
           <div class="panel-header">
             <h3 class="panel-title">Ahoi, <%= current_user.email %>!</h3>
@@ -53,7 +53,7 @@
             <p><%= t("user.you_are_logged_in") %></p>
           </div>
           <div class="panel-footer">
-            <p><%= link_to t('signout.label'), destroy_user_session_path, method: :delete %></p>
+            <p><%= link_to t('signout.label'), destroy_user_session_path, method: :delete, class: "btn" %></p>
           </div>
         <% else %>
           <div class="panel-header">

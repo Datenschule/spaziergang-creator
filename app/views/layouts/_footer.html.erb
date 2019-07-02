@@ -10,18 +10,22 @@
   <div class="columns">
     <div class="column col-3 col-sm-6 col-xs-8">
       <p><%= image_tag("datenschule_logo_Slogan_weiss_web.png", alt: "Datenschule logo", class: "footer-logo") %></p>
-      <p><%= image_tag("Logo_okfde_white_scaled.png", alt: "OKF DE logo", class: "footer-logo") %></p>
+      <p><%= image_tag("logo_demokratielabore.svg", alt: "Demokratielabore logo", class: "footer-logo") %></p>
     </div>
-    <div class="column col-4 col-sm-6 col-xs-10">
+    <div class="column col-3 col-sm-6 col-xs-10">
       <p><%= t 'app_about' %><br>
       <a href="https://datenschule.de">datenschule.de</a><br>
-      <a href="https://okfn.de">okfn.de</a></p>
+      <a href="https://demokratielabore.de/">demokratielabore.de</a></p>
+    </div>
+    <div class="column col-3 col-sm-6 col-xs-10">
+      <p><%=  t("app.hosted_by") %> <%= ENV["HOME_NAME"] %>.</p>
+      <p><%=  t("app.walk_app") %>  <a href="<%= ENV['WALK_APP_URL'] || 'https://spaziergang.demokratielabore.de' %>"><%= t :mobile_app %></a></p>
       <p><%= t(:app_license) %>
         <%= link_to t('link_github'), "https://github.com/Datenschule/spaziergang-creator"%></p>
     </div>
-    <div class="column col-4 col-sm-6 col-xs-10">
-      <p><%=  t("app.hosted_by") %> <%= ENV["HOME_NAME"] %>.</p>
-      <p><%=  t("app.walk_app") %>  <a href="<%= ENV['WALK_APP_URL'] || 'https://spaziergang.demokratielabore.de' %>"><%= t :mobile_app %></a></p>
+    <div class="column col-3 col-sm-6 col-xs-10">
+      <p><%= image_tag("Logo_okfde_white_scaled.png", alt: "OKF DE logo", class: "footer-logo") %></p>
+      <p><%= t("app.supported_by") %><br><a href="https://okfn.de">okfn.de</a></p>
     </div>
   </div>
 </footer>

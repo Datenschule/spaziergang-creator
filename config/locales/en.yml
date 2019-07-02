@@ -4,6 +4,7 @@ en:
   app:
     hosted_by: "This page is hosted by"
     walk_app: "Go to Datenspaziergang App"
+    supported_by: "Supported by the Open Knowledge Foundation DE e.V."
   matomo:
     desc: "We use <a href='https://matomo.org/'>Matomo</a>'s privacy-friendly technology for statistical analysis of site usage."
     opt_out_1: "If you do not want this,"
@@ -192,7 +193,7 @@ en:
     question: "Question"
     answers: "Answers"
 
-  app_about: "Spaziergang Creator is a project by Datenschule and Open Knowledge Foundation Deutschland."
+  app_about: "Spaziergang Creator is a project by Datenschule and Demokratielabore."
   app_license: "The source code is published under MIT license"
   link_github: "and available on GitHub."
   imprint:
