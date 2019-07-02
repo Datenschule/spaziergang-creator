@@ -7,14 +7,14 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicons/favicon-16x16.png">
-    <link rel="manifest" href="/images/favicons/site.webmanifest">
-    <link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#454d5d">
-    <link rel="shortcut icon" href="/images/favicons/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="<%= image_path 'favicons/apple-touch-icon.png', skip_pipeline: true %>">
+    <link rel="icon" type="image/png" sizes="32x32" href="<%= image_path('favicons/favicon-32x32.png', skip_pipeline: true) %>">
+    <link rel="icon" type="image/png" sizes="16x16" href="<%= image_path('favicons/favicon-16x16.png', skip_pipeline: true) %>">
+    <link rel="manifest" href="<%= image_path 'favicons/site.webmanifest', skip_pipeline: true%>">
+    <link rel="mask-icon" href="<%= image_path 'favicons/safari-pinned-tab.svg', skip_pipeline: true %>" color="#454d5d">
+    <link rel="shortcut icon" href="<%= image_path 'favicons/favicon.ico', skip_pipeline: true %>">
     <meta name="msapplication-TileColor" content="#00ff9d">
-    <meta name="msapplication-config" content="/images/favicons/browserconfig.xml">
+    <meta name="msapplication-config" content="<%= image_path 'favicons/browserconfig.xml', skip_pipeline: true%>">
     <meta name="theme-color" content="#00ff9d">
 
     <% if ENV["MATOMO_URL"] && ENV["MATOMO_ID"] %>
