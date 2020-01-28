@@ -13,14 +13,14 @@ json.data do
     json.entry @walk.entry.to_i + 1
     json.stations do
       json.array! @walk.stations.sort_by(&:priority) do |station|
-        json.id station.priority.to_i
+        json.id (station.priority.to_i + 1)
         json.name station.name
         json.description station.description
         json.position do
           json.lat station.lat
           json.lon station.lon
         end
-        json.next station.next if station.next
+        json.next (station.next + 1) if station.next
         json.line station.line
         json.subjects do
           json.array! station.subjects do |subject|
