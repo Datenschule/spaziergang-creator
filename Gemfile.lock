@@ -59,6 +59,9 @@ GEM
       rack (>= 1.6.0)
       rack-test (>= 0.6.3)
       xpath (~> 3.1)
+    capybara-selenium (0.0.6)
+      capybara
+      selenium-webdriver
     childprocess (3.0.0)
     coderay (1.1.2)
     concurrent-ruby (1.1.5)
@@ -279,6 +282,7 @@ DEPENDENCIES
   breadcrumbs_on_rails
   byebug
   capybara (>= 2.15, < 4.0)
+  capybara-selenium
   coveralls
   database_cleaner
   devise (~> 4.4)
