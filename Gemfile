@@ -36,6 +36,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'coveralls', require: false
   gem 'rails-controller-testing'
+  gem 'webdrivers', '~> 4.0'
 end
 
 group :development do
@@ -50,11 +51,11 @@ end
 group :test do
   gem 'capybara', '>= 2.15', '< 4.0'
   gem 'capybara-selenium'
-  gem 'chromedriver-helper'
+  #gem 'chromedriver-helper'
   gem 'database_cleaner'
   gem 'factory_bot_rails', '~> 4.10'
   gem 'faker'
   gem 'launchy'
-  gem 'selenium-webdriver'
+  #gem 'selenium-webdriver'
   gem 'shoulda-matchers', '~> 3.1'
 end
