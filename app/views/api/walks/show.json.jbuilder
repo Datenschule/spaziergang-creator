@@ -13,7 +13,7 @@ json.data do
     json.entry @walk.entry.to_i + 1
     json.stations do
       json.array! @walk.stations.sort_by(&:priority) do |station|
-        json.id (station.priority.to_i + 1)
+        json.id station.priority.to_i
         json.name station.name
         json.description station.description
         json.position do
