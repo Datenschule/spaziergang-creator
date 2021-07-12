@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
-gem 'addressable', '~> 2.5'
+gem 'addressable', '~> 2.8'
 gem 'breadcrumbs_on_rails'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise', '~> 4.4'
